@@ -220,3 +220,6 @@ themes/classic/views/
 framework/
 images/
 node_modules/
+.idea/
+.gitignore
+.htaccess
