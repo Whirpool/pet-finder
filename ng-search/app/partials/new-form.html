@@ -1,0 +1,135 @@
+<br/><br/>
+<form name="newForm" class="form-horizontal well well-sm" novalidate>
+    <fieldset>
+        <div class="control-group">
+            <div class="controls">
+                <h3>Добавить запись</h3>
+            </div>
+        </div>
+        <div class="panel panel-danger" ng-show="showErrors">
+             <div class="panel-heading">
+                 <p class="panel-title">Необходимо исправить следующие ошибки: </p>
+             </div>
+            <div class="panel-body" ng-repeat="error in errors">
+                {{error[0]}}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label"> Питомец: </label>
+
+            <div class="col-sm-7">
+                <select class="form-control" ng-model="model.formNew.search_type" name="type" required>
+                    <option value="2">Найден</option>
+                    <option value="1">Потерян</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group" ng-show="model.formNew.search_type == 1">
+            <label class="col-sm-4 control-label">{{model.header.name}}</label>
+
+            <div class="col-sm-7">
+                <input type="text" class="form-control" ng-model="model.formNew.name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">{{model.header.pet}}</label>
+
+            <div class="col-sm-7">
+                <select class="form-control" ng-model="model.formNew.pet_id" name="pet"
+                        ng-options="pet.type_id as pet.name for pet in model.relations.pet" required>
+                </select>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : newForm.breed.$invalid && newForm.breed.$dirty }">
+            <label class="col-sm-4 control-label">{{model.header.breed}}</label>
+
+            <div class="col-sm-7">
+                <input type="text" class="form-control" ng-model="model.formNew.breed" name="breed" required>
+                <label class="control-label has-error" ng-show="newForm.breed.$dirty && newForm.breed.$invalid"> Это
+                    обязательное поле </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">{{model.header.age}}</label>
+
+            <div class="col-sm-7">
+                <select class="form-control" ng-model="model.formNew.age_id" name="age"
+                        ng-options="age.type_id as age.name for age in model.relations.age" required>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">{{model.header.sex}}</label>
+
+            <div class="col-sm-7">
+                <select class="form-control" ng-model="model.formNew.sex" name="sex"
+                        ng-options="sex.type_id as sex.name for sex in model.relations.sex" required>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">{{model.header.date}}</label>
+
+            <div class="col-sm-7 input-group">
+                <input type="text"
+                       class="form-control"
+                       datepicker-popup="dd-MM-yyyy"
+                       ng-model="datepicker"
+                       show-weeks="false"
+                       show-button-bar="false"
+                       max="maxDate"
+                       ng-required="true"/>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" ng-click="open($event)"><i
+                                class="glyphicon glyphicon-calendar"></i>&nbsp
+                        </button>
+                    </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">{{model.header.special}}</label>
+
+            <div class="col-sm-7">
+                <textarea class="form-control" ng-model="model.formNew.special"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">{{model.header.advanced}}</label>
+
+            <div class="col-sm-7">
+                <textarea class="form-control" ng-model="model.formNew.advanced"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">{{model.header.lng}}</label>
+            <div class="col-sm-7">
+                <input type="text" class="form-control" ng-model="model.formNew.lng" required ng-disabled="true" placeholder="Кликните по карте">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">{{model.header.lat}}</label>
+            <div class="col-sm-7">
+                <input type="text" class="form-control" ng-model="model.formNew.lat" required ng-disabled="true" placeholder="Кликните по карте">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-4 control-label">{{model.header.src}}</label>
+            <div class="col-sm-7">
+                <input type="file" ng-file-select="onFileSelect($files)" multiple>
+                <label class="control-label has-error" ng-show="fileError">{{fileError}}</label>
+                <div ng-repeat="image in images">
+                    {{image.nameDefault}} <a href="" ng-click="deleteImage(image, $index)">Удалить</a>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-1 col-sm-10">
+                <button type="submit" ng-click="submitForm()" class="btn btn-primary" ng-disabled="newForm.$pristine || newForm.$invalid">
+                    Добавить
+                </button>
+            </div>
+        </div>
+    </fieldset>
+</form>
+
