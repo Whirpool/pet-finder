@@ -13,7 +13,7 @@
         $scope.onFileSelect = function($files) {
             angular.forEach($files, function (file) {
                 pfImage.add(file).then(function(image) {
-                    $scope.images.push(image.data);
+                    $scope.images.push(image);
                 }, function (message) {
                     $scope.fileError = message;
                 });
@@ -46,10 +46,11 @@
         $scope.submitForm = function() {
             $scope.model.formNew.date = $filter('date')($scope.datepicker, ['dd-MM-yyyy']);
             pfData.newPet($scope.model.formNew).then(function() {
+                $scope.model.formNew = {};
                 $location.path( "/list" );
             }, function (errors) {
                 $scope.showErrors = true;
-                $scope.errors = errors;
+                $scope.errors = errors.data.message;
             });
         }
     }

@@ -7,34 +7,21 @@
 
     function pfImage($http, $q, $upload) {
         return {
-            add: function(images) {
-                    var deferred = $q.defer();
-                    $upload.upload({
-                        url: 'api/file/new',
-                        method: 'POST',
-                        file: images,
-                        headers: {'Content-Type': undefined}
-                    }).success(function (response) {
-                        deferred.resolve(response);
-                    }).error(function (response) {
-                        deferred.reject(response.message);
+            add: function (images) {
+                return $upload.upload({
+                    url: 'api/file/new',
+                    method: 'POST',
+                    file: images,
+                    headers: {'Content-Type': undefined}
+                }).then(function (response) {
+                        return response.data.data;
+                    },
+                    function (response) {
+                        return $q.reject(response.data.message);
                     });
-                    return deferred.promise;
             },
-            remove: function(img) {
-                var deferred = $q.defer();
-                $http({
-                    url: 'api/file/delete',
-                    method: "DELETE",
-                    data: img
-                }).success(function(response) {
-                    if (response.success) {
-                        deferred.resolve(response);
-                    } else {
-                        deferred.resolve(response);
-                    }
-                });
-                return deferred.promise;
+            remove: function (img) {
+                return $http.delete('api/file/delete', {data: img});
             }
         }
     }

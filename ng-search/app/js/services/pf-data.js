@@ -8,49 +8,40 @@
     function pfData($http, $rootScope, $q, $filter, pfRelation) {
         return {
             findPet: function (query) {
-                var deferred = $q.defer(),
-                    self = this,
-                    message;
-                $http({
-                    url: 'api/pet/search',
-                    method: "POST",
-                    data: query,
+                var self = this,
+                    url = 'api/pet/search',
+                    message = 'Not found';
+
+                return $http.post(url, query, {
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                }).success(function (data, status, headers, config) {
-                    if (status === 204) {
-                        message = 'Not found';
-                        deferred.reject(message);
-                    } else if (data.success) {
-                        data.data.forEach(function (pet) {
+                }).then(function (response) {
+                    if (response.status === 204) {
+                        return $q.reject(message);
+                    } else if (response.data.success) {
+                        response.data.data.forEach(function (pet) {
                             self.filterResponseData(pet);
                         });
-                        deferred.resolve(data.data);
+                        return response.data.data;
                     }
-                }).error(function (data) {
-                    deferred.reject(data.message);
+                }, function (response) {
+                    return $q.reject(response.data.message);
                 });
-                return deferred.promise;
             },
 
             newPet: function (query) {
-                var deferred = $q.defer();
-                $http({
+                return $http({
                     url: 'api/pet/new',
                     method: "POST",
                     data: query,
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                }).success(function (response) {
-                    deferred.resolve(response.data);
-                }).error(function (response) {
-                    deferred.reject(response.message);
                 });
-                return deferred.promise;
             },
 
             getDetail: function (id) {
                 var pet = null,
                     find = false,
-                    message = null,
+                    message = 'Not found',
+                    url = 'api/pet/view',
                     deferred = $q.defer(),
                     self = this;
 
@@ -65,20 +56,15 @@
 
                 if (!find) {
                     $http({
-                        url: 'api/pet/view',
-                        method: "GET",
-                        params: {
-                            id: id
-                        }
+                        url: url,
+                        method: 'GET',
+                        params: {id: id}
                     }).success(function (data, status) {
                         if (status === 204) {
-                            message = 'Not found';
-                            deferred.reject(message);
+                            deferred.resolve(message);
                         } else if (data.success) {
                             pet = self.filterResponseData(data.data);
                             deferred.resolve(pet);
-                        } else {
-                            deferred.reject(data.message);
                         }
                     }).error(function (data) {
                         deferred.reject(data.message);
@@ -102,38 +88,17 @@
                 return pet;
             },
 
-            sendComment: function (id, data) {
-                var deferred = $q.defer();
-                $http({
-                    url: 'api/comment/new',
-                    method: "POST",
-                    data: {
+            sendMessage: function (id, data, type) {
+                var url = 'api/' + type + '/new',
+                    query = {
                         id: id,
                         content: data
-                    }
-                }).success(function (response) {
-                    deferred.resolve(response.data);
-                }).error(function (response) {
-                    deferred.reject(response.error);
+                    };
+                return $http.post(url, query).then(function (response) {
+                    return response.data.data;
+                }, function (response) {
+                    return $q.reject(response.data.error)
                 });
-                return deferred.promise;
-            },
-
-            sendAnswer: function (id, data) {
-                var deferred = $q.defer();
-                $http({
-                    url: 'api/answer/new',
-                    method: "POST",
-                    data: {
-                        id: id,
-                        content: data
-                    }
-                }).success(function (response) {
-                    deferred.resolve(response.data);
-                }).error(function (response) {
-                    deferred.reject(response.error);
-                });
-                return deferred.promise;
             }
         }
     }

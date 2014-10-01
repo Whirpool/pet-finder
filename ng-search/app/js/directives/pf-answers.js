@@ -13,10 +13,11 @@
                 id: '@'
             },
             controller: function ($scope, pfData) {
+                var type = 'answer';
                 $scope.writeAnswer = false;
                 $scope.form = {};
                 $scope.sendAnswer = function (id, answer) {
-                    pfData.sendAnswer(id, answer).then(function (data) {
+                    pfData.sendMessage(id, answer, type).then(function (data) {
                         $scope.answers.push(data);
                         $scope.writeAnswer = false;
                         $scope.form.errors = [];

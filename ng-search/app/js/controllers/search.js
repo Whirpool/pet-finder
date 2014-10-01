@@ -27,7 +27,7 @@
                 $scope.model.formSearch.location = pfMap.getBounds();
                 pfData.findPet($scope.model.formSearch).then(function (data) {
                     $scope.model.pets = data;
-                    $rootScope.pets = data;
+                    $rootScope.pets =  data;
                     $scope.error.message = false;
                     $scope.tab.list.disable = false;
                     $scope.map.geoObjects = pfMap.createGeoObjects($scope.model.pets);

@@ -107,4 +107,11 @@ class PfAnswers extends RActiveRecord
 	{
 		return parent::model($className);
 	}
+
+    public function loadAnswer($id)
+    {
+        $query = $this->findByPk($id);
+        $result = $this->convertModelToArray($query);
+        return $result;
+    }
 }

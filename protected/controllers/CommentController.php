@@ -50,23 +50,11 @@ class CommentController extends RController
         $message->time_create = date('Y-m-d H:i:s');
         if ($message->validate()) {
             if ($message->save()) {
-                $result = PfComment::model()->findByPk($message->id);
-                $this->renderJson(
-                    [
-                        'success' => true,
-                        'validate' => true,
-                        'data' => $this->convertModelToArray($result)
-                    ]
-                );
+                $result = PfComment::model()->loadComment($message->id);
+                $this->renderJson('data', $result);
             }
         } else {
-            $this->renderJson(
-                [
-                    'success' => false,
-                    'validate' => false,
-                    'errors' => $message->getErrors()
-                ]
-            );
+            $this->renderJson('error', $message->getErrors());
         }
     }
 }

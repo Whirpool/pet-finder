@@ -12,9 +12,10 @@
                 comments: '='
             },
             controller: function ($scope, pfData, $stateParams) {
+                var type = 'comment';
                 $scope.form = {};
                 $scope.sendComment = function (data) {
-                    pfData.sendComment($stateParams.id, data).then(function (data) {
+                    pfData.sendMessage($stateParams.id, data, type).then(function (data) {
                         $scope.comments.push(data);
                         $scope.form.content = '';
                         $scope.form.errors = [];
