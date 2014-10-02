@@ -71,7 +71,7 @@ class PetController extends RController
                 $this->renderJson('data', $result);
             }
         } else {
-            $message = 'Слишком большой зум';
+            $message = ['zoom' => 'Слишком большой зум'];
             $this->renderJson('error', $message);
         }
 

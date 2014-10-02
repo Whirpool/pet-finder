@@ -42,7 +42,7 @@ class RController extends CController
                 $status = 400;
                 $this->renderPartial('application.views.system.error', [
                         'status'  => $status,
-                        'output'  =>  $data
+                        'output'  => $data
                     ]);
                 break;
             default:

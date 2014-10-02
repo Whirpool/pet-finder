@@ -1,18 +1,22 @@
 'use strict';
 
-describe('SearchCtrl', function () {
+describe('CtrlSearch: ', function () {
     var dataServiceMock,
         mapMock,
         pageMock,
         $timeout,
         SearchCtrl,
+        mockFilter = function () {},
         $scope;
     beforeEach(module('petFinder'));
     beforeEach(module('stateMock'));
+    beforeEach(module(function($provide) {
+        $provide.value('listFilter', mockFilter);
+    }));
     beforeEach(function () {
         dataServiceMock = jasmine.createSpyObj('pfData', ['findPet']);
         mapMock = jasmine.createSpyObj('pfMap', ['isZoomValid', 'getBounds', 'createGeoObjects']);
-        pageMock = jasmine.createSpyObj('pfPagination', ['init', 'setPage']);
+        pageMock = jasmine.createSpyObj('pfPagination', ['init', 'setPage', 'showPag']);
     });
     beforeEach(inject(function ($rootScope, $controller, $q, _$timeout_) {
             $scope = $rootScope.$new();
@@ -27,8 +31,9 @@ describe('SearchCtrl', function () {
             };
             dataServiceMock.findPet.and.returnValue($q.when('success!'));
             mapMock.isZoomValid.and.returnValue(true);
-            mapMock.getBounds.and.returnValue([43.43, 43.32]);
-            mapMock.createGeoObjects.and.returnValue({});
+            mapMock.getBounds.and.returnValue([{}, {}]);
+            mapMock.createGeoObjects.and.returnValue([]);
+            pageMock.showPag.and.returnValue(true);
             pageMock.init.and.returnValue({});
             pageMock.setPage.and.returnValue({});
 
@@ -36,15 +41,22 @@ describe('SearchCtrl', function () {
             SearchCtrl = $controller('SearchCtrl', {
                 $scope: $scope,
                 pfData: dataServiceMock,
-                pfMap: mapMock
+                pfMap: mapMock,
+                pfPagination: pageMock
             });
         })
     );
 
-    it('should update pet list after call method sendForm', function () {
+    it('should update pet list after call method submitForm', function () {
         $scope.submitForm();
         expect(dataServiceMock.findPet).toHaveBeenCalled();
+        expect(mapMock.isZoomValid).toHaveBeenCalled();
+        expect(mapMock.getBounds).toHaveBeenCalled();
         $timeout.flush();
+        expect(mapMock.createGeoObjects).toHaveBeenCalled();
+        expect(pageMock.showPag).toHaveBeenCalled();
+        expect(pageMock.init).toHaveBeenCalled();
+        expect(pageMock.setPage).toHaveBeenCalled();
         expect($scope.model.pets).toEqual('success!');
     });
 });

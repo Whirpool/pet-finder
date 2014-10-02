@@ -1,13 +1,14 @@
-describe('CtrlDetail', function () {
+describe('CtrlDetail: ', function () {
     var dataServiceMock,
         mapServiceMock,
         scope,
         rootScope,
-        $httpBackend,
-        defer,
+        getController,
+        q,
         NewCtrl,
-        pfData,
-        stateParamsfk,
+        response,
+        responseImg,
+        fakeStateParams,
         timeout;
 
 
@@ -15,40 +16,65 @@ describe('CtrlDetail', function () {
     beforeEach(module('petFinder'));
     beforeEach(module('stateMock'));
     beforeEach(function () {
-        dataServiceMock = jasmine.createSpyObj('pfData', ['getDetail']);
-        mapServiceMock  = jasmine.createSpyObj('pfMap', ['isZoomValid', 'getBounds', 'createGeoObjects']);
+        dataServiceMock = jasmine.createSpyObj('pfData', ['getDetail', 'filterResponseData']);
+        mapServiceMock  = jasmine.createSpyObj('pfMap', ['isZoomValid', 'getBounds', 'createGeoObject']);
     });
     beforeEach(inject(function ($injector, $rootScope, $controller, $q, $timeout) {
-            rootScope = $rootScope;
-            scope = $rootScope.$new();
             timeout = $timeout;
-            defer = $q.defer();
-            stateParamsfk = {
+            rootScope = $rootScope;
+            q = $q;
+            scope = $rootScope.$new();
+            fakeStateParams = {
                 id:1
             };
-            scope.map = {};
+            responseImg = {
+                id:1,
+                pet_id:2,
+                images: [{source_original: 'img1'}, {source_original: 'img2'}]
+            };
+            response = {
+                id:1,
+                pet_id:2,
+                images: []
+            };
             scope.detail = {
-                pets: []
+                pet: {},
+                map: {
+                    geoObject: {}
+                }
             };
 
 
-            dataServiceMock.getDetail.and.returnValue(defer.promise);
-            mapServiceMock.createGeoObjects.and.returnValue({});
-
-            NewCtrl = $controller('DetailCtrl', {
-                $scope: scope,
-                $stateParams: stateParamsfk,
-                pfData: dataServiceMock,
-                pfMap: mapServiceMock
-            });
+            dataServiceMock.filterResponseData.and.returnValue({});
+            mapServiceMock.createGeoObject.and.returnValue({});
+            getController = function () {
+                return $controller('DetailCtrl', {
+                    $scope: scope,
+                    $stateParams: fakeStateParams,
+                    pfData: dataServiceMock,
+                    pfMap: mapServiceMock
+                });
+            }
         })
     );
 
-    it('should send form', function () {
-        defer.resolve('resolveData');
+    it('get pet', function () {
+        dataServiceMock.getDetail.and.returnValue(q.when(response));
+        NewCtrl = getController();
         expect(dataServiceMock.getDetail).toHaveBeenCalled();
-        expect(dataServiceMock.getDetail).toHaveBeenCalledWith(1);
+        expect(dataServiceMock.getDetail).toHaveBeenCalledWith(fakeStateParams.id);
         timeout.flush();
-        expect(scope.detail.pets).toEqual('resolveData');
+        expect(scope.detail.pet).toEqual(response);
+        expect(scope.mainImage).toBe('images/default.png');
+    });
+
+    it('get pet with images', function () {
+        dataServiceMock.getDetail.and.returnValue(q.when(responseImg));
+        NewCtrl = getController();
+        timeout.flush();
+        expect(scope.mainImage).toBe('img1');
+        scope.changeMainImage('img2');
+        expect(scope.mainImage).toBe('img2');
+
     });
 });

@@ -24,7 +24,7 @@
                         return response.data;
                     }
                 }, function (response) {
-                    return $q.reject(response.data);
+                    return $q.reject(response.data.zoom);
                 });
             },
 
@@ -66,8 +66,6 @@
                             pet = self.filterResponseData(data);
                             deferred.resolve(pet);
                         }
-                    }).error(function (error) {
-                        deferred.reject(error);
                     });
                 }
 

@@ -1,44 +1,31 @@
-describe('pagination service', function () {
+describe('Service Pagination: ', function () {
     var mockFilter,
         paginationService,
         init,
         pagination = {
-        pageSize: 2,
-        maxSize: 5,
-        currentPage: 1,
-        numOfPages: 0,
-        start: 0,
-        end: 0,
-        startItems: [],
-        filteredItems: [],
-        pagedItems: [],
-        totalItems: 0
+            pageSize: 2,
+            maxSize: 5,
+            currentPage: 1,
+            numOfPages: 0,
+            start: 0,
+            end: 0,
+            startItems: [],
+            filteredItems: [],
+            pagedItems: [],
+            totalItems: 0
         },
-        data = [
-            {
-                id:1
-            },
-            {
-                id:2
-            },
-            {
-                id:3
-            },
-            {
-                id:4
-            }
-        ];
+        data = [{id: 1}, {id: 2}, {id: 3}, {id: 4}];
     beforeEach(module('petFinder'));
     beforeEach(mockFilter = function () {
-        return [{id:1}, {id:2}]
+        return [{id: 1}, {id: 2}]
     });
-    beforeEach(module(function($provide) {
+    beforeEach(module(function ($provide) {
             $provide.value('startFromFilter', mockFilter);
         })
     );
     beforeEach(inject(function ($injector) {
-                paginationService = $injector.get('pfPagination');
-            })
+            paginationService = $injector.get('pfPagination');
+        })
     );
 
     it('should set page', function () {

@@ -1,6 +1,6 @@
 'use strict';
 
-describe('start form filter test', function () {
+describe('FilterStartForm: ', function () {
     var output = [
         {id: 1, name: 'кошка'},
         {id: 2, name: 'собака'},
