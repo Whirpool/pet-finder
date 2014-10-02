@@ -14,10 +14,10 @@
                     file: images,
                     headers: {'Content-Type': undefined}
                 }).then(function (response) {
-                        return response.data.data;
+                        return response.data;
                     },
-                    function (response) {
-                        return $q.reject(response.data.message);
+                    function (error) {
+                        return $q.reject(error.data);
                     });
             },
             remove: function (img) {

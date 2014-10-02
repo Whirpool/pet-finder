@@ -17,14 +17,14 @@
                 }).then(function (response) {
                     if (response.status === 204) {
                         return $q.reject(message);
-                    } else if (response.data.success) {
-                        response.data.data.forEach(function (pet) {
+                    } else {
+                        response.data.forEach(function (pet) {
                             self.filterResponseData(pet);
                         });
-                        return response.data.data;
+                        return response.data;
                     }
                 }, function (response) {
-                    return $q.reject(response.data.message);
+                    return $q.reject(response.data);
                 });
             },
 
@@ -61,13 +61,13 @@
                         params: {id: id}
                     }).success(function (data, status) {
                         if (status === 204) {
-                            deferred.resolve(message);
-                        } else if (data.success) {
-                            pet = self.filterResponseData(data.data);
+                            deferred.reject(message);
+                        } else {
+                            pet = self.filterResponseData(data);
                             deferred.resolve(pet);
                         }
-                    }).error(function (data) {
-                        deferred.reject(data.message);
+                    }).error(function (error) {
+                        deferred.reject(error);
                     });
                 }
 
@@ -95,9 +95,9 @@
                         content: data
                     };
                 return $http.post(url, query).then(function (response) {
-                    return response.data.data;
-                }, function (response) {
-                    return $q.reject(response.data.error)
+                    return response.data;
+                }, function (error) {
+                    return $q.reject(error.data)
                 });
             }
         }

@@ -22,37 +22,27 @@ class RController extends CController
                 $success = true;
                 $this->renderPartial('application.views.system.output', [
                         'status' => $status,
-                        'output' => [
-                            'success' => $success
-                        ]
+                        'output' =>  $success
                     ]);
                 break;
             case 'data':
-                $success = true;
                 $this->renderPartial('application.views.system.output', [
                         'status'  => $status,
-                        'output' => [
-                            'success' => $success,
-                            'data'    => $data
-                        ]
+                        'output'  => $data
                     ]);
                 break;
             case 'empty':
                 $status = 204;
                 $this->renderPartial('application.views.system.output', [
                         'status'  => $status,
-                        'output' => []
+                        'output'  => []
                     ]);
                 break;
             case 'error':
                 $status = 400;
-                $success = false;
                 $this->renderPartial('application.views.system.error', [
                         'status'  => $status,
-                        'output' => [
-                            'success' => $success,
-                            'message' => $data
-                        ]
+                        'output'  =>  $data
                     ]);
                 break;
             default:
