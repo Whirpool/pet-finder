@@ -12,8 +12,8 @@ describe('Service Data: ', function () {
         responseOne = {pet_id: 1, age_id:2, sex:2, date: 123213, date_create: 123213, date_update: 123213},
         relation = {
             pet: [{type_id: 1, name: 'кошка'}, {type_id: 2, name: 'собака'}],
-            age: [{type_id: 1, name: 'lj1'}, {type_id: 2, name: 'собака'}],
-            sex: [{type_id: 1, name: 'lj1'}, {type_id: 2, name: 'женский'}]
+            age: [{type_id: 1, name: 'до 1 года'}, {type_id: 2, name: 'до 3 лет'}],
+            sex: [{type_id: 1, name: 'мужской'}, {type_id: 2, name: 'женский'}]
         };
 
     beforeEach(module('petFinder'));
@@ -79,7 +79,7 @@ describe('Service Data: ', function () {
     it('filterResponseData', function () {
         var test = dataService.filterResponseData(responseOne);
         expect(test.pet_id).toBe('кошка');
-        expect(test.age_id).toBe('собака');
+        expect(test.age_id).toBe('до 3 лет');
         expect(test.sex).toBe('женский');
         expect(test.date).toBe('02-01-1970');
         expect(test.date_create).toBe('02-01-1970');

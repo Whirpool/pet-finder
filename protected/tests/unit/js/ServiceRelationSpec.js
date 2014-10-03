@@ -6,18 +6,8 @@ describe('Service Relation:', function () {
         pfRelation,
         relation,
         responsePet = {
-            pet: [{
-                id: 1,
-                name: 'кошка'
-            }],
-            age: [{
-                    id: 1,
-                    name: 'до 3 лет'
-                },
-                {
-                    id: 2,
-                    name: 'до 5 лет'
-                }]
+            pet: [{id: 1, name: 'кошка'}],
+            age: [{id: 1, name: 'до 3 лет'}, {id: 2,name: 'до 5 лет'}]
         };
 
     beforeEach(module('petFinder'));
