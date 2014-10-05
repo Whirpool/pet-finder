@@ -48,7 +48,7 @@ class PetController extends RController
      */
     public function actionRelation()
     {
-        $result = PetFinder::model()->getRelationData();
+        $result = Lookup::model()->getRelationData();
         if (is_null($result)) {
             $this->renderJson('error', 'Empty relation data');
         } else {

@@ -74,8 +74,8 @@ return array(
 		'db'=>array(
 			'connectionString' => 'mysql:host=localhost;dbname=staytogether',
 			'emulatePrepare' => true,
-			'username' => 'root',
-			'password' => 'cegthgegth',
+			'username' => 'admin_stay',
+			'password' => 'staycegthgegth',
 			'charset' => 'utf8',
             'tablePrefix' => 'tbl_',
             'enableProfiling' => true,

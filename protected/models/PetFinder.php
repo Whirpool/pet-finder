@@ -138,31 +138,6 @@ class PetFinder extends RActiveRecord
         $this->addImage();
     }
 
-    /**
-     * Извлечение данных из выбранной таблицы
-     *
-     */
-    public function getRelationData()
-    {
-       $command = Yii::app()->db->createCommand()
-           ->select('type_id, name')
-           ->from("{{lookup}}")
-           ->where('type=:type');
-
-        $command->bindValue('type', Lookup::TYPE_PET, PDO::PARAM_STR);
-        $result[Lookup::TYPE_PET] = $command->queryAll();
-
-        $command->bindValue('type', Lookup::TYPE_AGE, PDO::PARAM_STR);
-        $result[Lookup::TYPE_AGE] = $command->queryAll();
-
-        $command->bindValue('type', Lookup::TYPE_SEX, PDO::PARAM_STR);
-        $result[Lookup::TYPE_SEX] = $command->queryAll();
-
-        if (empty($result)) {
-            return null;
-        }
-        return $result;
-    }
 
     /**
      * @param $data
@@ -175,8 +150,6 @@ class PetFinder extends RActiveRecord
      */
     public function searchPets($data)
     {
-
-
         $dateStart = DateTime::createFromFormat('d-m-Y', $data['date']);
         $dateEnd   = DateTime::createFromFormat('d-m-Y', $data['date']);
 
@@ -290,6 +263,8 @@ class PetFinder extends RActiveRecord
     {
         $distanceLng = $location['downRight']['lng'] - $location['upLeft']['lng'];
         $distanceLat = $location['downRight']['lat'] - $location['upLeft']['lat'];
-        return ($distanceLat < Yii::app()->params['zoom']['max']['lat'] && $distanceLng < Yii::app()->params['zoom']['max']['lng']);
+        $validLng = ($distanceLng < Yii::app()->params['zoom']['max']['lng'] && $distanceLng > 0);
+        $validLat = ($distanceLat < Yii::app()->params['zoom']['max']['lat'] && $distanceLat > 0);
+        return ($validLng && $validLat);
     }
 }

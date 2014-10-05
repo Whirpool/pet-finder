@@ -101,4 +101,31 @@ class Lookup extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+
+    /**
+     * Извлечение данных из выбранной таблицы
+     *
+     */
+    public function getRelationData()
+    {
+        $command = Yii::app()->db->createCommand()
+            ->select('type_id, name')
+            ->from("{{lookup}}")
+            ->where('type=:type');
+
+        $command->bindValue('type', self::TYPE_PET, PDO::PARAM_STR);
+        $result[self::TYPE_PET] = $command->queryAll();
+
+        $command->bindValue('type', self::TYPE_AGE, PDO::PARAM_STR);
+        $result[self::TYPE_AGE] = $command->queryAll();
+
+        $command->bindValue('type', self::TYPE_SEX, PDO::PARAM_STR);
+        $result[self::TYPE_SEX] = $command->queryAll();
+
+        if (empty($result)) {
+            return null;
+        }
+        return $result;
+    }
 }

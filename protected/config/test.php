@@ -10,8 +10,8 @@ return CMap::mergeArray(
             'db'=>array(
                 'connectionString' => 'mysql:host=localhost;dbname=staytest',
                 'emulatePrepare' => true,
-                'username' => 'admin',
-                'password' => 'mypass',
+                'username' => 'admin_stay',
+                'password' => 'staycegthgegth',
                 'charset' => 'utf8',
                 'tablePrefix' => 'tbl_',
             ),
