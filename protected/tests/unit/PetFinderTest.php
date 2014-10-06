@@ -32,6 +32,7 @@ class PetFinderTest extends CDbTestCase
         $this->assertNotNull($result);
         $this->assertNotEmpty($result);
         $this->assertEquals($result[0]['breed'], $this->finder[1]['breed']);
+        $this->assertEquals($result[0]['user']['username'], 'admin');
     }
 
 

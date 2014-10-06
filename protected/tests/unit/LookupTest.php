@@ -14,4 +14,3 @@ class LookupTest extends CDbTestCase
         $this->assertCount(3, $result);
     }
 }
-
