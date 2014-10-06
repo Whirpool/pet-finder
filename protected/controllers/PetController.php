@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Class MainController
  */
@@ -17,6 +18,7 @@ class PetController extends RController
     /**
      * Разрешиль любые действия только
      * зарегистрированным пользователям
+     *
      * @return array
      */
     public function accessRules()
@@ -42,9 +44,7 @@ class PetController extends RController
     }
 
     /**
-     * На вход получает имя таблицы
-     * возвращает данные для дальнейшей
-     * фильтрации на клиенте
+     * Возвращает данные для фильтрации на клиенте
      */
     public function actionRelation()
     {
@@ -63,7 +63,7 @@ class PetController extends RController
     {
         $data = CJSON::decode(Yii::app()->request->rawBody);
         $model = new PetFinder;
-        if($model->isZoomValid($data['location'])) {
+        if ($model->isZoomValid($data['location'])) {
             $result = $model->searchPets($data);
             if (is_null($result)) {
                 $this->renderJson('empty');
@@ -82,7 +82,7 @@ class PetController extends RController
      */
     public function actionNew()
     {
-        $data  = CJSON::decode(Yii::app()->request->rawBody);
+        $data = CJSON::decode(Yii::app()->request->rawBody);
 
         $model = new PetFinder;
         $model->attributes = $data;
@@ -100,11 +100,17 @@ class PetController extends RController
         }
     }
 
-    public function actionView($id){
+    /**
+     * Поиск по первичному ключу
+     *
+     * @param $id
+     */
+    public function actionView($id)
+    {
 
         $result = PetFinder::model()->searchPet($id);
 
-        if(is_null($result)) {
+        if (is_null($result)) {
             $this->renderJson('empty');
         } else {
             $this->renderJson('data', $result);

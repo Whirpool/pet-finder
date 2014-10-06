@@ -11,7 +11,7 @@ class PetFinderTest extends CDbTestCase
         $this->petFinder = new PetFinder();
     }
 
-    public function testSearchPetOne()
+    public function testSearchPet()
     {
         $data = [
             'search_type' => 1,

@@ -2,7 +2,16 @@
 
 class RActiveRecord extends CActiveRecord
 {
-    protected function convertModelToArray($models) {
+    /**
+     * Рекурсивно конвертирует объект модели и
+     * его связи в массив
+     *
+     * @param $models
+     *
+     * @return array
+     */
+    protected function convertModelToArray($models)
+    {
         if (is_array($models)) {
             $arrayMode = true;
         } else {

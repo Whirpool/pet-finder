@@ -5,7 +5,7 @@ class LookupTest extends CDbTestCase
         'lookup' => 'Lookup'
     );
 
-    public function testgetRelationData()
+    public function testGetRelationData()
     {
         $lookup = new Lookup;
         $result = $lookup->getRelationData();

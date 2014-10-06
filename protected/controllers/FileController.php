@@ -1,8 +1,5 @@
 <?php
 
-/**
- * Class MainController
- */
 class FileController extends RController
 {
 
@@ -38,9 +35,10 @@ class FileController extends RController
 
 
     /**
-     * Получение с клиента данных о файле
-     * и его валидация. Если валидация успешно
-     * пройдена, файл сохраняется на сервере
+     * Валидация и загрузка изображения.
+     * Генерация преаью изображения.
+     * При успешной загрузке данные сохраняются в сессии
+     * для дальнейшей записи в модель.
      */
     public function actionLoad()
     {
@@ -49,14 +47,15 @@ class FileController extends RController
         $model->file = UploadedImage::getInstanceByName('file');
         if ($model->validate()) {
             $model->file->resize($model->file->getTempName());
-            $model->file->ambilight($model->file->getTempName(), Yii::app()->params['images']['path']['tmp']. $model->file->getNameSmallSize());
-            $model->file->saveAs(Yii::app()->params['images']['path']['tmp'].$model->file->getNameOriginalSize());
+            $model->file->ambilight($model->file->getTempName(),
+                Yii::app()->params['images']['path']['tmp'] . $model->file->getNameSmallSize());
+            $model->file->saveAs(Yii::app()->params['images']['path']['tmp'] . $model->file->getNameOriginalSize());
             $image = [
-                'nameDefault'  => $model->file->getName(),
+                'nameDefault' => $model->file->getName(),
                 'nameOriginal' => $model->file->getNameOriginalSize(),
-                'nameSmall'    => $model->file->getNameSmallSize(),
-                'size'         => $model->file->getSize(),
-                'mime'         => $model->file->getType(),
+                'nameSmall' => $model->file->getNameSmallSize(),
+                'size' => $model->file->getSize(),
+                'mime' => $model->file->getType(),
             ];
             if (Yii::app()->user->hasState('image')) {
                 $files = Yii::app()->user->getState('image');
@@ -67,9 +66,9 @@ class FileController extends RController
                 Yii::app()->user->setState('image', $files);
             }
             $data = [
-                'nameDefault'  => $model->file->getName(),
+                'nameDefault' => $model->file->getName(),
                 'nameOriginal' => $model->file->getNameOriginalSize(),
-                'nameSmall'    => $model->file->getNameSmallSize(),
+                'nameSmall' => $model->file->getNameSmallSize(),
             ];
             $this->renderJson('data', $data);
         } else {
@@ -77,16 +76,21 @@ class FileController extends RController
         }
     }
 
+    /**
+     * Удаление изображения из файловой системы и сессии
+     */
     public function actionDelete()
     {
         $image = CJSON::decode(Yii::app()->request->rawBody);
         $files = Yii::app()->user->getState('image');
 
         foreach ($files as $key => $file) {
-            if($file['nameOriginal'] === $image['nameOriginal'] && $file['nameSmall'] === $image['nameSmall']) {
-                if(is_file(Yii::app()->params['images']['path']['tmp'].$file['nameOriginal']) && is_file(Yii::app()->params['images']['path']['tmp'].$file['nameSmall'])) {
-                    unlink(Yii::app()->params['images']['path']['tmp'].$file['nameOriginal']);
-                    unlink(Yii::app()->params['images']['path']['tmp'].$file['nameSmall']);
+            if ($file['nameOriginal'] === $image['nameOriginal'] && $file['nameSmall'] === $image['nameSmall']) {
+                if (is_file(Yii::app()->params['images']['path']['tmp'] . $file['nameOriginal'])
+                    && is_file(Yii::app()->params['images']['path']['tmp'] . $file['nameSmall'])
+                ) {
+                    unlink(Yii::app()->params['images']['path']['tmp'] . $file['nameOriginal']);
+                    unlink(Yii::app()->params['images']['path']['tmp'] . $file['nameSmall']);
                     unset($files[$key]);
                     Yii::app()->user->setState('image', $files);
                     $this->renderJson('success');

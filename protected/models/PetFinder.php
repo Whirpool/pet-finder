@@ -21,7 +21,7 @@
  * @property integer $author_id
  * @property double  $lng
  * @property double  $lat
- * @property point  $coords
+ * @property point   $coords
  */
 class PetFinder extends RActiveRecord
 {
@@ -43,24 +43,33 @@ class PetFinder extends RActiveRecord
         return array(
             array(
                 'pet_id, breed, age_id, sex, date, date_create, date_update, search_type, author_id, lng, lat',
-                'required', 'message' => 'Заполните поле {attribute}'
+                'required',
+                'message' => 'Заполните поле {attribute}'
             ),
             array(
                 'pet_id, age_id, sex, date, date_create, date_update, search_type, search_status, author_id',
-                'numerical', 'integerOnly' => true
+                'numerical',
+                'integerOnly' => true
             ),
             array('lng, lat', 'numerical'),
             array(
-                'breed, name', 'length', 'min' => 3, 'max' => 30,
+                'breed, name',
+                'length',
+                'min' => 3,
+                'max' => 30,
                 'message' => 'Длинна поля {attribute} от 3 до 30 символов'
             ),
             array(
-                'special, advanced', 'length', 'max' => 255,
+                'special, advanced',
+                'length',
+                'max' => 255,
                 'message' => 'Длинна поля {attribute} не более 255 символов'
             ),
             array('sex', 'in', 'range' => array(1, 2)),
             array(
-                'breed, name', 'match', 'pattern' => '/^[A-zА-я\s]+$/u',
+                'breed, name',
+                'match',
+                'pattern' => '/^[A-zА-я\s]+$/u',
                 'message' => "В поле {attribute} используйте только буквы."
             ),
             array('special, advanced', 'safe'),
@@ -73,8 +82,8 @@ class PetFinder extends RActiveRecord
     public function relations()
     {
         return array(
-            'user'     => array(self::BELONGS_TO, 'User', 'author_id', 'alias' => 'u1'),
-            'images'   => array(self::HAS_MANY, 'PfImages', 'post_id'),
+            'user' => array(self::BELONGS_TO, 'User', 'author_id', 'alias' => 'u1'),
+            'images' => array(self::HAS_MANY, 'PfImages', 'post_id'),
             'comments' => array(self::HAS_MANY, 'PfComment', 'post_id', 'order' => 'c.time_create', 'alias' => 'c'),
         );
     }
@@ -141,38 +150,39 @@ class PetFinder extends RActiveRecord
 
     /**
      * @param $data
-     * Устанавливает сравнения для поиска
-     * в том числе промежутки времени год вперед или назад от текущей даты
-     * в зависимости от выбора пользователя, а также промежутки координат
-     * верхнего левого и нижнего правого углов границ карты.
+     * Устанавливает сравнения для поиска.
+     * В зависимости от типа поиска устанавливается диапазон времени год вперед или назад от текущей даты.
+     * Для криерия поиска по координатам используются внутренние функции MySQL.
+     * Проверяется наличие записей внутри бокса из границ карты
      *
-     * @return CActiveRecord[]
+     * @return array
      */
     public function searchPets($data)
     {
         $dateStart = DateTime::createFromFormat('d-m-Y', $data['date']);
-        $dateEnd   = DateTime::createFromFormat('d-m-Y', $data['date']);
+        $dateEnd = DateTime::createFromFormat('d-m-Y', $data['date']);
 
-        $criteria  = new CDbCriteria();
+        $criteria = new CDbCriteria();
         $criteria->with = [
             'user',
             'images',
         ];
         $criteria->alias = 't';
-        $criteria->select = 't.id, t.pet_id, t.breed, t.age_id, t.name, t.sex, t.special, t.advanced, t.date, t.date_create, t.date_update, t.author_id, t.lng, t.lat';
+        $criteria->select
+            = 't.id, t.pet_id, t.breed, t.age_id, t.name, t.sex, t.special, t.advanced, t.date, t.date_create, t.date_update, t.author_id, t.lng, t.lat';
         $coordsExpression = new CDbExpression('within(coords, envelope(linestring(POINT(:upLeftX, :upLeftY), POINT(:downRightX, :downRightY))))');
         $criteria->addCondition($coordsExpression);
         $criteria->compare('search_type', $data['search_type']);
-        if(isset($data['pet_id'])) {
+        if (isset($data['pet_id'])) {
             $criteria->compare('pet_id', $data['pet_id']);
         }
-        if(isset($data['age_id'])){
+        if (isset($data['age_id'])) {
             $criteria->compare('age_id', $data['age_id']);
         }
-        if(isset($data['sex'])) {
+        if (isset($data['sex'])) {
             $criteria->compare('sex', $data['sex']);
         }
-        if(isset($data['breed'])) {
+        if (isset($data['breed'])) {
             $criteria->addSearchCondition('breed', $data['breed']);
         }
         if ($data['search_type'] == 1) {
@@ -183,8 +193,8 @@ class PetFinder extends RActiveRecord
             $criteria->addBetweenCondition('date', $dateStart->format('U'), $dateEnd->format('U'));
         }
 
-        $criteria->params[':upLeftX']    = $data['location']['upLeft']['lat'];
-        $criteria->params[':upLeftY']    = $data['location']['upLeft']['lng'];
+        $criteria->params[':upLeftX'] = $data['location']['upLeft']['lat'];
+        $criteria->params[':upLeftY'] = $data['location']['upLeft']['lng'];
         $criteria->params[':downRightX'] = $data['location']['downRight']['lat'];
         $criteria->params[':downRightY'] = $data['location']['downRight']['lng'];
         $query = $this->findAll($criteria);
@@ -197,6 +207,14 @@ class PetFinder extends RActiveRecord
         return $result;
     }
 
+    /**
+     * Поиск по первичному ключу
+     * результат со всеми связями конвертируется в массив
+     *
+     * @param $id
+     *
+     * @return array|null
+     */
     public function searchPet($id)
     {
         $criteria = new CDbCriteria();
@@ -212,25 +230,28 @@ class PetFinder extends RActiveRecord
     }
 
     /**
-     * Перемещает файл из временной папки, а так же
-     * изменяет размер изображения
+     * Перемещает файл из временной папки
+     * и записывает данные об изображении в бд
      */
     private function addImage()
     {
-        $pathOriginal = Yii::app()->params['images']['path']['size']['original']['absolute']. $this->id. DIRECTORY_SEPARATOR;
-        $pathOrigRel  = Yii::app()->params['images']['path']['size']['original']['relative']. $this->id. DIRECTORY_SEPARATOR;
-        $pathSmall    = Yii::app()->params['images']['path']['size']['small']['absolute']. $this->id. DIRECTORY_SEPARATOR;
-        $pathSmallRel = Yii::app()->params['images']['path']['size']['small']['relative']. $this->id. DIRECTORY_SEPARATOR;
+        $pathOriginal = Yii::app()->params['images']['path']['size']['original']['absolute'] . $this->id . DIRECTORY_SEPARATOR;
+        $pathOrigRel  = Yii::app()->params['images']['path']['size']['original']['relative'] . $this->id . DIRECTORY_SEPARATOR;
+        $pathSmall    = Yii::app()->params['images']['path']['size']['small']['absolute'] . $this->id . DIRECTORY_SEPARATOR;
+        $pathSmallRel = Yii::app()->params['images']['path']['size']['small']['relative'] . $this->id . DIRECTORY_SEPARATOR;
 
-        Yii::import('application.controllers.FileController');
         if (Yii::app()->user->hasState('image')) {
             $imageState = Yii::app()->user->getState('image');
             foreach ($imageState as $image) {
-                if (is_file(Yii::app()->params['images']['path']['tmp'] . $image['nameOriginal']) && is_file(Yii::app()->params['images']['path']['tmp'] . $image['nameSmall'])) {
+                if (is_file(Yii::app()->params['images']['path']['tmp'] . $image['nameOriginal'])
+                    && is_file(Yii::app()->params['images']['path']['tmp'] . $image['nameSmall'])
+                ) {
                     $imgPost = new PfImages;
                     $imgPost->createImageFolder($pathOriginal);
                     $imgPost->createImageFolder($pathSmall);
-                    if (rename(Yii::app()->params['images']['path']['tmp'] . $image['nameOriginal'], $pathOriginal . $image['nameOriginal'])&& rename(Yii::app()->params['images']['path']['tmp'] . $image['nameSmall'], $pathSmall . $image['nameSmall'])) {
+                    if (rename(Yii::app()->params['images']['path']['tmp'] . $image['nameOriginal'], $pathOriginal . $image['nameOriginal'])
+                        && rename(Yii::app()->params['images']['path']['tmp'] . $image['nameSmall'], $pathSmall . $image['nameSmall'])
+                    ) {
                         chmod($pathOriginal . $image['nameOriginal'], 0755);
                         chmod($pathSmall . $image['nameSmall'], 0755);
                         $imgPost->size = $image['size'];
