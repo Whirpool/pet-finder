@@ -6,6 +6,7 @@
     MainCtrl.$inject = ['$scope', 'pfRelation', 'pfPagination', 'pfMap', 'pfHeader'];
 
     function MainCtrl($scope, pfRelation, pfPagination, pfMap, pfHeader) {
+        $scope.pagination = {};
         $scope.tab = {
             list: {
                 disable: true,
@@ -36,19 +37,6 @@
             other: 'Найдено {}'
         };
 
-        $scope.pagination = {
-            pageSize: 8,
-            maxSize: 5,
-            currentPage: 1,
-            numOfPages: 0,
-            start: 0,
-            end: 0,
-            startItems: [],
-            filteredItems: [],
-            pagedItems: [],
-            totalItems: 0,
-            show: false
-        };
         $scope.model.header    = pfHeader;
         $scope.model.relations = pfRelation.get();
 
@@ -56,8 +44,9 @@
             pfMap.init($map);
         };
 
-        $scope.$watch('pagination.currentPage', function (page) {
-            $scope.pagination = pfPagination.setPage($scope.pagination);
+        $scope.$watch('pagination.currentPage', function () {
+            pfPagination.setPage();
+            $scope.pagination = pfPagination.getPagination();
         }, true);
     }
 })();

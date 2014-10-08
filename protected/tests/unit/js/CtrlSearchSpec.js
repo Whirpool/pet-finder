@@ -33,9 +33,7 @@ describe('CtrlSearch: ', function () {
             mapMock.isZoomValid.and.returnValue(true);
             mapMock.getBounds.and.returnValue([{}, {}]);
             mapMock.createGeoObjects.and.returnValue([]);
-            pageMock.showPag.and.returnValue(true);
             pageMock.init.and.returnValue({});
-            pageMock.setPage.and.returnValue({});
 
             $timeout = _$timeout_;
             SearchCtrl = $controller('SearchCtrl', {
@@ -54,9 +52,7 @@ describe('CtrlSearch: ', function () {
         expect(mapMock.getBounds).toHaveBeenCalled();
         $timeout.flush();
         expect(mapMock.createGeoObjects).toHaveBeenCalled();
-        expect(pageMock.showPag).toHaveBeenCalled();
         expect(pageMock.init).toHaveBeenCalled();
-        expect(pageMock.setPage).toHaveBeenCalled();
         expect($scope.model.pets).toEqual('success!');
     });
 });

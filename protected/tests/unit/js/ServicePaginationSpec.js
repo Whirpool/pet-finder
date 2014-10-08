@@ -1,19 +1,7 @@
 describe('Service Pagination: ', function () {
     var mockFilter,
         paginationService,
-        init,
-        pagination = {
-            pageSize: 2,
-            maxSize: 5,
-            currentPage: 1,
-            numOfPages: 0,
-            start: 0,
-            end: 0,
-            startItems: [],
-            filteredItems: [],
-            pagedItems: [],
-            totalItems: 0
-        },
+        pag,
         data = [{id: 1}, {id: 2}, {id: 3}, {id: 4}];
     beforeEach(module('petFinder'));
     beforeEach(mockFilter = function () {
@@ -29,23 +17,24 @@ describe('Service Pagination: ', function () {
     );
 
     it('should set page', function () {
-        init = paginationService.init(2, data);
+        pag = paginationService.init(data);
 
-        angular.extend(pagination, init);
+        expect(init.numOfPages).toEqual(1);
+        expect(init.totalItems).toEqual(4);
 
-        expect(pagination.numOfPages).toEqual(2);
-        expect(pagination.totalItems).toEqual(4);
+        paginationService.setPage();
+        pag = paginationService.getPagination();
 
-        pagination = paginationService.setPage(pagination);
 
-        expect(pagination.start).toEqual(1);
-        expect(pagination.end).toEqual(2);
+        expect(pag.start).toEqual(1);
+        expect(pag.end).toEqual(2);
 
-        pagination.currentPage = 2;
+        pag.currentPage = 2;
 
-        pagination = paginationService.setPage(pagination);
+        paginationService.setPage();
+        pag = paginationService.getPagination();
 
-        expect(pagination.start).toEqual(3);
-        expect(pagination.end).toEqual(4);
+        expect(pag.start).toEqual(7);
+        expect(pag.end).toEqual(8);
     });
 });

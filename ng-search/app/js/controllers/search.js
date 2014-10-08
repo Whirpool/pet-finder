@@ -10,20 +10,21 @@
             zoom: false
         };
 
+        $scope.date = {
+            picker: new Date(),
+            max: new Date()
+        };
+
         $scope.open = function ($event) {
             $event.preventDefault();
             $event.stopPropagation();
             $scope.opened = true;
         };
 
-        $scope.datepicker = new Date();
-        $scope.maxDate = new Date();
-
         $scope.submitForm = function () {
-            var initParams;
             if (pfMap.isZoomValid()) {
                 $scope.error.zoom = false;
-                $scope.model.formSearch.date = $filter('date')($scope.datepicker, ['dd-MM-yyyy']);
+                $scope.model.formSearch.date = $filter('date')($scope.date.picker, ['dd-MM-yyyy']);
                 $scope.model.formSearch.location = pfMap.getBounds();
                 pfData.findPet($scope.model.formSearch).then(function (data) {
                     $scope.model.pets = data;
@@ -31,11 +32,7 @@
                     $scope.error.message = false;
                     $scope.tab.list.disable = false;
                     $scope.map.geoObjects = pfMap.createGeoObjects($scope.model.pets);
-                    $scope.pagination.show = pfPagination.showPag($scope.model.pets.length, $scope.pagination.pageSize);
-                    initParams = pfPagination.init($scope.pagination.pageSize, $scope.model.pets);
-                    angular.extend($scope.pagination, initParams);
-                    $scope.pagination = pfPagination.setPage($scope.pagination);
-
+                    $scope.pagination = pfPagination.init($scope.model.pets);
                 }, function (message) {
                     $scope.error.message = message;
                 });

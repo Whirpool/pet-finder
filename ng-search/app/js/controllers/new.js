@@ -9,6 +9,10 @@
         $scope.tab.map.active = true;
         $scope.showErrors = false;
         $scope.images = [];
+        $scope.date = {
+            picker: new Date(),
+            max: new Date()
+        };
 
         $scope.onFileSelect = function($files) {
             angular.forEach($files, function (file) {
@@ -41,10 +45,8 @@
             $scope.opened = true;
         };
 
-        $scope.datepicker = $scope.maxDate = new Date();
-
         $scope.submitForm = function() {
-            $scope.model.formNew.date = $filter('date')($scope.datepicker, ['dd-MM-yyyy']);
+            $scope.model.formNew.date = $filter('date')($scope.date.picker, ['dd-MM-yyyy']);
             pfData.newPet($scope.model.formNew).then(function() {
                 $scope.model.formNew = {};
                 $location.path( "/list" );
