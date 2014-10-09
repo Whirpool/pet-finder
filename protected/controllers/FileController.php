@@ -46,9 +46,8 @@ class FileController extends RController
         $model = new PfImages('upload');
         $model->file = UploadedImage::getInstanceByName('file');
         if ($model->validate()) {
-            $model->file->resize($model->file->getTempName());
-            $model->file->ambilight($model->file->getTempName(),
-                Yii::app()->params['images']['path']['tmp'] . $model->file->getNameSmallSize());
+            $model->file->resize();
+            $model->file->createThumbnail();
             $model->file->saveAs(Yii::app()->params['images']['path']['tmp'] . $model->file->getNameOriginalSize());
             $image = [
                 'nameDefault' => $model->file->getName(),

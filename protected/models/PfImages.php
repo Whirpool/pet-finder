@@ -34,7 +34,7 @@ class PfImages extends CActiveRecord
 		return [
 			['post_id, size, source_original, source_small, mime, name_original, name_small', 'required', 'except' => 'upload'],
 			['size', 'numerical', 'integerOnly' => true, 'except' => 'upload'],
-            ['file', 'application.components.ImageValidator', 'on' => 'upload']
+            ['file', 'file', 'mimeTypes' => ['image/gif', 'image/jpeg', 'image/png', 'image/pjpeg'], 'maxSize' => 10485760, 'on' => 'upload']
 		];
 	}
 

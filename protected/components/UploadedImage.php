@@ -21,7 +21,7 @@ class UploadedImage extends CUploadedFile
      *
      * @var
      */
-    private static $_gmagickFile;
+    private $_gmagick;
 
     /**
      * Constructor
@@ -31,6 +31,7 @@ class UploadedImage extends CUploadedFile
      * @param string $type
      * @param int    $size
      * @param int    $error
+     * @throws CHttpException
      */
     public function __construct($name, $tempName, $type, $size, $error)
     {
@@ -38,6 +39,13 @@ class UploadedImage extends CUploadedFile
 
         $this->_nameOriginalSize = md5($name . time()) . '.jpg';
         $this->_nameSmallSize = md5($name . time() . 'small') . '.jpg';
+
+        try {
+            $this->_gmagick = new Gmagick($tempName);
+        } catch (GmagickException $e) {
+            $message = "Файл $name поврежден";
+            throw new CHttpException(400, $message);
+        }
     }
 
     /**
@@ -57,37 +65,11 @@ class UploadedImage extends CUploadedFile
     }
 
     /**
-     * Singleton объекта gmagick для загружаемого изображения
-     * из за очень ресурсоёмкого вызова конструктора
-     *
-     * @param $file
-     *
-     * @return Gmagick
-     * @throws CHttpException
-     */
-    public static function getInstanceGmagick($file)
-    {
-        if (is_null(self::$_gmagickFile)) {
-            try {
-                self::$_gmagickFile = new Gmagick($file);
-            } catch (GmagickException $e) {
-                throw new CHttpException(400);
-            }
-
-        }
-
-        return self::$_gmagickFile;
-
-    }
-
-    /**
      * Эмуляция технологии Philips Ambilight для изображения
      * В результате получается пропорциональне изображение
      * внутри бокса фиксированных размеров. Пустое пространство
      * заполняется заблюренной копией исходного изображения.
      *
-     * @param      $file
-     * @param      $resultFile
      * @param bool $withCompress
      * @param int  $width
      * @param int  $height
@@ -96,17 +78,9 @@ class UploadedImage extends CUploadedFile
      *
      * @throws CHttpException
      */
-    public function ambilight(
-        $file,
-        $resultFile,
-        $withCompress = true,
-        $width = 320,
-        $height = 320,
-        $blur = 20,
-        $border = 20
-    ) {
-        $gmagick = self::getInstanceGmagick($file);
-        $image = $gmagick->getimage();
+    public function createThumbnail($withCompress = true, $width = 320, $height = 320, $blur = 20, $border = 20) {
+        $resultFile = Yii::app()->params['images']['path']['tmp'] . $this->getNameSmallSize();
+        $image = $this->_gmagick->getimage();
         $background = $image->getImage();
         $background->scaleImage($width, $height);
         $background->blurImage(10, $blur);
@@ -115,31 +89,40 @@ class UploadedImage extends CUploadedFile
         $imageHeight = $image->getImageHeight();
         $background->compositeImage($image, Gmagick::COMPOSITE_OVER, ($width - $imageWidth) / 2,
             ($height - $imageHeight) / 2);
-        if ($withCompress) {
-            $background->setimagecompression(GMAGICK::COMPRESSION_JPEG);
-            $background->setCompressionQuality(75);
-        }
+
         file_put_contents($resultFile, $background->getImageBlob());
+        if ($withCompress) {
+           $this->compressImage($resultFile);
+        }
     }
 
     /**
      * Ресайз изображения
      *
-     * @param      $file
      * @param bool $withCompress
      * @param int  $width
      * @param int  $height
      *
      * @throws CHttpException
      */
-    public function resize($file, $withCompress = true, $width = 600, $height = 600)
+    public function resize($withCompress = true, $width = 600, $height = 600)
     {
-        $gmagick = self::getInstanceGmagick($file);
-        $gmagick->scaleImage($width, $height, true);
+        $this->_gmagick->scaleImage($width, $height, true);
+
+        $this->_gmagick->writeImage($this->getTempName());
         if ($withCompress) {
-            $gmagick->setimagecompression(GMAGICK::COMPRESSION_JPEG);
-            $gmagick->setCompressionQuality(75);
+            $this->compressImage($this->getTempName());
         }
-        $gmagick->writeImage($file);
+    }
+
+    /**
+     * Compress image with jpegtran
+     *
+     * @param $file
+     */
+    private function compressImage($file)
+    {
+        $command = 'jpegtran -copy none -optimize -outfile '.$file.' '.$file;
+        exec($command);
     }
 }
