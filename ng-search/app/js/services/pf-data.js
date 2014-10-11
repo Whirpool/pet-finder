@@ -18,13 +18,13 @@
                     if (response.status === 204) {
                         return $q.reject(message);
                     } else {
-                        response.data.forEach(function (pet) {
+                        response.data.petFinder.forEach(function (pet) {
                             self.filterResponseData(pet);
                         });
-                        return response.data;
+                        return response.data.petFinder;
                     }
                 }, function (response) {
-                    return $q.reject(response.data.zoom);
+                    return $q.reject(response.data.message);
                 });
             },
 
@@ -63,13 +63,11 @@
                         if (status === 204) {
                             deferred.reject(message);
                         } else {
-                            pet = self.filterResponseData(data);
+                            pet = self.filterResponseData(data.petFinder);
                             deferred.resolve(pet);
                         }
                     });
                 }
-
-
                 return deferred.promise;
             },
 

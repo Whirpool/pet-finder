@@ -44,7 +44,15 @@ class FileController extends RController
     {
         $files = [];
         $model = new PfImages('upload');
-        $model->file = UploadedImage::getInstanceByName('file');
+        try {
+            $model->file = UploadedImage::getInstanceByName('file');
+        } catch (CException $e) {
+           $this->renderJson([
+               'type' => 'error',
+               'errorCode' => 400,
+               'message' => $e->getMessage()
+           ]);
+        }
         if ($model->validate()) {
             $model->file->resize();
             $model->file->createThumbnail();
@@ -69,9 +77,19 @@ class FileController extends RController
                 'nameOriginal' => $model->file->getNameOriginalSize(),
                 'nameSmall' => $model->file->getNameSmallSize(),
             ];
-            $this->renderJson('data', $data);
+            $this->renderJson([
+                'type' => 'data',
+                'success' => true,
+                'totalCount' => 1,
+                'data' => $data,
+                'modelName' => $model->getClassName()
+            ]);
         } else {
-            $this->renderJson('error', $model->getError('file'));
+            $this->renderJson([
+                'type' => 'error',
+                'errorCode' => 422,
+                'message' => $model->getError('file')
+            ]);
         }
     }
 
@@ -92,12 +110,15 @@ class FileController extends RController
                     unlink(Yii::app()->params['images']['path']['tmp'] . $file['nameSmall']);
                     unset($files[$key]);
                     Yii::app()->user->setState('image', $files);
-                    $this->renderJson('success');
-                    Yii::app()->end();
+                    $this->renderJson(['type' => 'empty']);
                 }
             }
         }
-        $this->renderJson('error', 'File not found');
+        $this->renderJson([
+            'type' => 'error',
+            'errorCode' => 404,
+            'message' => 'File not found'
+        ]);
     }
 
 

@@ -26,6 +26,14 @@ class PfImages extends CActiveRecord
 		return '{{search_images}}';
 	}
 
+    /**
+     * @return string class name
+     */
+    public function getClassName()
+    {
+        return lcfirst(__CLASS__);
+    }
+
 	/**
 	 * @return array validation rules for model attributes.
 	 */
@@ -34,7 +42,7 @@ class PfImages extends CActiveRecord
 		return [
 			['post_id, size, source_original, source_small, mime, name_original, name_small', 'required', 'except' => 'upload'],
 			['size', 'numerical', 'integerOnly' => true, 'except' => 'upload'],
-            ['file', 'file', 'mimeTypes' => ['image/gif', 'image/jpeg', 'image/png', 'image/pjpeg'], 'maxSize' => 10485760, 'on' => 'upload']
+            ['file', 'file', 'maxSize' => 10485760, 'on' => 'upload']
 		];
 	}
 

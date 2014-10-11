@@ -18,46 +18,23 @@ class RController extends CController
     /**
      * Отправляет неа клиент данные в json формате
      *
-     * @param      $type
-     * @param null $data
+     * @param      $params
      *
      * @throws CException
      */
-    protected function renderJson($type, $data = null)
+    protected function renderJson($params)
     {
-        $status = 200;
-        switch ($type) {
-            case 'success':
-                $success = true;
-                $this->renderPartial('application.views.system.output', [
-                    'status' => $status,
-                    'output' => $success
-                ]);
-                break;
-            case 'data':
-                $this->renderPartial('application.views.system.output', [
-                    'status' => $status,
-                    'output' => $data
-                ]);
-                break;
-            case 'empty':
-                $status = 204;
-                $this->renderPartial('application.views.system.output', [
-                    'status' => $status,
-                    'output' => []
-                ]);
-                break;
-            case 'error':
-                $status = 400;
-                $this->renderPartial('application.views.system.error', [
-                    'status' => $status,
-                    'output' => $data
-                ]);
-                break;
-            default:
-                echo CJSON::encode($data);
-                break;
-        }
+        $this->renderPartial('application.views.system.output', [
+            'type'       => (isset($params['type']) ? $params['type'] : null),
+            'success'    => (isset($params['success']) ? $params['success'] : true),
+            'message'    => (isset($params['message']) ? $params['message'] : ''),
+            'totalCount' => (isset($params['totalCount']) ? $params['totalCount'] : 0),
+            'modelName'  => (isset($params['modelName']) ? $params['modelName'] : 'model'),
+            'data'       => (isset($params['data']) ? $params['data'] : null),
+            'errorCode'  => (isset($params['errorCode']) ? (int)$params['errorCode'] : 500),
+            'createdUrl' => (isset($params['createdUrl']) ? $params['createdUrl'] : null),
+            ]);
+        Yii::app()->end();
     }
 
 

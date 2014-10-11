@@ -31,7 +31,7 @@ class UploadedImage extends CUploadedFile
      * @param string $type
      * @param int    $size
      * @param int    $error
-     * @throws CHttpException
+     * @throws CException
      */
     public function __construct($name, $tempName, $type, $size, $error)
     {
@@ -43,8 +43,8 @@ class UploadedImage extends CUploadedFile
         try {
             $this->_gmagick = new Gmagick($tempName);
         } catch (GmagickException $e) {
-            $message = "Файл $name поврежден";
-            throw new CHttpException(400, $message);
+            $message = "Файл $name поврежден или имеет не соответствующий тип. Загружайте только изображения.";
+            throw new CException($message);
         }
     }
 

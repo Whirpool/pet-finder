@@ -25,6 +25,14 @@ class Lookup extends CActiveRecord
     }
 
     /**
+     * @return string class name
+     */
+    public function getClassName()
+    {
+        return lcfirst(__CLASS__);
+    }
+
+    /**
      * @return array validation rules for model attributes.
      */
     public function rules()

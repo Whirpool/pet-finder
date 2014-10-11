@@ -1,4 +1,12 @@
 <?php
-header('HTTP/1.1 '.$status);
 header('Content-type:application/json, charset=UTF-8');
-echo CJSON::encode($output);
+$this->widget('application.widgets.RestJSONOutput', array(
+    'type'       => $type,
+    'success'    => $success,
+    'message'    => $message,
+    'totalCount' => $totalCount,
+    'modelName'  => $modelName,
+    'data'       => $data,
+    'errorCode'  => $errorCode,
+    'createdUrl' => $createdUrl,
+));

@@ -48,11 +48,22 @@ class PetController extends RController
      */
     public function actionRelation()
     {
-        $result = Lookup::model()->getRelationData();
+        $model = new Lookup;
+        $result = $model->getRelationData();
         if (is_null($result)) {
-            $this->renderJson('error', 'Empty relation data');
+            $this->renderJson([
+                'type'      => 'error',
+                'message'   => 'empty relation data',
+                'errorCode' => 500
+            ]);
         } else {
-            $this->renderJson('data', $result);
+            $this->renderJson([
+                'type'       => 'data',
+                'data'       => $result,
+                'success'    => true,
+                'totalCount' => count($result),
+                'modelName'  => $model->getClassName()
+            ]);
         }
     }
 
@@ -66,13 +77,22 @@ class PetController extends RController
         if ($model->isZoomValid($data['location'])) {
             $result = $model->searchPets($data);
             if (is_null($result)) {
-                $this->renderJson('empty');
+                $this->renderJson(['type' => 'empty']);
             } else {
-                $this->renderJson('data', $result);
+                $this->renderJson([
+                    'type' => 'data',
+                    'data' => $result,
+                    'success' => true,
+                    'totalCount' => count($result),
+                    'modelName' => $model->getClassName()
+                ]);
             }
         } else {
-            $message = ['zoom' => 'Слишком большой зум'];
-            $this->renderJson('error', $message);
+            $this->renderJson([
+                'type' => 'error',
+                'errorCode' => 400,
+                'message' => 'Слишком большой зум'
+            ]);
         }
 
     }
@@ -90,13 +110,25 @@ class PetController extends RController
         if ($model->validate()) {
             $model->setPoint();
             if ($model->save()) {
-                $this->renderJson('success');
+                $url = $this->createAbsoluteUrl('/#!/', ['detail' => $model->getPrimaryKey()]);
+                $this->renderJson([
+                    'type' => 'created',
+                    'success' => true,
+                    'createdUrl' => $url
+                ]);
             } else {
-                $message = 'Не могу сохранить в базу';
-                $this->renderJson('error', $message);
+                $this->renderJson([
+                    'type' => 'error',
+                    'errorCode' => 500,
+                    'message' => 'Не могу сохранить в базу'
+                ]);
             }
         } else {
-            $this->renderJson('error', $model->getErrors());
+            $this->renderJson([
+                'type' => 'error',
+                'errorCode' => 422,
+                'message' => $model->getErrors()
+            ]);
         }
     }
 
@@ -111,9 +143,15 @@ class PetController extends RController
         $result = PetFinder::model()->searchPet($id);
 
         if (is_null($result)) {
-            $this->renderJson('empty');
+            $this->renderJson(['type' => 'empty']);
         } else {
-            $this->renderJson('data', $result);
+            $this->renderJson([
+                'type' => 'data',
+                'data' => $result,
+                'success' => true,
+                'totalCount' => count($result),
+                'modelName' => PetFinder::model()->getClassName()
+            ]);
         }
     }
 
