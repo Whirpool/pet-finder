@@ -8,7 +8,11 @@
     function NewCtrl($scope, $filter, $location, pfData, pfMap, pfImage) {
         $scope.tab.map.active = true;
         $scope.showErrors = false;
-        $scope.images = [];
+        $scope.images = {
+            data: [],
+            error: '',
+            maxFiles: 5
+        };
         $scope.date = {
             picker: new Date(),
             max: new Date()
@@ -17,17 +21,16 @@
         $scope.onFileSelect = function($files) {
             angular.forEach($files, function (file) {
                 pfImage.add(file).then(function(image) {
-                    $scope.images.push(image);
+                    $scope.images.data.push(image);
                 }, function (message) {
-                    $scope.fileError = message;
+                    $scope.images.error = message;
                 });
             });
-
         };
 
         $scope.deleteImage = function(image, index) {
             pfImage.remove(image).then(function() {
-                $scope.images.splice(index, 1);
+                $scope.images.data.splice(index, 1);
             })
         };
 

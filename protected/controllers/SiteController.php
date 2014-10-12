@@ -1,6 +1,6 @@
 <?php
 
-class SiteController extends Controller
+class SiteController extends RController
 {
 	/**
 	 * Declares class-based actions.
@@ -38,8 +38,11 @@ class SiteController extends Controller
 	public function actionError()
 	{
 		if($error=Yii::app()->errorHandler->error) {
-//            $message = is_array($error['message']) ? : ['message' => $error['message']];
-			$this->renderPartial('application.views.system.error', $error);
+			$this->renderJSON([
+                'type' => 'error',
+                'errorCode' => $error['code'],
+                'message' => $error['message']
+            ]);
 		}
 	}
 
