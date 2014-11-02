@@ -59,12 +59,12 @@ return array(
 			'rules'=>array(
                 array('pet/index',    'pattern'=>''),
                 array('pet/relation', 'pattern'=>'api/relation',     'verb'=>'GET'),
-                array('pet/view',     'pattern'=>'api/pet/view',     'verb'=>'GET'),
+                array('pet/view',     'pattern'=>'api/pet',          'verb'=>'GET'),
                 array('pet/search',   'pattern'=>'api/pet/search',   'verb'=>'POST'),
-                array('pet/new',      'pattern'=>'api/pet/new',      'verb'=>'POST'),
+                array('pet/new',      'pattern'=>'api/pet',          'verb'=>'POST'),
 
-                array('file/load',    'pattern'=>'api/file/new',     'verb'=>'POST'),
-                array('file/delete',  'pattern'=>'api/file/delete',  'verb'=>'DELETE'),
+                array('file/load',    'pattern'=>'api/file',         'verb'=>'POST'),
+                array('file/delete',  'pattern'=>'api/file',         'verb'=>'DELETE'),
 
                 array('comment/new',  'pattern'=>'api/message/new',  'verb'=>'POST'),
                 array('comment/new',  'pattern'=>'api/comment/new',  'verb'=>'POST'),
@@ -72,12 +72,11 @@ return array(
 			),
 		),
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=staytogether',
+			'connectionString' => 'pgsql:host=localhost;port=5432;dbname=petfinder',
 			'emulatePrepare' => true,
-			'username' => 'admin_stay',
-			'password' => 'staycegthgegth',
+			'username' => 'whirpl',
+			'password' => 'cegthgegth',
 			'charset' => 'utf8',
-            'tablePrefix' => 'tbl_',
             'enableProfiling' => true,
             'enableParamLogging' => true,
 		),

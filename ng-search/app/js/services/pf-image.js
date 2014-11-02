@@ -9,7 +9,7 @@
         return {
             add: function (images) {
                 return $upload.upload({
-                    url: 'api/file/new',
+                    url: 'api/file',
                     method: 'POST',
                     file: images,
                     headers: {'Content-Type': undefined}
@@ -21,7 +21,7 @@
                     });
             },
             remove: function (img) {
-                return $http.delete('api/file/delete', {data: img});
+                return $http.delete('api/file', {data: img});
             }
         }
     }

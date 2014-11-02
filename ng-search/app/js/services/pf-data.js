@@ -30,7 +30,7 @@
 
             newPet: function (query) {
                 return $http({
-                    url: 'api/pet/new',
+                    url: 'api/pet',
                     method: "POST",
                     data: query,
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
@@ -41,7 +41,7 @@
                 var pet = null,
                     find = false,
                     message = 'Not found',
-                    url = 'api/pet/view',
+                    url = 'api/pet',
                     deferred = $q.defer(),
                     self = this;
 
