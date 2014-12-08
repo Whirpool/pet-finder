@@ -37,8 +37,8 @@ class UploadedImage extends CUploadedFile
     {
         parent::__construct($name, $tempName, $type, $size, $error);
 
-        $this->_nameOriginalSize = md5($name . time()) . '.jpg';
-        $this->_nameSmallSize = md5($name . time() . 'small') . '.jpg';
+        $this->_nameOriginalSize = uniqid('original_') . '.jpg';
+        $this->_nameSmallSize = uniqid('small_') . '.jpg';
 
         try {
             $this->_gmagick = new Gmagick($tempName);

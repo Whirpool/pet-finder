@@ -1,16 +1,14 @@
 <?php
 class LookupTest extends CDbTestCase
 {
-    public $fixtures=array(
-        'lookup' => 'Lookup'
-    );
-
-    public function testGetRelationData()
+    public function testGetLookup()
     {
-        $lookup = new Lookup;
-        $result = $lookup->getRelationData();
+        $result = (new Pet)->getLookup();
         $this->assertNotNull($result);
         $this->assertNotEmpty($result);
         $this->assertCount(3, $result);
+        $this->assertCount(4, $result['pet']);
+        $this->assertCount(3, $result['dog']);
+        $this->assertCount(2, $result['cat']);
     }
 }

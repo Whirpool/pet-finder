@@ -14,7 +14,7 @@
                     file: images,
                     headers: {'Content-Type': undefined}
                 }).then(function (response) {
-                        return response.data.pfImages;
+                        return response.data.model;
                     },
                     function (response) {
                         return $q.reject(response.data.message);

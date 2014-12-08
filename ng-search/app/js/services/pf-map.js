@@ -30,18 +30,14 @@
             isZoomValid: function () {
                 return map.getZoom() >= validZoom;
             },
-            getBounds: function () {
-                var bounds,
-                    coords = {
-                        upLeft: {},
-                        downRight: {}
-                    };
-                bounds = map.getBounds();
-                coords.upLeft.lat = bounds[0][0];
-                coords.upLeft.lng = bounds[0][1];
-                coords.downRight.lat = bounds[1][0];
-                coords.downRight.lng = bounds[1][1];
-                return coords;
+            getLocation: function () {
+                var location = {},
+                    center = map.getCenter(),
+                    bounds = map.getBounds();
+                location.lat = center[0];
+                location.lng = center[1];
+                location.radius = Math.ceil(ymaps.coordSystem.geo.getDistance(center, bounds[0]));
+                return location;
             },
             createGeoObjects: function (pets) {
                 var objects = [],

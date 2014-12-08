@@ -5,15 +5,14 @@
  *
  * The followings are the available columns in table '{{search_images}}':
  * @property integer $id
- * @property string $post_id
- * @property integer $size
- * @property string $source_original
+ * @property string $pet_id
  * @property string $mime
+ * @property string $source_original
  * @property string $name_original
  * @property string $source_small
  * @property string $name_small
  */
-class PfImages extends CActiveRecord
+class Images extends CActiveRecord
 {
     public $file;
 
@@ -23,16 +22,9 @@ class PfImages extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return '{{search_images}}';
+		return 'data_pet_images';
 	}
 
-    /**
-     * @return string class name
-     */
-    public function getClassName()
-    {
-        return lcfirst(__CLASS__);
-    }
 
 	/**
 	 * @return array validation rules for model attributes.
@@ -40,8 +32,7 @@ class PfImages extends CActiveRecord
 	public function rules()
 	{
 		return [
-			['post_id, size, source_original, source_small, mime, name_original, name_small', 'required', 'except' => 'upload'],
-			['size', 'numerical', 'integerOnly' => true, 'except' => 'upload'],
+			['pet_id, source_original, source_small, mime, name_original, name_small', 'required', 'except' => 'upload'],
             ['file', 'application.components.ImageValidator', 'on' => 'upload']
 		];
 	}
@@ -52,7 +43,7 @@ class PfImages extends CActiveRecord
 	public function relations()
 	{
 		return [
-            'post' => [self::BELONGS_TO, 'PetFinder', 'post_id'],
+            'pet' => [self::BELONGS_TO, 'Pet', 'pet_id'],
 		];
 	}
 
@@ -115,13 +106,4 @@ class PfImages extends CActiveRecord
         }
         return false;
     }
-
-    public function defaultScope()
-    {
-        return array(
-            'select' => 'id, source_original, source_small',
-        );
-    }
-
-
 }

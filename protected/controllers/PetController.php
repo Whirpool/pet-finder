@@ -6,36 +6,6 @@
 class PetController extends RController
 {
     /**
-     * @return array
-     */
-    public function filters()
-    {
-        return array(
-            'accessControl',
-        );
-    }
-
-    /**
-     * Разрешиль любые действия только
-     * зарегистрированным пользователям
-     *
-     * @return array
-     */
-    public function accessRules()
-    {
-        return array(
-            array(
-                'allow',
-                'users' => array('@'),
-            ),
-            array(
-                'deny',
-                'users' => array('*'),
-            ),
-        );
-    }
-
-    /**
      * Отображение главной страницы
      */
     public function actionIndex()
@@ -48,69 +18,65 @@ class PetController extends RController
      */
     public function actionRelation()
     {
-        $model = new Lookup;
-        $result = $model->getRelationData();
+        $result = (new Pet)->getLookup();
         if (is_null($result)) {
             $this->renderJson([
-                'type'      => 'error',
-                'message'   => 'empty relation data',
+                'type' => 'error',
+                'message' => 'empty relation data',
                 'errorCode' => 500
             ]);
         } else {
             $this->renderJson([
-                'type'       => 'data',
-                'data'       => $result,
-                'success'    => true,
-                'totalCount' => count($result),
-                'modelName'  => $model->getClassName()
+                'type' => 'data',
+                'data' => $result,
+                'success' => true,
             ]);
         }
     }
 
-    /**
-     * Поиск питомцев по заданным критериям
-     */
+
     public function actionSearch()
     {
-        $data = CJSON::decode(Yii::app()->request->rawBody);
-        $model = new PetFinder;
-        if ($model->isZoomValid($data['location'])) {
-            $result = $model->searchPets($data);
+        $request = CJSON::decode(Yii::app()->request->rawBody);
+        $pet = (new Pet)->create($request['init']);
+        if ($pet->isZoomValid($request['data']['location']['radius'])) {
+            $result = $pet->findPetByLocation($request['data']);
             if (is_null($result)) {
                 $this->renderJson(['type' => 'empty']);
             } else {
-                $this->renderJson([
-                    'type' => 'data',
-                    'data' => $result,
-                    'success' => true,
-                    'totalCount' => count($result),
-                    'modelName' => $model->getClassName()
-                ]);
+                $this->renderJson(['data' => $result]);
             }
         } else {
             $this->renderJson([
                 'type' => 'error',
                 'errorCode' => 400,
                 'message' => 'Слишком большой зум'
+
             ]);
         }
-
     }
 
-    /**
-     * Сохранение новой записи.
-     */
     public function actionNew()
     {
-        $data = CJSON::decode(Yii::app()->request->rawBody);
-
-        $model = new PetFinder;
-        $model->attributes = $data;
-        $model->setUnixDate();
-        if ($model->validate()) {
-            $model->setPoint();
-            if ($model->save()) {
-                $url = $this->createAbsoluteUrl('/#!/', ['detail' => $model->getPrimaryKey()]);
+        $request = CJSON::decode(Yii::app()->request->rawBody);
+        try {
+            $pet = (new Pet)->create($request['init']);
+            $pet->setPetAttributes($request['data']);
+            if ($pet->validate()) {
+                $pet->breeds = $request['data']['breeds'];
+                $transaction = $pet->dbConnection->beginTransaction();
+                try {
+                    $pet->save(false);
+                    $transaction->commit();
+                } catch (CException $e) {
+                    $transaction->rollback();
+                    $this->renderJson([
+                        'type' => 'error',
+                        'errorCode' => 500,
+                        'message' => $e->getMessage()
+                    ]);
+                }
+                $url = $this->createAbsoluteUrl('/#!/', ['detail' => $pet->getPrimaryKey()]);
                 $this->renderJson([
                     'type' => 'created',
                     'success' => true,
@@ -119,15 +85,15 @@ class PetController extends RController
             } else {
                 $this->renderJson([
                     'type' => 'error',
-                    'errorCode' => 500,
-                    'message' => 'Не могу сохранить в базу'
+                    'errorCode' => 422,
+                    'message' => $pet->getErrors()
                 ]);
             }
-        } else {
+        } catch (CException $e) {
             $this->renderJson([
                 'type' => 'error',
-                'errorCode' => 422,
-                'message' => $model->getErrors()
+                'errorCode' => 400,
+                'message' => $e->getMessage()
             ]);
         }
     }
@@ -137,22 +103,25 @@ class PetController extends RController
      *
      * @param $id
      */
-    public function actionView($id)
+    public function actionView($type, $status, $id)
     {
 
-        $result = PetFinder::model()->searchPet($id);
-
-        if (is_null($result)) {
-            $this->renderJson(['type' => 'empty']);
-        } else {
+        try {
+            $pet = (new Pet)->create(['type' => $type, 'status' => $status], true);
+            $result = $pet->getPetById($id);
+            if (is_null($result)) {
+                $this->renderJson(['type' => 'empty']);
+            } else {
+                $this->renderJson(['data' => $result]);
+            }
+        } catch (CException $e) {
             $this->renderJson([
-                'type' => 'data',
-                'data' => $result,
-                'success' => true,
-                'totalCount' => count($result),
-                'modelName' => PetFinder::model()->getClassName()
+                'type' => 'error',
+                'errorCode' => 400,
+                'message' => $e->getMessage(),
             ]);
         }
     }
+
 
 }

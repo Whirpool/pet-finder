@@ -8,30 +8,10 @@ class FileController extends RController
      */
     public function filters()
     {
-        return array(
-            'accessControl',
-        );
+
     }
 
-    /**
-     * Разрешиль любые действия только
-     * зарегистрированным пользователям
-     *
-     * @return array
-     */
-    public function accessRules()
-    {
-        return array(
-            array(
-                'allow',
-                'users' => array('@'),
-            ),
-            array(
-                'deny',
-                'users' => array('*'),
-            ),
-        );
-    }
+
 
 
     /**
@@ -43,7 +23,7 @@ class FileController extends RController
     public function actionLoad()
     {
         $files = [];
-        $model = new PfImages('upload');
+        $model = new Images('upload');
         try {
             $model->file = UploadedImage::getInstanceByName('file');
         } catch (CException $e) {
@@ -56,12 +36,11 @@ class FileController extends RController
         if ($model->validate()) {
             $model->file->resize();
             $model->file->createThumbnail();
-            $model->file->saveAs(Yii::app()->params['images']['path']['tmp'] . $model->file->getNameOriginalSize());
+            $model->file->saveAs(Yii::app()->params['images']['tmp'] . $model->file->getNameOriginalSize());
             $image = [
                 'nameDefault' => $model->file->getName(),
                 'nameOriginal' => $model->file->getNameOriginalSize(),
                 'nameSmall' => $model->file->getNameSmallSize(),
-                'size' => $model->file->getSize(),
                 'mime' => $model->file->getType(),
             ];
             if (Yii::app()->user->hasState('image')) {
@@ -82,7 +61,6 @@ class FileController extends RController
                 'success' => true,
                 'totalCount' => 1,
                 'data' => $data,
-                'modelName' => $model->getClassName()
             ]);
         } else {
             $this->renderJson([

@@ -7,30 +7,46 @@
 
     function NewCtrl($scope, $filter, $location, pfData, pfMap, pfImage) {
         $scope.tab.map.active = true;
-        $scope.showErrors = false;
-        $scope.images = {
-            data: [],
-            error: '',
-            maxFiles: 5
+        $scope.request = {
+            init: {},
+            data: {}
         };
-        $scope.date = {
-            picker: new Date(),
-            max: new Date()
+        $scope.form = {
+                errors: {
+                    show: false
+                },
+                pet: {
+                    date: {
+                        picker: new Date(),
+                        max: new Date()
+                    }
+                },
+                type: {
+                    breeds: []
+                },
+                status: {},
+                init: {},
+            images: {
+                data: [],
+                error: '',
+                maxFiles: 5
+            }
+
         };
 
         $scope.onFileSelect = function($files) {
             angular.forEach($files, function (file) {
                 pfImage.add(file).then(function(image) {
-                    $scope.images.data.push(image);
+                    $scope.form.images.data.push(image);
                 }, function (message) {
-                    $scope.images.error = message;
+                    $scope.form.images.error = message;
                 });
             });
         };
 
         $scope.deleteImage = function(image, index) {
             pfImage.remove(image).then(function() {
-                $scope.images.data.splice(index, 1);
+                $scope.form.images.data.splice(index, 1);
             })
         };
 
@@ -38,7 +54,7 @@
             var coords;
             if($location.path() === '/new') {
                 coords = pfMap.setCoords(event);
-                angular.extend($scope.model.formNew, coords);
+                $scope.form.pet.location = coords;
             }
         };
 
@@ -49,14 +65,37 @@
         };
 
         $scope.submitForm = function() {
-            $scope.model.formNew.date = $filter('date')($scope.date.picker, ['dd-MM-yyyy']);
-            pfData.newPet($scope.model.formNew).then(function() {
-                $scope.model.formNew = {};
+            $scope.request.init = $scope.form.init;
+            angular.extend($scope.request.data,
+                $scope.form.pet,
+                $scope.form.status,
+                $scope.form.type);
+            $scope.request.data.date = $filter('date')($scope.form.pet.date.picker, ['yyyy-MM-dd']);
+            pfData.newPet($scope.request).then(function() {
                 $location.path( "/list" );
             }, function (errors) {
-                $scope.showErrors = true;
-                $scope.errors = errors.data.message;
+                $scope.form.errors.show = true;
+                $scope.form.errors.message = errors.data.message;
             });
-        }
+        };
+
+        $scope.$watch('model.breeds', function (newVal, oldVal) {
+            if(newVal !== oldVal) {
+                $scope.form.type.breeds.push(newVal);
+            }
+        });
+
+        $scope.$watch('form.init.type', function (newVal, oldVal) {
+            if(newVal !== oldVal) {
+                $scope.form.type = {
+                    breeds: []
+                };
+            }
+        });
+        $scope.$watch('form.init.status', function (newVal, oldVal) {
+            if(newVal !== oldVal) {
+                $scope.form.status = {};
+            }
+        });
     }
 })();

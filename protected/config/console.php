@@ -12,13 +12,15 @@ return array(
 	// application components
 	'components'=>array(
         'db'=>array(
-            'connectionString' => 'mysql:host=localhost;dbname=staytogether',
+            'connectionString' => 'pgsql:host=localhost;port=5432;dbname=petfinder',
             'emulatePrepare' => true,
-            'username' => 'admin',
-            'password' => 'mypass',
+            'username' => 'whirpl',
+            'password' => 'cegthgegth',
             'charset' => 'utf8',
-            'tablePrefix' => 'tbl_'
+            'enableProfiling' => true,
+            'enableParamLogging' => true,
         ),
+
 		'log'=>array(
 			'class'=>'CLogRouter',
 			'routes'=>array(

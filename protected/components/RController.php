@@ -24,17 +24,7 @@ class RController extends CController
      */
     protected function renderJson($params)
     {
-        $this->renderPartial('application.views.system.output', [
-            'type'       => (isset($params['type']) ? $params['type'] : null),
-            'success'    => (isset($params['success']) ? $params['success'] : true),
-            'message'    => (isset($params['message']) ? $params['message'] : ''),
-            'totalCount' => (isset($params['totalCount']) ? $params['totalCount'] : 0),
-            'modelName'  => (isset($params['modelName']) ? $params['modelName'] : 'model'),
-            'data'       => (isset($params['data']) ? $params['data'] : null),
-            'errorCode'  => (isset($params['errorCode']) ? (int)$params['errorCode'] : 500),
-            'createdUrl' => (isset($params['createdUrl']) ? $params['createdUrl'] : null),
-            ]);
-        Yii::app()->end();
+        $this->renderPartial('application.views.system.output', ['params' => $params]);
     }
 
 

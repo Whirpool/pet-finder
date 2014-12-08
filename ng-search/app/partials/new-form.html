@@ -6,78 +6,66 @@
                 <h3>Добавить запись</h3>
             </div>
         </div>
-        <div class="panel panel-danger" ng-show="showErrors">
+        <div class="panel panel-danger" ng-show="form.errors.show">
              <div class="panel-heading">
                  <p class="panel-title">Необходимо исправить следующие ошибки: </p>
              </div>
-            <div class="panel-body" ng-repeat="error in errors">
+            <div class="panel-body" ng-repeat="error in form.errors.message">
                 {{error[0]}}
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-4 control-label"> Питомец: </label>
-
             <div class="col-sm-7">
-                <select class="form-control" ng-model="model.formNew.search_type" name="type" required>
-                    <option value="2">Найден</option>
-                    <option value="1">Потерян</option>
+                <select class="form-control" ng-model="form.init.status" name="type" required
+                        ng-options="status.id as status.value for status in model.relations.pet.status">
                 </select>
-            </div>
-        </div>
-        <div class="form-group" ng-show="model.formNew.search_type == 1">
-            <label class="col-sm-4 control-label">{{model.header.name}}</label>
-
-            <div class="col-sm-7">
-                <input type="text" class="form-control" ng-model="model.formNew.name">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-4 control-label">{{model.header.pet}}</label>
-
             <div class="col-sm-7">
-                <select class="form-control" ng-model="model.formNew.pet_id" name="pet"
-                        ng-options="pet.type_id as pet.name for pet in model.relations.pet" required>
+                <select class="form-control" ng-model="form.init.type" name="pet"
+                        ng-options="pet.id as pet.value for pet in model.relations.pet.type" required>
                 </select>
             </div>
         </div>
-        <div class="form-group" ng-class="{ 'has-error' : newForm.breed.$invalid && newForm.breed.$dirty }">
-            <label class="col-sm-4 control-label">{{model.header.breed}}</label>
 
+        <div class="form-group">
+            <label class="col-sm-4 control-label">{{model.header.pet}}</label>
             <div class="col-sm-7">
-                <input type="text" class="form-control" ng-model="model.formNew.breed" name="breed" required>
-                <label class="control-label has-error" ng-show="newForm.breed.$dirty && newForm.breed.$invalid"> Это
-                    обязательное поле </label>
+                <select class="form-control" ng-model="form.pet.fur" name="color"
+                        ng-options="fur.id as fur.value for fur in model.relations.pet.fur" required>
+                </select>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-4 control-label">{{model.header.age}}</label>
-
+            <label class="col-sm-4 control-label">{{model.header.pet}}</label>
             <div class="col-sm-7">
-                <select class="form-control" ng-model="model.formNew.age_id" name="age"
-                        ng-options="age.type_id as age.name for age in model.relations.age" required>
+                <select class="form-control" ng-model="form.pet.eyes" name="color"
+                        ng-options="eyes.id as eyes.value for eyes in model.relations.pet.eyes" required>
                 </select>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-4 control-label">{{model.header.sex}}</label>
-
             <div class="col-sm-7">
-                <select class="form-control" ng-model="model.formNew.sex" name="sex"
-                        ng-options="sex.type_id as sex.name for sex in model.relations.sex" required>
+                <select class="form-control" ng-model="form.pet.sex" name="sex" required>
+                    <option>мужской</option>
+                    <option>женский</option>
                 </select>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-4 control-label">{{model.header.date}}</label>
-
             <div class="col-sm-7 input-group">
                 <input type="text"
                        class="form-control"
                        datepicker-popup="dd-MM-yyyy"
-                       ng-model="date.picker"
+                       ng-model="form.pet.date.picker"
                        show-weeks="false"
                        show-button-bar="false"
-                       max="date.max"
+                       max="form.pet.date.max"
                        ng-required="true"/>
                     <span class="input-group-btn">
                         <button class="btn btn-default" ng-click="open($event)"><i
@@ -88,44 +76,97 @@
         </div>
         <div class="form-group">
             <label class="col-sm-4 control-label">{{model.header.special}}</label>
-
             <div class="col-sm-7">
-                <textarea class="form-control" ng-model="model.formNew.special"></textarea>
+                <textarea class="form-control" ng-model="form.pet.special"></textarea>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-4 control-label">{{model.header.advanced}}</label>
-
             <div class="col-sm-7">
-                <textarea class="form-control" ng-model="model.formNew.advanced"></textarea>
+                <textarea class="form-control" ng-model="form.pet.advanced"></textarea>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-4 control-label">{{model.header.lng}}</label>
             <div class="col-sm-7">
-                <input type="text" class="form-control" ng-model="model.formNew.lng" required ng-disabled="true" placeholder="Кликните по карте">
+                <input type="text" class="form-control" ng-model="form.pet.location.lng" required ng-disabled="true" placeholder="Кликните по карте">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-4 control-label">{{model.header.lat}}</label>
             <div class="col-sm-7">
-                <input type="text" class="form-control" ng-model="model.formNew.lat" required ng-disabled="true" placeholder="Кликните по карте">
+                <input type="text" class="form-control" ng-model="form.pet.location.lat" required ng-disabled="true" placeholder="Кликните по карте">
             </div>
         </div>
-
+        <span class="col-sm-4">Cat/Dog</span> <br/>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">{{model.header.pet}}</label>
+            <div class="col-sm-7" ng-if="form.init.type === 2">
+                <select class="form-control" ng-model="form.type.type_color" name="color"
+                        ng-options="color.id as color.value for color in model.relations.dog.color" required>
+                </select>
+            </div>
+            <div class="col-sm-7" ng-if="form.init.type === 1">
+                <select class="form-control" ng-model="form.type.type_color" name="color"
+                        ng-options="color.id as color.value for color in model.relations.cat.color" required>
+                </select>
+            </div>
+        </div>
+        <div class="form-group" ng-if="form.init.type === 2">
+            <label class="col-sm-4 control-label">{{model.header.pet}}</label>
+            <div class="col-sm-7">
+                <select class="form-control" ng-model="form.type.figured" name="color"
+                        ng-options="figured.id as figured.value for figured in model.relations.dog.figured" required>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">{{model.header.breed}}</label>
+            <div class="col-sm-7" ng-if="form.init.type === 2">
+                <select class="form-control" ng-model="model.breeds" name="breed"
+                        ng-options="breed.id as breed.value for breed in model.relations.dog.breed">
+                </select>
+            </div>
+            <div class="col-sm-7" ng-if="form.init.type === 1">
+                <select class="form-control" ng-model="model.breeds" name="breed"
+                        ng-options="breed.id as breed.value for breed in model.relations.cat.breed">
+                </select>
+            </div>
+            breeds:
+            <div class="col-sm-7" ng-repeat="breed in form.type.breeds">
+                {{breed}}
+            </div>
+        </div>
+        <span class="col-sm-4">Find/Lost</span> <br/>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">{{model.header.age}}</label>
+            <div class="col-sm-7" ng-if="form.init.status === 1">
+                <input type="number" class="form-control" min="0" max="15.0" step="0.1" ng-model="form.status.age.min">
+                <input type="number" class="form-control" min="0" max="15.0" step="0.1" ng-model="form.status.age.max">
+            </div>
+            <div class="col-sm-7" ng-if="form.init.status === 2">
+                <input type="number" class="form-control" min="0" max="15.0" step="0.1" ng-model="form.status.age">
+            </div>
+        </div>
+        <div class="form-group" ng-if="form.init.status === 2">
+            <label class="col-sm-4 control-label">{{model.header.name}}</label>
+            <div class="col-sm-7">
+                <input type="text" class="form-control" ng-model="form.status.name">
+            </div>
+        </div>
         <div class="form-group">
             <label class="col-sm-4 control-label">{{model.header.src}}</label>
             <div class="col-sm-7">
-                <input type="file" ng-file-select="onFileSelect($files)" ng-if="images.data.length < images.maxFiles" multiple>
-                <label class="control-label has-error" ng-show="images.error">{{images.error}}</label>
-                <div ng-repeat="image in images.data">
+                <input type="file" ng-file-select="onFileSelect($files)" ng-if="form.images.data.length < form.images.maxFiles" multiple>
+                <label class="control-label has-error" ng-show="form.images.error">{{form.images.error}}</label>
+                <div ng-repeat="image in form.images.data">
                     {{image.nameDefault}} <a href="" ng-click="deleteImage(image, $index)">Удалить</a>
                 </div>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-1 col-sm-10">
-                <button type="submit" ng-click="submitForm()" class="btn btn-primary" ng-disabled="newForm.$pristine || newForm.$invalid">
+                <button type="submit" ng-click="submitForm()" class="btn btn-primary">
                     Добавить
                 </button>
             </div>

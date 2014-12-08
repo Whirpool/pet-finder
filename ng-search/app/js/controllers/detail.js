@@ -6,7 +6,7 @@
     DetailCtrl.$inject = ['$scope', '$stateParams', 'pfData', 'pfMap', 'pfHeader'];
 
     function DetailCtrl($scope, $stateParams, pfData, pfMap, pfHeader) {
-        pfData.getDetail($stateParams.id).then(function (pet) {
+        pfData.getDetail($stateParams.type, $stateParams.status, $stateParams.id).then(function (pet) {
             $scope.detail = {
                 pet: pet,
                 header: pfHeader,

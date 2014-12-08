@@ -4,29 +4,14 @@
         <div class="control-group">
             <div class="controls">
                 <h3>Поиск</h3>
-                <p class="alert-danger" ng-show="error.zoom">Слишком большой зум</p>
-                <p class="alert-danger" ng-if="error.message">{{error.message}}</p>
+                <p class="alert-danger" ng-show="form.error.zoom">Слишком большой зум</p>
+                <p class="alert-danger" ng-if="form.error.message">{{form.error.message}}</p>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-4 control-label"> {{model.header.looking}} </label>
             <div class="col-sm-7">
-                <select class="form-control" ng-model="model.formSearch.search_type" name="type">
-                    <option value="1">Хозяина</option>
-                    <option value="2">Питомца</option>
-                </select>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-4 control-label">{{model.header.breed}}</label>
-            <div class="col-sm-7">
-                <input type="text" class="form-control" ng-model="model.formSearch.breed" name="breed">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-4 control-label">{{model.header.age}}</label>
-            <div class="col-sm-7">
-                <select class="form-control" ng-model="model.formSearch.age_id" name="age" ng-options="age.type_id as age.name for age in model.relations.age">
+                <select class="form-control" ng-model="form.init.status" name="type" ng-options="status.id as status.value for status in model.relations.pet.status">
                     <option value=""></option>
                 </select>
             </div>
@@ -34,16 +19,44 @@
         <div class="form-group">
             <label class="col-sm-4 control-label">{{model.header.pet}}</label>
             <div class="col-sm-7">
-                <select class="form-control" ng-model="model.formSearch.pet_id" name="pet" ng-options="pet.type_id as pet.name for pet in model.relations.pet">
+                <select class="form-control" ng-model="form.init.type" name="pet" ng-options="pet.id as pet.value for pet in model.relations.pet.type">
                     <option value=""></option>
                 </select>
             </div>
         </div>
         <div class="form-group">
+            <label class="col-sm-4 control-label">{{model.header.age}}</label>
+            <div class="col-sm-7" ng-if="form.init.status === 2">
+                <input type="number" class="form-control" min="0" max="15.0" step="0.1" ng-model="form.status.age.min">
+                <input type="number" class="form-control" min="0" max="15.0" step="0.1" ng-model="form.status.age.max">
+            </div>
+            <div class="col-sm-7" ng-if="form.init.status === 1">
+                <input type="number" class="form-control" min="0" max="15.0" step="0.1" ng-model="form.status.age">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">{{model.header.breed}}</label>
+            <div class="col-sm-7" ng-if="form.init.type === 2">
+                <select class="form-control" ng-model="model.breeds" name="breed"
+                        ng-options="breed.value as breed.value for breed in model.relations.dog.breed">
+                </select>
+            </div>
+            <div class="col-sm-7" ng-if="form.init.type === 1">
+                <select class="form-control" ng-model="model.breeds" name="breed"
+                        ng-options="breed.value as breed.value for breed in model.relations.cat.breed">
+                </select>
+            </div>
+            breeds:
+            <div class="col-sm-7" ng-repeat="breed in form.type.breeds">
+                {{breed}}
+            </div>
+        </div>
+        <div class="form-group">
             <label class="col-sm-4 control-label">{{model.header.sex}}</label>
             <div class="col-sm-7">
-                <select class="form-control" ng-model="model.formSearch.sex" name="sex" ng-options="sex.type_id as sex.name for sex in model.relations.sex">
-                    <option value=""></option>
+                <select class="form-control" ng-model="form.pet.sex" name="sex">
+                    <option>мужской</option>
+                    <option>женский</option>
                 </select>
             </div>
         </div>
@@ -53,10 +66,10 @@
                     <input type="text"
                            class="form-control"
                            datepicker-popup="dd-MM-yyyy"
-                           ng-model="date.picker"
+                           ng-model="form.pet.date.picker"
                            show-weeks="false"
                            show-button-bar="false"
-                           max="date.max"
+                           max="form.pet.date.max"
                            ng-required="true"/>
                     <span class="input-group-btn">
                         <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i>&nbsp</button>

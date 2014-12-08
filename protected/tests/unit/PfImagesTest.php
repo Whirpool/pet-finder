@@ -4,7 +4,7 @@ class PfImagesTest extends CDbTestCase
     protected function setUp()
     {
         parent::setUp();
-        $this->pfImages = new PfImages;
+        $this->pfImages = new Images;
     }
 
 
@@ -19,22 +19,11 @@ class PfImagesTest extends CDbTestCase
                 'size' => 549888
             ]
         ];
-        $this->pfImageUpload = new PfImages('upload');
+        $this->pfImageUpload = new Images('upload');
         $this->pfImageUpload->file = UploadedImage::getInstanceByName('file');
         $this->assertTrue($this->pfImageUpload->validate(array('file')));
     }
 
-    public function testValidateSize()
-    {
-        $this->pfImages->size = 'text';
-        $this->assertFalse($this->pfImages->validate(array('size')));
-
-        $this->pfImages->size = 22.33;
-        $this->assertFalse($this->pfImages->validate(array('size')));
-
-        $this->pfImages->size = 22;
-        $this->assertTrue($this->pfImages->validate(array('size')));
-    }
 
     public function testValidateName()
     {
@@ -48,8 +37,7 @@ class PfImagesTest extends CDbTestCase
     public function testSave()
     {
         $this->pfImages->setAttributes(array(
-                'post_id' => 1,
-                'size' => 21442121,
+                'pet_id' => 6000005,
                 'name_original' => 'fc1031aadd2e5f0d85e7d2b9432a3943.jpg',
                 'name_small' => '1031aadd2e5f0d85e7d2b9432a3943.jpg',
                 'source_original' => 'images/original/1',

@@ -22,7 +22,7 @@
                     url: '/api/relation',
                     method: 'GET'
                 }).success(function (response) {
-                    setRelations(response.lookup);
+                    setRelations(response.model);
                 });
             },
             get: getRelations

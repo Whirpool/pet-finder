@@ -35,7 +35,7 @@
         });
 
         $stateProvider.state('detail', {
-            url: '/detail/:id',
+            url: '/view/:type/:status/:id',
             proxy: {
                 internal: 'detail.modal',
                 external: 'detail.full'

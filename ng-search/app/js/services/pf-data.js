@@ -18,10 +18,7 @@
                     if (response.status === 204) {
                         return $q.reject(message);
                     } else {
-                        response.data.petFinder.forEach(function (pet) {
-                            self.filterResponseData(pet);
-                        });
-                        return response.data.petFinder;
+                        return response.data.model;
                     }
                 }, function (response) {
                     return $q.reject(response.data.message);
@@ -37,7 +34,7 @@
                 });
             },
 
-            getDetail: function (id) {
+            getDetail: function (type, status, id) {
                 var pet = null,
                     find = false,
                     message = 'Not found',
@@ -58,12 +55,11 @@
                     $http({
                         url: url,
                         method: 'GET',
-                        params: {id: id}
+                        params: {id: id, type: type, status: status}
                     }).success(function (data, status) {
                         if (status === 204) {
                             deferred.reject(message);
                         } else {
-                            pet = self.filterResponseData(data.petFinder);
                             deferred.resolve(pet);
                         }
                     });

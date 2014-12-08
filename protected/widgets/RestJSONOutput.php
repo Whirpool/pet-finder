@@ -17,7 +17,6 @@ class RestJSONOutput extends CWidget
     public $message;
     public $totalCount;
     public $data;
-    public $modelName;
     public $errorCode;
     public $createdUrl;
 
@@ -42,6 +41,9 @@ class RestJSONOutput extends CWidget
             case 'created':
                 $this->outputCreated();
                 break;
+            case 'json':
+                $this->outputJson();
+                break;
             default:
                 $this->outputRaw();
         }
@@ -56,6 +58,19 @@ class RestJSONOutput extends CWidget
     {
         header(self::STATUS_200);
         echo CJSON::encode($this->data);
+        Yii::app()->end();
+    }
+
+    /**
+     * outputRaw
+     *
+     * when type is 'json' this method will simply output $data if it's already json
+     */
+    public function outputJson()
+    {
+        header(self::STATUS_200);
+        echo $this->data;
+        Yii::app()->end();
     }
 
     /**
@@ -71,6 +86,7 @@ class RestJSONOutput extends CWidget
             'success'	=> false,
             'message'	=> $this->message,
         ]);
+        Yii::app()->end();
     }
 
     /**
@@ -85,9 +101,9 @@ class RestJSONOutput extends CWidget
         echo CJSON::encode([
             'success'	=> true,
             'totalCount' => $this->totalCount,
-            $this->modelName => $this->data,
-
+            'model' => $this->data,
         ]);
+        Yii::app()->end();
     }
 
     /**
@@ -102,6 +118,7 @@ class RestJSONOutput extends CWidget
         echo CJSON::encode([
             'success'	=> $this->success,
         ]);
+        Yii::app()->end();
     }
 
     /**
@@ -117,6 +134,7 @@ class RestJSONOutput extends CWidget
         echo CJSON::encode([
             'success'	=> $this->success,
         ]);
+        Yii::app()->end();
     }
 
     private function setErrorHeader()
