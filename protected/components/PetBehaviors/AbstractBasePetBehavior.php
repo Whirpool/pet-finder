@@ -1,90 +1,67 @@
 <?php
 
 /**
- * Class BasePetBehavior
- * Класс устанавливающий базовые параметры: выбор колонок, реляционных связей и условий.
+ * Class AbstractBasePetBehavior
+ * Класс устанавливающий базовые параметры: выбор колонок, реляционных связей, условий и т.д.
  * Конкретные параметры в зависимости от типа и статуса питомца реализуются в трейтах.
- * Класс наследник реализует методы по сбору всех параметров (колонки, реляционные связи и условия)
+ * Класс наследник реализует методы по сбору всех параметров (колонки, реляционные связи, условия и т.д.)
  * и фомирует один едиый запрос.
  *
- * @property array $breeds Содержит породы питомцев. Необходим для реализации реляционной связи MANY_TO_MANY.
  * @property CDbCriteria $criteria Формирует запрос для дальнейшей передачи в объект CDbCommand.
  * @property CDbCommand $command Выполняет запрос сформированный критерией.
  *
  * @const string STRING_COMMA Разделитель между результатами функций возвращающих колонки для выборки.
- * @const integer VALID_RADIUS Максимально допустимый радиус поиска в метрах.
  */
-abstract class BasePetBehavior extends CActiveRecordBehavior
+abstract class AbstractBasePetBehavior extends CActiveRecordBehavior
 {
-    protected $breeds;
-
     protected $criteria;
 
     protected $command;
 
     const STRING_COMMA = ', ';
 
-    const VALID_RADIUS = 3000;
-
-
+    /**
+     * Формирование всех колонок для конкретного типа питомца с установленным статусом поиска
+     * @return string
+     */
     abstract protected function getColumns();
 
+    /**
+     * Формирование всех реляционных связей для конкретного типа питомца с установленным статусом поиска
+     * @return string
+     */
     abstract protected function getJoins();
 
+    /**
+     * Формирование условий выборки для конкретного типа питомца с установленным статусом поиска
+     * @param $data
+     */
     abstract protected function setSearchConditions($data);
 
-    abstract protected function setParams($data);
+    /**
+     * Формирование параметры запроса для конкретного типа питомца с установленным статусом поиска
+     * @param $params
+     */
+    abstract protected function setParams($params);
 
+    /**
+     * Формирование атрибутов для конкретного типа питомца с установленным статусом поиска
+     * @param $attributes
+     */
     abstract public function setPetAttributes($attributes);
 
+    /**
+     * Поиск питомца по идентификатору
+     * @param $id
+     *
+     * @return array|null
+     */
+    abstract public function findPetById($id);
 
     public function __construct()
     {
         $this->criteria = new CDbCriteria;
         $this->command = Yii::app()->db->createCommand();
-    }
-
-    /**
-     * Устанавливает общие для всех типов питомцев с различными статусами атрибуты
-     * @param $data
-     */
-    protected function setBaseAttributes($data)
-    {
-        $this->owner->attributes = $data;
-        //color
-        $this->owner->colors = '{color1, color2}';
-//        if(isset($data['colors'])) {
-//            $this->owner->colors = $this->toPgArray($data['colors']);
-//        }
-        if (isset($data['location'])) {
-            $this->owner->location = new CDbExpression("ST_SetSRID(ST_MakePoint(:lat, :lng), 4326)",
-                [':lat' => $data['location']['lat'], ':lng' => $data['location']['lng']]);
-        }
-        if (isset ($data['sigma'])) {
-            $this->owner->sigma = new CDbExpression("to_tsvector('english', ':sigma')", ['sigma' => $data['sigma']]);
-        }
-    }
-
-    /**
-     * Устанавливает породы питомца
-     * @var string $breedModel Зависит от типа питомца. Инициализируется в трейте TCat/TDog
-     * @param array $breeds
-     *
-     * @throws CException
-     */
-    public function setBreeds(array $breeds)
-    {
-        $breedArray = [];
-        foreach ($breeds as $breed) {
-            $b = new $this->breedModel;
-            $b->value = $breed;
-            if ($b->validate()) {
-                $breedArray[] = $b->value;
-            } else {
-                throw new CException('Неверный формат породы питомца. Выберите породу из списка.');
-            }
-        }
-        $this->breeds = $breedArray;
     }
 
     public function beforeValidate()
@@ -130,16 +107,6 @@ abstract class BasePetBehavior extends CActiveRecordBehavior
         return '{' . implode(',', $result) . '}';
     }
 
-    /**
-     * Валидация радиуса поиска вводимого пользователем.
-     * @param $radius
-     *
-     * @return bool
-     */
-    public function isZoomValid($radius)
-    {
-        return (int)$radius < self::VALID_RADIUS;
-    }
 
     /**
      * Перемещает файл(ы) из временной папки в постоянное хранилище
@@ -148,8 +115,8 @@ abstract class BasePetBehavior extends CActiveRecordBehavior
     private function addImage()
     {
         $pathOriginal = Yii::app()->params['images']['original']['absolute'] . $this->owner->id . DIRECTORY_SEPARATOR;
-        $pathOrigRel = Yii::app()->params['images']['original']['relative'] . $this->owner->id . DIRECTORY_SEPARATOR;
-        $pathSmall = Yii::app()->params['images']['small']['absolute'] . $this->owner->id . DIRECTORY_SEPARATOR;
+        $pathOrigRel  = Yii::app()->params['images']['original']['relative'] . $this->owner->id . DIRECTORY_SEPARATOR;
+        $pathSmall    = Yii::app()->params['images']['small']['absolute'] . $this->owner->id . DIRECTORY_SEPARATOR;
         $pathSmallRel = Yii::app()->params['images']['small']['relative'] . $this->owner->id . DIRECTORY_SEPARATOR;
 
         if (Yii::app()->user->hasState('image')) {
@@ -183,6 +150,7 @@ abstract class BasePetBehavior extends CActiveRecordBehavior
 
     /**
      * Получает sql из сформированной критерии и помещает его в подзапрос
+     * для получения из сервера данных в формате json
      */
     protected function createSqlFromCriteria()
     {
@@ -208,14 +176,35 @@ abstract class BasePetBehavior extends CActiveRecordBehavior
     }
 
     /**
+     * Устанавливает общие для всех типов питомцев с различными статусами атрибуты
+     * @param $data
+     */
+    protected function setBaseAttributes($data)
+    {
+        $this->owner->attributes = $data;
+        //color
+        $this->owner->colors = '{color1, color2}';
+//        if(isset($data['colors'])) {
+//            $this->owner->colors = $this->toPgArray($data['colors']);
+//        }
+        if (isset($data['location'])) {
+            $this->owner->location = new CDbExpression("ST_SetSRID(ST_MakePoint(:lat, :lng), 4326)",
+                [':lat' => $data['location']['lat'], ':lng' => $data['location']['lng']]);
+        }
+        if (isset ($data['sigma'])) {
+            $this->owner->sigma = new CDbExpression("to_tsvector('english', ':sigma')", ['sigma' => $data['sigma']]);
+        }
+    }
+
+    /**
      * Возвращает общие для всех типов питомцев с различными статусами колонки
      * @return string
      */
     protected function getBaseColumns()
     {
         return 't.id, t.sigma, t.sex, t.special, t.advanced, t.date, t.date_create, t.date_update, t.author, '
-        . ' min(fur.value) as fur, min(type_color.value) as type_color, min(eyes.value) as eyes, array_agg(breed.value) as breeds, '
-        . ' ST_X(CAST(location as geometry)) as lat, ST_Y(CAST(location as geometry)) as lng, pf_get_images(t.id) as images';
+        . ' min(fur.value) as fur, min(type_color.value) as type_color, min(eyes.value) as eyes,  '
+        . ' array_agg(breed.value) as breeds, pf_get_images(t.id) as images';
     }
 
     /**
@@ -233,10 +222,6 @@ abstract class BasePetBehavior extends CActiveRecordBehavior
      */
     protected function setBaseConditions($data)
     {
-        $lat = (float)$data['location']['lat'];
-        $lng = (float)$data['location']['lng'];
-        $this->criteria->addCondition("ST_DWithin(location, ST_GeomFromText('POINT({$lat} {$lng})',4326), :radius)");
-
         $this->criteria->addCondition('sex = :sex');
 
         if (isset($data['eyes'])) {
@@ -249,17 +234,16 @@ abstract class BasePetBehavior extends CActiveRecordBehavior
 
     /**
      * Устанавливает общие для всех типов питомцев с различными статусами параметры
-     * @param $data
+     * @param $params
      */
-    protected function setBaseParams($data)
+    protected function setBaseParams($params)
     {
-        $this->command->bindParam(':radius', $data['location']['radius'], PDO::PARAM_INT);
-        $this->command->bindParam(':sex', $data['sex'], PDO::PARAM_STR);
-        if (isset($data['eyes'])) {
-            $this->command->bindParam(':eyes', $data['eyes'], PDO::PARAM_INT);
+        $this->command->bindParam(':sex', $params['sex'], PDO::PARAM_STR);
+        if (isset($params['eyes'])) {
+            $this->command->bindParam(':eyes', $params['eyes'], PDO::PARAM_INT);
         }
-        if (isset($data['fur'])) {
-            $this->command->bindParam(':fur', $data['fur'], PDO::PARAM_INT);
+        if (isset($params['fur'])) {
+            $this->command->bindParam(':fur', $params['fur'], PDO::PARAM_INT);
         }
     }
 }

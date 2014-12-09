@@ -1,12 +1,12 @@
 <?php
 
 /**
- * Class TLost
+ * Class LostTrait
  * Установка параметров свойственных питомцам со статусом Lost
  * @property $criteria CDbCriteria
  * @property $command CDbCommand
  */
-trait TLost
+trait LostTrait
 {
     /**
      * Устанавливает условия выборки для питомцев со статусом Lost
@@ -32,12 +32,12 @@ trait TLost
 
     /**
      * Устанавливает параметры для питомцев со статусом Lost
-     * @param $data
+     * @param $params
      */
-    protected function setStatusParams($data)
+    protected function setStatusParams($params)
     {
-        $dateStart = DateTime::createFromFormat('d-m-Y', $data['date']);
-        $dateEnd = DateTime::createFromFormat('d-m-Y', $data['date']);
+        $dateStart = DateTime::createFromFormat('d-m-Y', $params['date']);
+        $dateEnd = DateTime::createFromFormat('d-m-Y', $params['date']);
         $dateEnd->sub(new DateInterval('P1Y'));
         $this->command->bindParam(':dateEnd', $dateEnd->format('Y-m-d'), PDO::PARAM_STR);
         $this->command->bindParam(':dateStart', $dateStart->format('Y-m-d'), PDO::PARAM_STR);

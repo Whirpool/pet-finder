@@ -5,16 +5,10 @@
  *
  * Конечный класс с реализацией методов формирования всех параметров для результатирубщего запроса
  */
-final class DogLostBehavior extends BasePetBehavior implements PetFinderInterface
+final class DogLostBehavior extends AbstractBasePetBehavior implements SearchByLocationInterface
 {
-    use TDog, TLost;
+    use DogTrait, LostTrait;
 
-    /**
-     * Поиск питомцев по геологическому местоположению
-     * @param $data
-     *
-     * @return array|null
-     */
     public function findPetByLocation($data)
     {
         $this->initCriteria();
@@ -25,12 +19,6 @@ final class DogLostBehavior extends BasePetBehavior implements PetFinderInterfac
         return $this->executeQuery();
     }
 
-    /**
-     * Поиск питомца по идентификатору
-     * @param $id
-     *
-     * @return array|null
-     */
     public function findPetById($id)
     {
         $this->initCriteria();
@@ -41,10 +29,11 @@ final class DogLostBehavior extends BasePetBehavior implements PetFinderInterfac
         return $this->executeQuery();
     }
 
-    /**
-     * Формирование атрибутов для данного типа питомца с данным статусом
-     * @param $data
-     */
+    public function isZoomValid($radius)
+    {
+        return (int)$radius < SearchByLocationInterface::VALID_RADIUS;
+    }
+
     public function setPetAttributes($data)
     {
         $this->setBaseAttributes($data);
@@ -70,10 +59,6 @@ final class DogLostBehavior extends BasePetBehavior implements PetFinderInterfac
         return false;
     }
 
-    /**
-     * Получение всех колонок для данного типа питомца с данным статусом
-     * @return string
-     */
     protected function getColumns()
     {
         $select = $this->getBaseColumns();
@@ -81,13 +66,11 @@ final class DogLostBehavior extends BasePetBehavior implements PetFinderInterfac
         $select .= $this->getPetColumns();
         $select .= self::STRING_COMMA;
         $select .= $this->getStatusColumns();
+        $select .= self::STRING_COMMA;
+        $select .= $this->getLocationColumns();
         return $select;
     }
 
-    /**
-     * Получение всех реляционных связей для данного типа питомца с данным статусом
-     * @return string
-     */
     protected function getJoins()
     {
         $joins = $this->getBaseJoins();
@@ -95,33 +78,45 @@ final class DogLostBehavior extends BasePetBehavior implements PetFinderInterfac
         return $joins;
     }
 
-    /**
-     * Формирование условий выборки для данного типа питомца с данным статусом
-     * @param $data
-     */
     protected function setSearchConditions($data)
     {
         $this->setBaseConditions($data);
         $this->setStatusConditions($data);
+        $this->setLocationConditions($data);
     }
 
-    /**
-     * Формирование параметров для данного типа питомца с данным статусом
-     * @param $data
-     */
-    protected function setParams($data)
+    protected function setParams($params)
     {
-        $this->setBaseParams($data);
-        $this->setStatusParams($data);
+        $this->setBaseParams($params);
+        $this->setStatusParams($params);
+        $this->setLocationParams($params);
     }
 
     /**
-     * Формирование начальных установок критерии для данного типа питомца с данным статусом
+     * Формирование начальных установок критерии.
      */
     private function initCriteria()
     {
         $this->criteria->select = $this->getColumns();
         $this->criteria->join = $this->getJoins();
         $this->criteria->group = 't.id';
+    }
+
+    public function getLocationColumns()
+    {
+        $select = 'ST_X(CAST(location as geometry)) as lat, ST_Y(CAST(location as geometry)) as lng';
+        return $select;
+    }
+
+    public function setLocationConditions($data)
+    {
+        $lat = (float)$data['location']['lat'];
+        $lng = (float)$data['location']['lng'];
+        $this->criteria->addCondition("ST_DWithin(location, ST_GeomFromText('POINT({$lat} {$lng})',4326), :radius)");
+    }
+
+    public function setLocationParams($params)
+    {
+        $this->command->bindParam(':radius', $params['location']['radius'], PDO::PARAM_INT);
     }
 }

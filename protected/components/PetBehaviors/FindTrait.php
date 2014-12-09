@@ -1,12 +1,13 @@
 <?php
 
 /**
- * Class TFind
+ * Class FindTrait
  * Установка параметров свойственных питомцам со статусом Find
  * @property $criteria CDbCriteria
  * @property $command CDbCommand
+ * @property $owner CActiveRecord
  */
-trait TFind
+trait FindTrait
 {
     /**
      * Устанавливает условия выборки для питомцев со статусом Find
@@ -36,11 +37,11 @@ trait TFind
 
     /**
      * Устанавливает параметры для питомцев со статусом Find
-     * @param $data
+     * @param $params
      */
-    protected function setStatusParams($data)
+    protected function setStatusParams($params)
     {
-        $dateStart = DateTime::createFromFormat('d-m-Y', $data['date']);
+        $dateStart = DateTime::createFromFormat('d-m-Y', $params['date']);
         $dateEnd = new DateTime();
         $this->command->bindParam(':dateEnd', $dateEnd->format('Y-m-d'), PDO::PARAM_STR);
         $this->command->bindParam(':dateStart', $dateStart->format('Y-m-d'), PDO::PARAM_STR);
