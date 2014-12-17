@@ -18,6 +18,11 @@ trait LostTrait
         $max = (float)$data['age']['max'];
         $this->criteria->addCondition('date BETWEEN :dateEnd AND :dateStart');
         $this->criteria->addCondition("age <@ '[$min, $max]'::numrange");
+
+        if (isset($data['breeds']) && !empty($data['breeds'])) {
+            $pgArray = $this->toPgArray($data['breeds'], 'full');
+            $this->command->where($pgArray . ' && x.breeds');
+        }
     }
 
     /**

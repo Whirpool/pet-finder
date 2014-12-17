@@ -8,19 +8,21 @@
                     <tr><h3>#{{pet.id}}</h3></tr>
                     <tr>
                         <td>{{model.header.breed}}</td>
-                        <td>{{pet.breed}}</td>
+                        <div ng-repeat="breed in pet.breeds">
+                            {{breed}}
+                        </div>
                     </tr>
                     <tr>
                         <td>{{model.header.name}}</td>
-                        <td>{{pet.name}}</td>
+                        <td>{{pet.date}}</td>
                     </tr>
                     <tr>
                         <td>{{model.header.pet}}</td>
-                        <td>{{pet.pet_id}}</td>
+                        <td>{{pet.eyes}}</td>
                     </tr>
                     <tr>
                         <td>{{model.header.age}}</td>
-                        <td>{{pet.age_id}}</td>
+                        <td>{{pet.fur}}</td>
                     </tr>
                     <tr>
                         <td>{{model.header.sex}}</td>
@@ -28,7 +30,7 @@
                     </tr>
                 </table>
                 <a href="javascript:void(0)" class="btn-info btn-sm" ng-click="onMap(pet)">Показать на карте</a>
-                <a class="btn-info btn-sm" ui-sref="detail.modal({id: pet.id})">Подробнее</a>
+                <a class="btn-info btn-sm" ui-sref="detail.modal({id: pet.id, type: model.init.type, status: model.init.status})">Подробнее</a>
             </div>
         </div>
     </div>

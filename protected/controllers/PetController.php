@@ -37,23 +37,33 @@ class PetController extends RController
 
     public function actionSearch()
     {
-        $request = CJSON::decode(Yii::app()->request->rawBody);
-        $pet = (new Pet)->create($request['init']);
-        if ($pet->isZoomValid($request['data']['location']['radius'])) {
-            $result = $pet->findPetByLocation($request['data']);
-            if (is_null($result)) {
-                $this->renderJson(['type' => 'empty']);
+        try {
+            $request = CJSON::decode(Yii::app()->request->rawBody);
+            $pet = (new Pet)->create($request['init']);
+            if ($pet->isZoomValid($request['data']['location']['radius'])) {
+                $result = $pet->findPetByLocation($request['data']);
+                if (is_null($result)) {
+                    $this->renderJson(['type' => 'empty']);
+                } else {
+                    $this->renderJson(['data' => $result]);
+                }
             } else {
-                $this->renderJson(['data' => $result]);
+                $this->renderJson([
+                    'type' => 'error',
+                    'errorCode' => 400,
+                    'message' => 'Слишком большой зум'
+
+                ]);
             }
-        } else {
+        } catch (CException $e) {
             $this->renderJson([
                 'type' => 'error',
                 'errorCode' => 400,
-                'message' => 'Слишком большой зум'
+                'message' => $e->getMessage()
 
             ]);
         }
+
     }
 
     public function actionNew()
@@ -102,13 +112,14 @@ class PetController extends RController
      * Поиск по первичному ключу
      *
      * @param $id
+     * @param $status
+     * @param $type
      */
     public function actionView($type, $status, $id)
     {
-
         try {
             $pet = (new Pet)->create(['type' => $type, 'status' => $status], true);
-            $result = $pet->getPetById($id);
+            $result = $pet->findPetById($id);
             if (is_null($result)) {
                 $this->renderJson(['type' => 'empty']);
             } else {

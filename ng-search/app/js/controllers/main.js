@@ -3,9 +3,9 @@
 
     angular.module('petFinder').controller('MainCtrl', MainCtrl);
 
-    MainCtrl.$inject = ['$scope', 'pfRelation', 'pfPagination', 'pfMap', 'pfHeader', 'relations'];
+    MainCtrl.$inject = ['$scope', 'pfRelation', 'pfPagination', 'pfMap', 'pfHeader'];
 
-    function MainCtrl($scope, pfRelation, pfPagination, pfMap, pfHeader, relations) {
+    function MainCtrl($scope, pfRelation, pfPagination, pfMap, pfHeader) {
         $scope.pagination = {};
         $scope.tab = {
             list: {

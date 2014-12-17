@@ -36,7 +36,7 @@
         $scope.submitForm = function () {
             if (pfMap.isZoomValid()) {
                 $scope.form.error.zoom = false;
-                $scope.request.init = $scope.form.init;
+                $scope.request.init = $filter('init')($scope.form.init);
                 angular.extend($scope.request.data,
                     $scope.form.pet,
                     $scope.form.status,
@@ -45,6 +45,7 @@
                 $scope.request.data.location = pfMap.getLocation();
                 pfData.findPet($scope.request).then(function (data) {
                     $scope.model.pets = data;
+                    $scope.model.init = $scope.request.init;
                     $rootScope.pets = data;
                     $scope.form.error.zoom = false;
                     $scope.form.error.message = false;
@@ -52,6 +53,9 @@
                     $scope.map.geoObjects = pfMap.createGeoObjects($scope.model.pets);
                     $scope.pagination = pfPagination.init($scope.model.pets);
                 }, function (message) {
+                    $scope.model.pets = {};
+                    $rootScope.pets = {};
+                    $scope.map.geoObjects = {};
                     $scope.form.error.message = message;
                 });
             } else {

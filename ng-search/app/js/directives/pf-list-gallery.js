@@ -19,8 +19,8 @@
                     timer;
                 scope.indexImage = 0;
                 var imageRandom = function() {
-                    total = scope.images.length;
-                    if (total > 1) {
+                    if (!!scope.images && scope.images.length > 1) {
+                        total = scope.images.length;
                         scope.indexImage = (scope.indexImage === --total) ? 0 : scope.indexImage + 1;
                         interval = Math.random() * (6000 - 4000) + 4000;
                         timer = $timeout(imageRandom, interval);

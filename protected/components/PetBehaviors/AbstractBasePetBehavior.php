@@ -203,7 +203,7 @@ abstract class AbstractBasePetBehavior extends CActiveRecordBehavior
     protected function getBaseColumns()
     {
         return 't.id, t.sigma, t.sex, t.special, t.advanced, t.date, t.date_create, t.date_update, t.author, '
-        . ' min(fur.value) as fur, min(type_color.value) as type_color, min(eyes.value) as eyes,  '
+        . ' min(fur.value) as fur, min(type_color.value) as type_color, min(eyes.value) as eyes, t.colors, '
         . ' array_agg(breed.value) as breeds, pf_get_images(t.id) as images';
     }
 

@@ -6,16 +6,17 @@
     DetailCtrl.$inject = ['$scope', '$stateParams', 'pfData', 'pfMap', 'pfHeader'];
 
     function DetailCtrl($scope, $stateParams, pfData, pfMap, pfHeader) {
-        pfData.getDetail($stateParams.type, $stateParams.status, $stateParams.id).then(function (pet) {
+        pfData.getDetail($stateParams.type, $stateParams.status, $stateParams.id).then(function (data) {
             $scope.detail = {
-                pet: pet,
+                pet: data.pet[0],
+                category: data.category,
                 header: pfHeader,
                 map: {
-                    center: [pet.lat, pet.lng],
-                    geoObject: pfMap.createGeoObject(pet)
+                    center: [data.pet[0].lat, data.pet[0].lng],
+                    geoObject: pfMap.createGeoObject(data.pet[0])
                 }
             };
-            if ($scope.detail.pet.images !== "undefined" && $scope.detail.pet.images.length > 0) {
+            if (!!$scope.detail.pet.images && $scope.detail.pet.images.length > 0) {
                 $scope.mainImage = $scope.detail.pet.images[0].source_original;
             } else {
                 $scope.mainImage = 'images/default.png';

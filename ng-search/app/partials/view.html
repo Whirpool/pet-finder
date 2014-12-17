@@ -28,13 +28,13 @@
             <ul class="list-group">
                 <li class="list-group-item">
                     <h4 class="list-group-item-heading">{{detail.header.pet}}</h4>
-                    <p class="list-group-item-text">{{detail.pet.pet_id}}</p>
+                    <p class="list-group-item-text" ng-repeat="color in detail.pet.colors">{{color}}</p>
                 </li>
                 <li class="list-group-item">
                     <h4 class="list-group-item-heading">{{detail.header.breed}}</h4>
-                    <p class="list-group-item-text">{{detail.pet.breed}}</p>
+                    <p class="list-group-item-text" ng-repeat="breed in detail.pet.breeds">{{breed}}</p>
                 </li>
-                <li class="list-group-item">
+                <li class="list-group-item" ng-if="detail.category.status === 'lost'">
                     <h4 class="list-group-item-heading">{{detail.header.name}}</h4>
                     <p class="list-group-item-text">{{detail.pet.name}}</p>
                 </li>
@@ -44,11 +44,29 @@
                 </li>
                 <li class="list-group-item">
                     <h4 class="list-group-item-heading">{{detail.header.age}}</h4>
-                    <p class="list-group-item-text">{{detail.pet.age_id}}</p>
+                    <p class="list-group-item-text" ng-if="detail.category.status === 'lost'">{{detail.pet.age}}</p>
+                    <p class="list-group-item-text" ng-if="detail.category.status === 'find'">{{detail.pet.age_min}}</p>
+                    <p class="list-group-item-text" ng-if="detail.category.status === 'find'">{{detail.pet.age_max}}</p>
                 </li>
                 <li class="list-group-item">
                     <h4 class="list-group-item-heading">{{detail.header.sex}}</h4>
                     <p class="list-group-item-text">{{detail.pet.sex}}</p>
+                </li>
+                <li class="list-group-item">
+                    <h4 class="list-group-item-heading">Глаза</h4>
+                    <p class="list-group-item-text">{{detail.pet.eyes}}</p>
+                </li>
+                <li class="list-group-item">
+                    <h4 class="list-group-item-heading">Тип шерсти</h4>
+                    <p class="list-group-item-text">{{detail.pet.fur}}</p>
+                </li>
+                <li class="list-group-item" ng-if="detail.category.type === 'dog'">
+                    <h4 class="list-group-item-heading">Тип фигуры</h4>
+                    <p class="list-group-item-text">{{detail.pet.figured}}</p>
+                </li>
+                <li class="list-group-item">
+                    <h4 class="list-group-item-heading">Тип окраса</h4>
+                    <p class="list-group-item-text">{{detail.pet.type_color}}</p>
                 </li>
                 <li class="list-group-item">
                     <h4 class="list-group-item-heading">{{detail.header.special}}</h4>
@@ -57,10 +75,6 @@
                 <li class="list-group-item">
                     <h4 class="list-group-item-heading">{{detail.header.advanced}}</h4>
                     <p class="list-group-item-text">{{detail.pet.advanced}}</p>
-                </li>
-                <li class="list-group-item">
-                    <h4 class="list-group-item-heading">{{detail.header.contact}}</h4>
-                    <p class="list-group-item-text">{{detail.pet.user.email}}</p>
                 </li>
             </ul>
         </div>

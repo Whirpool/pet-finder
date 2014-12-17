@@ -19,7 +19,7 @@ trait FindTrait
         $this->criteria->addCondition("{$age} <@ age");
         $this->criteria->addCondition('date BETWEEN :dateStart AND :dateEnd');
 
-        if (isset($data['breeds'])) {
+        if (isset($data['breeds']) && !empty($data['breeds'])) {
             $pgArray = $this->toPgArray($data['breeds'], 'full');
             $this->command->where($pgArray . ' && x.breeds');
         }
