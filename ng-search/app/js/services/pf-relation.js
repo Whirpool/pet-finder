@@ -8,24 +8,22 @@
     function pfRelation($http) {
         var relations;
 
+        return {
+            load: load,
+            get: getRelations
+        };
+
         function getRelations() {
             return relations;
         }
 
-        function setRelations(data) {
-            relations = data;
-        }
-
-        return {
-            load: function () {
-                return $http({
-                    url: '/api/relation',
-                    method: 'GET'
-                }).success(function (response) {
-                    setRelations(response.model);
-                });
-            },
-            get: getRelations
+        function load() {
+            return $http({
+                url: '/api/relation',
+                method: 'GET'
+            }).success(function (response) {
+                relations = response.model;
+            });
         }
     }
 })();

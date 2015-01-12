@@ -4,82 +4,83 @@
         <div class="control-group">
             <div class="controls">
                 <h3>Поиск</h3>
-                <p class="alert-danger" ng-show="form.error.zoom">Слишком большой зум</p>
-                <p class="alert-danger" ng-if="form.error.message">{{form.error.message}}</p>
+                <p class="alert-danger" ng-show="searchVm.form.error.zoom">Слишком большой зум</p>
+                <p class="alert-danger" ng-if="searchVm.form.error.message">{{searchVm.form.error.message}}</p>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-4 control-label"> {{model.header.looking}} </label>
+            <label class="col-sm-4 control-label"> {{searchVm.label.looking}} </label>
             <div class="col-sm-7">
-                <select class="form-control" ng-model="form.init.status" name="type" ng-options="status.id as status.value for status in model.relations.pet.status">
+                <select class="form-control" ng-model="searchVm.form.category.status" ng-change="searchVm.clearFormStatus()" name="status" ng-options="status.id as status.value for status in searchVm.relations.pet.status">
                     <option value=""></option>
                 </select>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-4 control-label">{{model.header.pet}}</label>
+            <label class="col-sm-4 control-label">{{searchVm.label.pet}}</label>
             <div class="col-sm-7">
-                <select class="form-control" ng-model="form.init.type" name="pet" ng-options="pet.id as pet.value for pet in model.relations.pet.type">
+                <select class="form-control" ng-model="searchVm.form.category.pet" ng-change="searchVm.clearFormPet()" name="pet" ng-options="pet.id as pet.value for pet in searchVm.relations.pet.type">
                     <option value=""></option>
                 </select>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-4 control-label">{{model.header.age}}</label>
-            <div class="col-sm-7" ng-if="form.init.status === 2">
-                <input type="number" class="form-control" min="0" max="15.0" step="0.1" ng-model="form.status.age.min">
-                <input type="number" class="form-control" min="0" max="15.0" step="0.1" ng-model="form.status.age.max">
+            <label class="col-sm-4 control-label">{{searchVm.label.age}}</label>
+            <div class="col-sm-7" ng-if="searchVm.form.category.status === 2">
+                <input type="number" class="form-control" min="0" max="15.0" step="0.1" ng-model="searchVm.form.status.ageMin">
+                <input type="number" class="form-control" min="0" max="15.0" step="0.1" ng-model="searchVm.form.status.ageMax">
             </div>
-            <div class="col-sm-7" ng-if="form.init.status === 1">
-                <input type="number" class="form-control" min="0" max="15.0" step="0.1" ng-model="form.status.age">
+            <div class="col-sm-7" ng-if="searchVm.form.category.status === 1">
+                <input type="number" class="form-control" min="0" max="15.0" step="0.1" ng-model="searchVm.form.status.age">
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-4 control-label">{{model.header.breed}}</label>
-            <div class="col-sm-7" ng-if="form.init.type === 2">
-                <select class="form-control" ng-model="model.breeds" name="breed"
-                        ng-options="breed.value as breed.value for breed in model.relations.dog.breed">
+            <label class="col-sm-4 control-label">{{searchVm.label.breed}}</label>
+            <div class="col-sm-7" ng-if="searchVm.form.category.pet === 2">
+                <select class="form-control" ng-model="searchVm.breed" name="breed" ng-change="searchVm.setBreed(searchVm.breed)"
+                        ng-options="breed.value as breed.value for breed in searchVm.relations.dog.breed">
                 </select>
             </div>
-            <div class="col-sm-7" ng-if="form.init.type === 1">
-                <select class="form-control" ng-model="model.breeds" name="breed"
-                        ng-options="breed.value as breed.value for breed in model.relations.cat.breed">
+            <div class="col-sm-7" ng-if="searchVm.form.category.pet === 1">
+                <select class="form-control" ng-model="searchVm.breed" name="breed" ng-change="searchVm.setBreed(searchVm.breed)"
+                        ng-options="breed.value as breed.value for breed in searchVm.relations.cat.breed">
                 </select>
             </div>
             breeds:
-            <div class="col-sm-7" ng-repeat="breed in form.type.breeds">
+            <div class="col-sm-7" ng-repeat="breed in searchVm.form.pet.breeds">
                 {{breed}}
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-4 control-label">{{model.header.sex}}</label>
+            <label class="col-sm-4 control-label">{{searchVm.label.sex}}</label>
             <div class="col-sm-7">
-                <select class="form-control" ng-model="form.pet.sex" name="sex">
+                <select class="form-control" ng-model="searchVm.form.common.sex" name="sex">
                     <option>мужской</option>
                     <option>женский</option>
                 </select>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-4 control-label">{{model.header.date}}</label>
+            <label class="col-sm-4 control-label">{{searchVm.label.date}}</label>
                 <div class="col-sm-7 input-group">
                     <input type="text"
                            class="form-control"
                            datepicker-popup="dd-MM-yyyy"
-                           ng-model="form.pet.date.picker"
+                           ng-model="searchVm.form.date.picker"
                            show-weeks="false"
                            show-button-bar="false"
-                           max="form.pet.date.max"
+                           max="searchVm.form.date.max"
                            ng-required="true"/>
                     <span class="input-group-btn">
-                        <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i>&nbsp</button>
+                        <button class="btn btn-default" ng-click="searchVm.openDatePicker($event)"><i class="glyphicon glyphicon-calendar"></i>&nbsp</button>
                     </span>
                 </div>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-1 col-sm-10">
-                <button ng-click="submitForm()" type="submit" class="btn btn-primary" ng-disabled="searchForm.$invalid">Найти</button>
+                <button ng-click="searchVm.submitForm()" type="submit" class="btn btn-primary" ng-disabled="searchForm.$invalid">Найти</button>
             </div>
         </div>
     </fieldset>
 </form>
+<ui-view></ui-view>

@@ -81,11 +81,11 @@ class FileController extends RController
 
         foreach ($files as $key => $file) {
             if ($file['nameOriginal'] === $image['nameOriginal'] && $file['nameSmall'] === $image['nameSmall']) {
-                if (is_file(Yii::app()->params['images']['path']['tmp'] . $file['nameOriginal'])
-                    && is_file(Yii::app()->params['images']['path']['tmp'] . $file['nameSmall'])
+                if (is_file(Yii::app()->params['images']['tmp'] . $file['nameOriginal'])
+                    && is_file(Yii::app()->params['images']['tmp'] . $file['nameSmall'])
                 ) {
-                    unlink(Yii::app()->params['images']['path']['tmp'] . $file['nameOriginal']);
-                    unlink(Yii::app()->params['images']['path']['tmp'] . $file['nameSmall']);
+                    unlink(Yii::app()->params['images']['tmp'] . $file['nameOriginal']);
+                    unlink(Yii::app()->params['images']['tmp'] . $file['nameSmall']);
                     unset($files[$key]);
                     Yii::app()->user->setState('image', $files);
                     $this->renderJson(['type' => 'empty']);

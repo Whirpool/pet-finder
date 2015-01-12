@@ -1,0 +1,1359 @@
+2014/12/03 07:59:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2014/12/03 07:59:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2014/12/03 08:04:01 [warning] [application] Failed to set unsafe attribute "breeds" of "DogLost".
+2014/12/05 00:54:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2014/12/05 00:54:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2014/12/05 00:54:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2014/12/05 00:56:50 [error] [exception.CDbException] exception 'CDbException' with message 'The table "{{pet_finder}}" for active record class "PetFinder" cannot be found in the database.' in /var/www/staytogether.ru/framework/db/ar/CActiveRecord.php:2362
+Stack trace:
+#0 /var/www/staytogether.ru/framework/db/ar/CActiveRecord.php(411): CActiveRecordMetaData->__construct(Object(PetFinder))
+#1 /var/www/staytogether.ru/framework/db/ar/CActiveRecord.php(658): CActiveRecord->getMetaData()
+#2 /var/www/staytogether.ru/framework/db/ar/CActiveRecord.php(1485): CActiveRecord->getTableSchema()
+#3 /var/www/staytogether.ru/protected/models/PetFinder.php(223): CActiveRecord->findByPk('5', Object(CDbCriteria))
+#4 /var/www/staytogether.ru/protected/controllers/PetController.php(115): PetFinder->searchPet('5')
+#5 [internal function]: PetController->actionView('5')
+#6 /var/www/staytogether.ru/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(PetController), Array)
+#7 /var/www/staytogether.ru/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(PetController), Object(ReflectionMethod), Array)
+#8 /var/www/staytogether.ru/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#9 /var/www/staytogether.ru/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#10 /var/www/staytogether.ru/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): CController->run('view')
+#12 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('pet/view')
+#13 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#15 {main}
+REQUEST_URI=/api/pet?id=5
+HTTP_REFERER=http://staytogether.ru/
+---
+2014/12/05 00:57:06 [error] [exception.CDbException] exception 'CDbException' with message 'The table "{{pet_finder}}" for active record class "PetFinder" cannot be found in the database.' in /var/www/staytogether.ru/framework/db/ar/CActiveRecord.php:2362
+Stack trace:
+#0 /var/www/staytogether.ru/framework/db/ar/CActiveRecord.php(411): CActiveRecordMetaData->__construct(Object(PetFinder))
+#1 /var/www/staytogether.ru/framework/db/ar/CActiveRecord.php(658): CActiveRecord->getMetaData()
+#2 /var/www/staytogether.ru/framework/db/ar/CActiveRecord.php(1485): CActiveRecord->getTableSchema()
+#3 /var/www/staytogether.ru/protected/models/PetFinder.php(223): CActiveRecord->findByPk('5', Object(CDbCriteria))
+#4 /var/www/staytogether.ru/protected/controllers/PetController.php(115): PetFinder->searchPet('5')
+#5 [internal function]: PetController->actionView('5')
+#6 /var/www/staytogether.ru/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(PetController), Array)
+#7 /var/www/staytogether.ru/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(PetController), Object(ReflectionMethod), Array)
+#8 /var/www/staytogether.ru/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#9 /var/www/staytogether.ru/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#10 /var/www/staytogether.ru/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): CController->run('view')
+#12 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('pet/view')
+#13 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#15 {main}
+REQUEST_URI=/api/pet?id=5
+HTTP_REFERER=http://staytogether.ru/
+---
+2014/12/05 01:12:43 [error] [exception.CDbException] exception 'CDbException' with message 'The table "{{pet_finder}}" for active record class "PetFinder" cannot be found in the database.' in /var/www/staytogether.ru/framework/db/ar/CActiveRecord.php:2362
+Stack trace:
+#0 /var/www/staytogether.ru/framework/db/ar/CActiveRecord.php(411): CActiveRecordMetaData->__construct(Object(PetFinder))
+#1 /var/www/staytogether.ru/framework/db/ar/CActiveRecord.php(658): CActiveRecord->getMetaData()
+#2 /var/www/staytogether.ru/framework/db/ar/CActiveRecord.php(1485): CActiveRecord->getTableSchema()
+#3 /var/www/staytogether.ru/protected/models/PetFinder.php(223): CActiveRecord->findByPk('1', Object(CDbCriteria))
+#4 /var/www/staytogether.ru/protected/controllers/PetController.php(115): PetFinder->searchPet('1')
+#5 [internal function]: PetController->actionView('1')
+#6 /var/www/staytogether.ru/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(PetController), Array)
+#7 /var/www/staytogether.ru/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(PetController), Object(ReflectionMethod), Array)
+#8 /var/www/staytogether.ru/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#9 /var/www/staytogether.ru/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#10 /var/www/staytogether.ru/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): CController->run('view')
+#12 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('pet/view')
+#13 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#15 {main}
+REQUEST_URI=/api/pet?id=1&status=lost&type=cat
+HTTP_REFERER=http://staytogether.ru/
+---
+2014/12/05 01:13:02 [error] [exception.CDbException] exception 'CDbException' with message 'The table "{{pet_finder}}" for active record class "PetFinder" cannot be found in the database.' in /var/www/staytogether.ru/framework/db/ar/CActiveRecord.php:2362
+Stack trace:
+#0 /var/www/staytogether.ru/framework/db/ar/CActiveRecord.php(411): CActiveRecordMetaData->__construct(Object(PetFinder))
+#1 /var/www/staytogether.ru/framework/db/ar/CActiveRecord.php(658): CActiveRecord->getMetaData()
+#2 /var/www/staytogether.ru/framework/db/ar/CActiveRecord.php(1485): CActiveRecord->getTableSchema()
+#3 /var/www/staytogether.ru/protected/models/PetFinder.php(223): CActiveRecord->findByPk('1', Object(CDbCriteria))
+#4 /var/www/staytogether.ru/protected/controllers/PetController.php(115): PetFinder->searchPet('1')
+#5 [internal function]: PetController->actionView('1')
+#6 /var/www/staytogether.ru/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(PetController), Array)
+#7 /var/www/staytogether.ru/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(PetController), Object(ReflectionMethod), Array)
+#8 /var/www/staytogether.ru/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#9 /var/www/staytogether.ru/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#10 /var/www/staytogether.ru/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): CController->run('view')
+#12 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('pet/view')
+#13 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#15 {main}
+REQUEST_URI=/api/pet?id=1&status=lost&type=cat
+HTTP_REFERER=http://staytogether.ru/
+---
+2014/12/05 01:16:59 [error] [exception.CDbException] exception 'CDbException' with message 'The table "{{pet_finder}}" for active record class "PetFinder" cannot be found in the database.' in /var/www/staytogether.ru/framework/db/ar/CActiveRecord.php:2362
+Stack trace:
+#0 /var/www/staytogether.ru/framework/db/ar/CActiveRecord.php(411): CActiveRecordMetaData->__construct(Object(PetFinder))
+#1 /var/www/staytogether.ru/framework/db/ar/CActiveRecord.php(658): CActiveRecord->getMetaData()
+#2 /var/www/staytogether.ru/framework/db/ar/CActiveRecord.php(1485): CActiveRecord->getTableSchema()
+#3 /var/www/staytogether.ru/protected/models/PetFinder.php(223): CActiveRecord->findByPk('1', Object(CDbCriteria))
+#4 /var/www/staytogether.ru/protected/controllers/PetController.php(115): PetFinder->searchPet('1')
+#5 [internal function]: PetController->actionView('1')
+#6 /var/www/staytogether.ru/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(PetController), Array)
+#7 /var/www/staytogether.ru/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(PetController), Object(ReflectionMethod), Array)
+#8 /var/www/staytogether.ru/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#9 /var/www/staytogether.ru/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#10 /var/www/staytogether.ru/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): CController->run('view')
+#12 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('pet/view')
+#13 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#15 {main}
+REQUEST_URI=/api/pet?id=1&status=lost&type=cat
+HTTP_REFERER=http://staytogether.ru/
+---
+2014/12/05 01:17:43 [error] [exception.CDbException] exception 'CDbException' with message 'The table "{{pet_finder}}" for active record class "PetFinder" cannot be found in the database.' in /var/www/staytogether.ru/framework/db/ar/CActiveRecord.php:2362
+Stack trace:
+#0 /var/www/staytogether.ru/framework/db/ar/CActiveRecord.php(411): CActiveRecordMetaData->__construct(Object(PetFinder))
+#1 /var/www/staytogether.ru/framework/db/ar/CActiveRecord.php(658): CActiveRecord->getMetaData()
+#2 /var/www/staytogether.ru/framework/db/ar/CActiveRecord.php(1485): CActiveRecord->getTableSchema()
+#3 /var/www/staytogether.ru/protected/models/PetFinder.php(223): CActiveRecord->findByPk('2', Object(CDbCriteria))
+#4 /var/www/staytogether.ru/protected/controllers/PetController.php(115): PetFinder->searchPet('2')
+#5 [internal function]: PetController->actionView('2')
+#6 /var/www/staytogether.ru/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(PetController), Array)
+#7 /var/www/staytogether.ru/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(PetController), Object(ReflectionMethod), Array)
+#8 /var/www/staytogether.ru/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#9 /var/www/staytogether.ru/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#10 /var/www/staytogether.ru/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): CController->run('view')
+#12 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('pet/view')
+#13 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#15 {main}
+REQUEST_URI=/api/pet?id=2&status=lost&type=cat
+HTTP_REFERER=http://staytogether.ru/
+---
+2014/12/05 01:18:02 [error] [exception.CDbException] exception 'CDbException' with message 'The table "{{pet_finder}}" for active record class "PetFinder" cannot be found in the database.' in /var/www/staytogether.ru/framework/db/ar/CActiveRecord.php:2362
+Stack trace:
+#0 /var/www/staytogether.ru/framework/db/ar/CActiveRecord.php(411): CActiveRecordMetaData->__construct(Object(PetFinder))
+#1 /var/www/staytogether.ru/framework/db/ar/CActiveRecord.php(658): CActiveRecord->getMetaData()
+#2 /var/www/staytogether.ru/framework/db/ar/CActiveRecord.php(1485): CActiveRecord->getTableSchema()
+#3 /var/www/staytogether.ru/protected/models/PetFinder.php(223): CActiveRecord->findByPk('2', Object(CDbCriteria))
+#4 /var/www/staytogether.ru/protected/controllers/PetController.php(115): PetFinder->searchPet('2')
+#5 [internal function]: PetController->actionView('2')
+#6 /var/www/staytogether.ru/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(PetController), Array)
+#7 /var/www/staytogether.ru/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(PetController), Object(ReflectionMethod), Array)
+#8 /var/www/staytogether.ru/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#9 /var/www/staytogether.ru/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#10 /var/www/staytogether.ru/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): CController->run('view')
+#12 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('pet/view')
+#13 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#15 {main}
+REQUEST_URI=/api/pet?id=2&status=lost&type=cat
+HTTP_REFERER=http://staytogether.ru/
+---
+2014/12/05 01:19:39 [error] [exception.CDbException] exception 'CDbException' with message 'The table "{{pet_finder}}" for active record class "PetFinder" cannot be found in the database.' in /var/www/staytogether.ru/framework/db/ar/CActiveRecord.php:2362
+Stack trace:
+#0 /var/www/staytogether.ru/framework/db/ar/CActiveRecord.php(411): CActiveRecordMetaData->__construct(Object(PetFinder))
+#1 /var/www/staytogether.ru/framework/db/ar/CActiveRecord.php(658): CActiveRecord->getMetaData()
+#2 /var/www/staytogether.ru/framework/db/ar/CActiveRecord.php(1485): CActiveRecord->getTableSchema()
+#3 /var/www/staytogether.ru/protected/models/PetFinder.php(223): CActiveRecord->findByPk('2', Object(CDbCriteria))
+#4 /var/www/staytogether.ru/protected/controllers/PetController.php(115): PetFinder->searchPet('2')
+#5 [internal function]: PetController->actionView('2')
+#6 /var/www/staytogether.ru/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(PetController), Array)
+#7 /var/www/staytogether.ru/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(PetController), Object(ReflectionMethod), Array)
+#8 /var/www/staytogether.ru/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#9 /var/www/staytogether.ru/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#10 /var/www/staytogether.ru/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): CController->run('view')
+#12 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('pet/view')
+#13 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#15 {main}
+REQUEST_URI=/api/pet?id=2&status=lost&type=cat
+HTTP_REFERER=http://staytogether.ru/
+---
+2014/12/05 01:46:38 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42702]: Ambiguous column: 7 ERROR:  column reference "id" is ambiguous
+LINE 2: ...lookup_pet_eyes eyes on (t.eyes = eyes.id)  WHERE id = '2' G...
+                                                             ^. The SQL statement executed was: SELECT row_to_json(x)
+FROM (SELECT t.id, t.sigma, t.sex, t.special, t.advanced, t.date, t.date_create, t.date_update, t.author,  min(fur.value) as fur, min(type_color.value) as type_color, min(eyes.value) as eyes, array_agg(breed.value) as breeds,  ST_X(CAST(location as geometry)) as lat, ST_Y(CAST(location as geometry)) as lng, pf_get_images(t.id) as images,  lower(t.age) as age_min, upper(t.age) as age_max FROM "data_cat_find" "t" join lookup_cat_type_color type_color on (t.type_color = type_color.id) join map_cat_breed map on (t.id = map.id_cat) join lookup_cat_breed breed on (map.id_breed = breed.id) join lookup_pet_fur fur on (t.fur = fur.id) join lookup_pet_eyes eyes on (t.eyes = eyes.id)  WHERE id = :id GROUP BY t.id) as x. Bound with id='2'.
+2014/12/05 01:46:38 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42702]: Ambiguous column: 7 ERROR:  column reference "id" is ambiguous
+LINE 2: ...lookup_pet_eyes eyes on (t.eyes = eyes.id)  WHERE id = '2' G...
+                                                             ^. The SQL statement executed was: SELECT row_to_json(x)
+FROM (SELECT t.id, t.sigma, t.sex, t.special, t.advanced, t.date, t.date_create, t.date_update, t.author,  min(fur.value) as fur, min(type_color.value) as type_color, min(eyes.value) as eyes, array_agg(breed.value) as breeds,  ST_X(CAST(location as geometry)) as lat, ST_Y(CAST(location as geometry)) as lng, pf_get_images(t.id) as images,  lower(t.age) as age_min, upper(t.age) as age_max FROM "data_cat_find" "t" join lookup_cat_type_color type_color on (t.type_color = type_color.id) join map_cat_breed map on (t.id = map.id_cat) join lookup_cat_breed breed on (map.id_breed = breed.id) join lookup_pet_fur fur on (t.fur = fur.id) join lookup_pet_eyes eyes on (t.eyes = eyes.id)  WHERE id = :id GROUP BY t.id) as x. Bound with id='2'' in /var/www/staytogether.ru/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /var/www/staytogether.ru/framework/db/CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', 3, Array)
+#1 /var/www/staytogether.ru/protected/components/PetFinderBehavior.php(301): CDbCommand->queryAll(false)
+#2 [internal function]: PetFinderBehavior->getPetById('2')
+#3 /var/www/staytogether.ru/framework/base/CComponent.php(261): call_user_func_array(Array, Array)
+#4 /var/www/staytogether.ru/framework/db/ar/CActiveRecord.php(227): CComponent->__call('getPetById', Array)
+#5 /var/www/staytogether.ru/protected/controllers/PetController.php(116): CActiveRecord->__call('getPetById', Array)
+#6 /var/www/staytogether.ru/protected/controllers/PetController.php(116): CatFind->getPetById('2')
+#7 [internal function]: PetController->actionView('cat', 'lost', '2')
+#8 /var/www/staytogether.ru/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(PetController), Array)
+#9 /var/www/staytogether.ru/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(PetController), Object(ReflectionMethod), Array)
+#10 /var/www/staytogether.ru/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /var/www/staytogether.ru/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#12 /var/www/staytogether.ru/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): CController->run('view')
+#14 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('pet/view')
+#15 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#17 {main}
+REQUEST_URI=/api/pet?id=2&status=lost&type=cat
+HTTP_REFERER=http://staytogether.ru/
+---
+2014/12/05 02:28:09 [error] [exception.CException] exception 'CException' with message 'Ошибка инициализации типа питомца' in /var/www/staytogether.ru/protected/models/Pet.php:171
+Stack trace:
+#0 /var/www/staytogether.ru/protected/controllers/PetController.php(114): Pet->create(Array)
+#1 [internal function]: PetController->actionView('CAT', 'find', '6000079')
+#2 /var/www/staytogether.ru/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(PetController), Array)
+#3 /var/www/staytogether.ru/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(PetController), Object(ReflectionMethod), Array)
+#4 /var/www/staytogether.ru/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /var/www/staytogether.ru/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#6 /var/www/staytogether.ru/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): CController->run('view')
+#8 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('pet/view')
+#9 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#11 {main}
+REQUEST_URI=/api/pet?id=6000079&status=find&type=CAT
+HTTP_REFERER=http://staytogether.ru/
+---
+2014/12/05 02:47:52 [error] [exception.CException] exception 'CException' with message 'Ошибка инициализации типа питомца' in /var/www/staytogether.ru/protected/models/Pet.php:174
+Stack trace:
+#0 /var/www/staytogether.ru/protected/controllers/PetController.php(114): Pet->create(Array)
+#1 [internal function]: PetController->actionView('CAT', 'find', '6000079')
+#2 /var/www/staytogether.ru/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(PetController), Array)
+#3 /var/www/staytogether.ru/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(PetController), Object(ReflectionMethod), Array)
+#4 /var/www/staytogether.ru/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /var/www/staytogether.ru/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#6 /var/www/staytogether.ru/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): CController->run('view')
+#8 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('pet/view')
+#9 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#11 {main}
+REQUEST_URI=/api/pet?id=6000079&status=find&type=CAT
+HTTP_REFERER=http://staytogether.ru/
+---
+2014/12/05 02:51:41 [error] [exception.CException] exception 'CException' with message 'Ошибка инициализации типа питомца' in /var/www/staytogether.ru/protected/models/Pet.php:174
+Stack trace:
+#0 /var/www/staytogether.ru/protected/controllers/PetController.php(114): Pet->create(Array, true)
+#1 [internal function]: PetController->actionView('CAT    ', '    find   ', '6000079')
+#2 /var/www/staytogether.ru/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(PetController), Array)
+#3 /var/www/staytogether.ru/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(PetController), Object(ReflectionMethod), Array)
+#4 /var/www/staytogether.ru/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /var/www/staytogether.ru/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#6 /var/www/staytogether.ru/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): CController->run('view')
+#8 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('pet/view')
+#9 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#11 {main}
+REQUEST_URI=/api/pet?id=6000079&status=++++find+++&type=CAT++++
+HTTP_REFERER=http://staytogether.ru/
+---
+2014/12/05 09:56:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2014/12/05 09:56:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2014/12/05 09:57:24 [error] [php] Creating default object from empty value (/var/www/staytogether.ru/protected/components/PetBehaviors/CatFindBehavior.php:26)
+Stack trace:
+#0 /var/www/staytogether.ru/framework/db/ar/CActiveRecord.php(227): CatFind->__call()
+#1 /var/www/staytogether.ru/protected/controllers/PetController.php(43): CatFind->__call()
+#2 /var/www/staytogether.ru/protected/controllers/PetController.php(43): CatFind->findPet()
+#3 /var/www/staytogether.ru/framework/web/actions/CInlineAction.php(49): PetController->actionSearch()
+#4 /var/www/staytogether.ru/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /var/www/staytogether.ru/framework/web/CController.php(286): PetController->runAction()
+#6 /var/www/staytogether.ru/framework/web/CController.php(265): PetController->runActionWithFilters()
+#7 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): PetController->run()
+#8 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/staytogether.ru/index.php(24): CWebApplication->run()
+REQUEST_URI=/api/pet/search
+2014/12/05 09:58:03 [error] [php] Creating default object from empty value (/var/www/staytogether.ru/protected/components/PetBehaviors/CatFindBehavior.php:26)
+Stack trace:
+#0 /var/www/staytogether.ru/framework/db/ar/CActiveRecord.php(227): CatFind->__call()
+#1 /var/www/staytogether.ru/protected/controllers/PetController.php(43): CatFind->__call()
+#2 /var/www/staytogether.ru/protected/controllers/PetController.php(43): CatFind->findPet()
+#3 /var/www/staytogether.ru/framework/web/actions/CInlineAction.php(49): PetController->actionSearch()
+#4 /var/www/staytogether.ru/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /var/www/staytogether.ru/framework/web/CController.php(286): PetController->runAction()
+#6 /var/www/staytogether.ru/framework/web/CController.php(265): PetController->runActionWithFilters()
+#7 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): PetController->run()
+#8 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/staytogether.ru/index.php(24): CWebApplication->run()
+REQUEST_URI=/api/pet/search
+2014/12/05 10:16:37 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42P01]: Undefined table: 7 ERROR:  missing FROM-clause entry for table "figured"
+LINE 2: ...r(t.age) as age_min, upper(t.age) as age_max, min(figured.va...
+                                                             ^. The SQL statement executed was: SELECT row_to_json(x)
+FROM (SELECT t.id, t.sigma, t.sex, t.special, t.advanced, t.date, t.date_create, t.date_update, t.author,  min(fur.value) as fur, min(type_color.value) as type_color, min(eyes.value) as eyes, array_agg(breed.value) as breeds,  ST_X(CAST(location as geometry)) as lat, ST_Y(CAST(location as geometry)) as lng, pf_get_images(t.id) as images,  lower(t.age) as age_min, upper(t.age) as age_max, min(figured.value) as figured FROM "data_cat_find" "t" join lookup_pet_fur fur on (t.fur = fur.id) join lookup_pet_eyes eyes on (t.eyes = eyes.id) join lookup_cat_type_color type_color on (t.type_color = type_color.id) join map_cat_breed map on (t.id = map.id_cat) join lookup_cat_breed breed on (map.id_breed = breed.id)  WHERE (((ST_DWithin(location, ST_GeomFromText('POINT(61.595142106344 55.211640941732)',4326), :radius)) AND (sex = :sex)) AND (date BETWEEN :dateStart AND :dateEnd)) AND (0.5 <@ age) GROUP BY t.id) as x. Bound with :radius=1321, :sex='мужской', :dateEnd='2015-12-05', :dateStart='2014-12-05'.
+2014/12/05 10:16:37 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42P01]: Undefined table: 7 ERROR:  missing FROM-clause entry for table "figured"
+LINE 2: ...r(t.age) as age_min, upper(t.age) as age_max, min(figured.va...
+                                                             ^. The SQL statement executed was: SELECT row_to_json(x)
+FROM (SELECT t.id, t.sigma, t.sex, t.special, t.advanced, t.date, t.date_create, t.date_update, t.author,  min(fur.value) as fur, min(type_color.value) as type_color, min(eyes.value) as eyes, array_agg(breed.value) as breeds,  ST_X(CAST(location as geometry)) as lat, ST_Y(CAST(location as geometry)) as lng, pf_get_images(t.id) as images,  lower(t.age) as age_min, upper(t.age) as age_max, min(figured.value) as figured FROM "data_cat_find" "t" join lookup_pet_fur fur on (t.fur = fur.id) join lookup_pet_eyes eyes on (t.eyes = eyes.id) join lookup_cat_type_color type_color on (t.type_color = type_color.id) join map_cat_breed map on (t.id = map.id_cat) join lookup_cat_breed breed on (map.id_breed = breed.id)  WHERE (((ST_DWithin(location, ST_GeomFromText('POINT(61.595142106344 55.211640941732)',4326), :radius)) AND (sex = :sex)) AND (date BETWEEN :dateStart AND :dateEnd)) AND (0.5 <@ age) GROUP BY t.id) as x. Bound with :radius=1321, :sex='мужской', :dateEnd='2015-12-05', :dateStart='2014-12-05'' in /var/www/staytogether.ru/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /var/www/staytogether.ru/framework/db/CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', 3, Array)
+#1 /var/www/staytogether.ru/protected/components/PetBehaviors/CatFindBehavior.php(34): CDbCommand->queryAll(false)
+#2 [internal function]: CatFindBehavior->findPet(Array)
+#3 /var/www/staytogether.ru/framework/base/CComponent.php(261): call_user_func_array(Array, Array)
+#4 /var/www/staytogether.ru/framework/db/ar/CActiveRecord.php(227): CComponent->__call('findPet', Array)
+#5 /var/www/staytogether.ru/protected/controllers/PetController.php(43): CActiveRecord->__call('findPet', Array)
+#6 /var/www/staytogether.ru/protected/controllers/PetController.php(43): CatFind->findPet(Array)
+#7 /var/www/staytogether.ru/framework/web/actions/CInlineAction.php(49): PetController->actionSearch()
+#8 /var/www/staytogether.ru/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#9 /var/www/staytogether.ru/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#10 /var/www/staytogether.ru/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): CController->run('search')
+#12 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('pet/search')
+#13 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#15 {main}
+REQUEST_URI=/api/pet/search
+HTTP_REFERER=http://staytogether.ru/
+---
+2014/12/05 10:19:12 [error] [exception.CException] exception 'CException' with message 'CatFindBehavior and its behaviors do not have a method or closure named "decodeResult".' in /var/www/staytogether.ru/framework/base/CComponent.php:266
+Stack trace:
+#0 /var/www/staytogether.ru/protected/components/PetBehaviors/CatFindBehavior.php(31): CComponent->__call('decodeResult', Array)
+#1 /var/www/staytogether.ru/protected/components/PetBehaviors/CatFindBehavior.php(31): CatFindBehavior->decodeResult(Array)
+#2 [internal function]: CatFindBehavior->findPet(Array)
+#3 /var/www/staytogether.ru/framework/base/CComponent.php(261): call_user_func_array(Array, Array)
+#4 /var/www/staytogether.ru/framework/db/ar/CActiveRecord.php(227): CComponent->__call('findPet', Array)
+#5 /var/www/staytogether.ru/protected/controllers/PetController.php(43): CActiveRecord->__call('findPet', Array)
+#6 /var/www/staytogether.ru/protected/controllers/PetController.php(43): CatFind->findPet(Array)
+#7 /var/www/staytogether.ru/framework/web/actions/CInlineAction.php(49): PetController->actionSearch()
+#8 /var/www/staytogether.ru/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#9 /var/www/staytogether.ru/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#10 /var/www/staytogether.ru/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): CController->run('search')
+#12 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('pet/search')
+#13 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#15 {main}
+REQUEST_URI=/api/pet/search
+HTTP_REFERER=http://staytogether.ru/
+---
+2014/12/05 10:42:03 [error] [exception.CException] exception 'CException' with message 'CDbCommand and its behaviors do not have a method or closure named "withParams".' in /var/www/staytogether.ru/framework/base/CComponent.php:266
+Stack trace:
+#0 /var/www/staytogether.ru/protected/components/PetBehaviors/CatFindBehavior.php(22): CComponent->__call('withParams', Array)
+#1 /var/www/staytogether.ru/protected/components/PetBehaviors/CatFindBehavior.php(22): CDbCommand->withParams(Array)
+#2 [internal function]: CatFindBehavior->findPet(Array)
+#3 /var/www/staytogether.ru/framework/base/CComponent.php(261): call_user_func_array(Array, Array)
+#4 /var/www/staytogether.ru/framework/db/ar/CActiveRecord.php(227): CComponent->__call('findPet', Array)
+#5 /var/www/staytogether.ru/protected/controllers/PetController.php(43): CActiveRecord->__call('findPet', Array)
+#6 /var/www/staytogether.ru/protected/controllers/PetController.php(43): CatFind->findPet(Array)
+#7 /var/www/staytogether.ru/framework/web/actions/CInlineAction.php(49): PetController->actionSearch()
+#8 /var/www/staytogether.ru/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#9 /var/www/staytogether.ru/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#10 /var/www/staytogether.ru/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): CController->run('search')
+#12 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('pet/search')
+#13 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#15 {main}
+REQUEST_URI=/api/pet/search
+HTTP_REFERER=http://staytogether.ru/
+---
+2014/12/05 10:49:22 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42803]: Grouping error: 7 ERROR:  column "t.id" must appear in the GROUP BY clause or be used in an aggregate function
+LINE 2: FROM (SELECT t.id, t.sigma, t.sex, t.special, t.advanced, t....
+                     ^. The SQL statement executed was: SELECT row_to_json(x)
+FROM (SELECT t.id, t.sigma, t.sex, t.special, t.advanced, t.date, t.date_create, t.date_update, t.author,  min(fur.value) as fur, min(type_color.value) as type_color, min(eyes.value) as eyes, array_agg(breed.value) as breeds,  ST_X(CAST(location as geometry)) as lat, ST_Y(CAST(location as geometry)) as lng, pf_get_images(t.id) as images,  lower(t.age) as age_min, upper(t.age) as age_max FROM "data_cat_find" "t" join lookup_pet_fur fur on (t.fur = fur.id) join lookup_pet_eyes eyes on (t.eyes = eyes.id) join lookup_cat_type_color type_color on (t.type_color = type_color.id) join map_cat_breed map on (t.id = map.id_cat) join lookup_cat_breed breed on (map.id_breed = breed.id)  WHERE t.id = :id) as x. Bound with id='6000079'.
+2014/12/06 03:35:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2014/12/06 03:35:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2014/12/06 03:36:03 [error] [exception.CDbException] exception 'CDbException' with message 'The DB query must contain the "from" portion.' in /var/www/staytogether.ru/framework/db/CDbCommand.php:566
+Stack trace:
+#0 /var/www/staytogether.ru/framework/db/CDbCommand.php(160): CDbCommand->buildQuery(Array)
+#1 /var/www/staytogether.ru/framework/db/CDbCommand.php(216): CDbCommand->getText()
+#2 /var/www/staytogether.ru/framework/db/CDbCommand.php(247): CDbCommand->prepare()
+#3 /var/www/staytogether.ru/protected/components/PetBehaviors/BasePetBehavior.php(205): CDbCommand->bindParam(':radius', 1777, 1)
+#4 /var/www/staytogether.ru/protected/components/PetBehaviors/CatFindBehavior.php(64): BasePetBehavior->setSearchParams(Array)
+#5 /var/www/staytogether.ru/protected/components/PetBehaviors/CatFindBehavior.php(9): CatFindBehavior->setSearchParams(Array)
+#6 [internal function]: CatFindBehavior->findPet(Array)
+#7 /var/www/staytogether.ru/framework/base/CComponent.php(261): call_user_func_array(Array, Array)
+#8 /var/www/staytogether.ru/framework/db/ar/CActiveRecord.php(227): CComponent->__call('findPet', Array)
+#9 /var/www/staytogether.ru/protected/controllers/PetController.php(43): CActiveRecord->__call('findPet', Array)
+#10 /var/www/staytogether.ru/protected/controllers/PetController.php(43): CatFind->findPet(Array)
+#11 /var/www/staytogether.ru/framework/web/actions/CInlineAction.php(49): PetController->actionSearch()
+#12 /var/www/staytogether.ru/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#13 /var/www/staytogether.ru/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#14 /var/www/staytogether.ru/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): CController->run('search')
+#16 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('pet/search')
+#17 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#18 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#19 {main}
+REQUEST_URI=/api/pet/search
+HTTP_REFERER=http://staytogether.ru/
+---
+2014/12/06 03:36:15 [error] [exception.CDbException] exception 'CDbException' with message 'The DB query must contain the "from" portion.' in /var/www/staytogether.ru/framework/db/CDbCommand.php:566
+Stack trace:
+#0 /var/www/staytogether.ru/framework/db/CDbCommand.php(160): CDbCommand->buildQuery(Array)
+#1 /var/www/staytogether.ru/framework/db/CDbCommand.php(216): CDbCommand->getText()
+#2 /var/www/staytogether.ru/framework/db/CDbCommand.php(247): CDbCommand->prepare()
+#3 /var/www/staytogether.ru/protected/components/PetBehaviors/BasePetBehavior.php(205): CDbCommand->bindParam(':radius', 1777, 1)
+#4 /var/www/staytogether.ru/protected/components/PetBehaviors/CatFindBehavior.php(64): BasePetBehavior->setSearchParams(Array)
+#5 /var/www/staytogether.ru/protected/components/PetBehaviors/CatFindBehavior.php(9): CatFindBehavior->setSearchParams(Array)
+#6 [internal function]: CatFindBehavior->findPet(Array)
+#7 /var/www/staytogether.ru/framework/base/CComponent.php(261): call_user_func_array(Array, Array)
+#8 /var/www/staytogether.ru/framework/db/ar/CActiveRecord.php(227): CComponent->__call('findPet', Array)
+#9 /var/www/staytogether.ru/protected/controllers/PetController.php(43): CActiveRecord->__call('findPet', Array)
+#10 /var/www/staytogether.ru/protected/controllers/PetController.php(43): CatFind->findPet(Array)
+#11 /var/www/staytogether.ru/framework/web/actions/CInlineAction.php(49): PetController->actionSearch()
+#12 /var/www/staytogether.ru/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#13 /var/www/staytogether.ru/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#14 /var/www/staytogether.ru/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): CController->run('search')
+#16 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('pet/search')
+#17 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#18 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#19 {main}
+REQUEST_URI=/api/pet/search
+HTTP_REFERER=http://staytogether.ru/
+---
+2014/12/07 02:41:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2014/12/07 02:47:24 [error] [exception.CException] exception 'CException' with message 'Поля 'Тип питомца' и 'Статус питомца' обязательны для заполнения' in /var/www/staytogether.ru/protected/models/Pet.php:202
+Stack trace:
+#0 /var/www/staytogether.ru/protected/controllers/PetController.php(41): Pet->create(Array)
+#1 /var/www/staytogether.ru/framework/web/actions/CInlineAction.php(49): PetController->actionSearch()
+#2 /var/www/staytogether.ru/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#3 /var/www/staytogether.ru/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#4 /var/www/staytogether.ru/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): CController->run('search')
+#6 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('pet/search')
+#7 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#8 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#9 {main}
+REQUEST_URI=/api/pet/search
+HTTP_REFERER=http://staytogether.ru/
+---
+2014/12/07 03:30:30 [error] [php] Undefined index: sex (/var/www/staytogether.ru/protected/components/PetBehaviors/CatFindBehavior.php:9)
+Stack trace:
+#0 /var/www/staytogether.ru/framework/db/ar/CActiveRecord.php(227): CatFind->__call()
+#1 /var/www/staytogether.ru/protected/controllers/PetController.php(43): CatFind->__call()
+#2 /var/www/staytogether.ru/protected/controllers/PetController.php(43): CatFind->findPet()
+#3 /var/www/staytogether.ru/framework/web/actions/CInlineAction.php(49): PetController->actionSearch()
+#4 /var/www/staytogether.ru/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /var/www/staytogether.ru/framework/web/CController.php(286): PetController->runAction()
+#6 /var/www/staytogether.ru/framework/web/CController.php(265): PetController->runActionWithFilters()
+#7 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): PetController->run()
+#8 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/staytogether.ru/index.php(24): CWebApplication->run()
+REQUEST_URI=/api/pet/search
+2014/12/07 06:57:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2014/12/07 07:07:16 [error] [php] json_decode() expects parameter 1 to be string, array given (/var/www/staytogether.ru/framework/web/helpers/CJSON.php:327)
+Stack trace:
+#0 unknown(0): CatFindBehavior->getPetById()
+#1 /var/www/staytogether.ru/framework/base/CComponent.php(261): call_user_func_array()
+#2 /var/www/staytogether.ru/framework/db/ar/CActiveRecord.php(227): CatFind->__call()
+#3 /var/www/staytogether.ru/protected/controllers/PetController.php(116): CatFind->__call()
+#4 /var/www/staytogether.ru/protected/controllers/PetController.php(116): CatFind->getPetById()
+#5 unknown(0): PetController->actionView()
+#6 /var/www/staytogether.ru/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs()
+#7 /var/www/staytogether.ru/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#8 /var/www/staytogether.ru/framework/web/CController.php(308): CInlineAction->runWithParams()
+#9 /var/www/staytogether.ru/framework/web/CController.php(286): PetController->runAction()
+#10 /var/www/staytogether.ru/framework/web/CController.php(265): PetController->runActionWithFilters()
+#11 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): PetController->run()
+#12 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#13 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /var/www/staytogether.ru/index.php(24): CWebApplication->run()
+REQUEST_URI=/api/pet?id=6000079&status=find&type=CAT
+2014/12/07 10:58:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2014/12/07 10:58:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2014/12/07 11:00:02 [warning] [application] Failed to set unsafe attribute "breeds" of "DogLost".
+2014/12/07 11:03:43 [warning] [application] Failed to set unsafe attribute "breeds" of "DogFind".
+2014/12/07 11:04:33 [warning] [application] Failed to set unsafe attribute "breeds" of "CatLost".
+2014/12/07 11:05:08 [warning] [application] Failed to set unsafe attribute "breeds" of "CatFind".
+2014/12/07 11:05:08 [error] [php] Array to string conversion (/var/www/staytogether.ru/framework/db/schema/CDbColumnSchema.php:146)
+Stack trace:
+#0 /var/www/staytogether.ru/framework/db/ar/CActiveRecord.php(806): CatFind->insert()
+#1 /var/www/staytogether.ru/protected/controllers/PetController.php(74): CatFind->save()
+#2 /var/www/staytogether.ru/framework/web/actions/CInlineAction.php(49): PetController->actionNew()
+#3 /var/www/staytogether.ru/framework/web/CController.php(308): CInlineAction->runWithParams()
+#4 /var/www/staytogether.ru/framework/web/CController.php(286): PetController->runAction()
+#5 /var/www/staytogether.ru/framework/web/CController.php(265): PetController->runActionWithFilters()
+#6 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): PetController->run()
+#7 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#8 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#9 /var/www/staytogether.ru/index.php(24): CWebApplication->run()
+REQUEST_URI=/api/pet
+2014/12/07 11:15:06 [warning] [application] Failed to set unsafe attribute "breeds" of "DogLost".
+2014/12/07 11:16:20 [warning] [application] Failed to set unsafe attribute "breeds" of "DogLost".
+2014/12/07 11:16:20 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42804]: Datatype mismatch: 7 ERROR:  column "age" is of type numeric but expression is of type numrange
+LINE 1: ...etSRID(ST_MakePoint('61.4044', '55.1590'), 4326), '[0, 0]'::...
+                                                             ^
+HINT:  You will need to rewrite or cast the expression.. The SQL statement executed was: INSERT INTO "data_dog_lost" ("status", "date", "fur", "eyes", "sex", "location", "age", "name", "type_color", "figured", "colors", "author", "id") VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, ST_SetSRID(ST_MakePoint(:lat, :lng), 4326), '[0, 0]'::numrange, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10). Bound with :yp0=1, :yp1='2014-12-07', :yp2=3, :yp3=3, :yp4='женский', :lat='61.4044', :lng='55.1590', :yp5='rews', :yp6=3, :yp7=2, :yp8='{color1, color2}', :yp9=1, :yp10=6000085.
+2014/12/07 11:19:48 [warning] [application] Failed to set unsafe attribute "breeds" of "DogLost".
+2014/12/07 11:20:55 [warning] [application] Failed to set unsafe attribute "breeds" of "DogFind".
+2014/12/07 11:21:48 [warning] [application] Failed to set unsafe attribute "breeds" of "CatFind".
+2014/12/07 11:22:37 [warning] [application] Failed to set unsafe attribute "breeds" of "CatLost".
+2014/12/07 11:23:46 [warning] [application] Failed to set unsafe attribute "breeds" of "CatLost".
+2014/12/07 11:25:20 [error] [exception.CException] exception 'CException' with message 'CatFind and its behaviors do not have a method or closure named "findPet".' in /var/www/staytogether.ru/framework/base/CComponent.php:266
+Stack trace:
+#0 /var/www/staytogether.ru/framework/db/ar/CActiveRecord.php(227): CComponent->__call('findPet', Array)
+#1 /var/www/staytogether.ru/protected/controllers/PetController.php(43): CActiveRecord->__call('findPet', Array)
+#2 /var/www/staytogether.ru/protected/controllers/PetController.php(43): CatFind->findPet(Array)
+#3 /var/www/staytogether.ru/framework/web/actions/CInlineAction.php(49): PetController->actionSearch()
+#4 /var/www/staytogether.ru/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /var/www/staytogether.ru/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#6 /var/www/staytogether.ru/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): CController->run('search')
+#8 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('pet/search')
+#9 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#11 {main}
+REQUEST_URI=/api/pet/search
+HTTP_REFERER=http://staytogether.ru/
+---
+2014/12/07 11:29:01 [warning] [application] Failed to set unsafe attribute "breeds" of "CatFind".
+2014/12/08 06:04:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2014/12/08 08:59:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2014/12/08 09:00:50 [error] [php] Array to string conversion (/var/www/staytogether.ru/protected/controllers/PetController.php:47)
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CController.php(286): PetController->runAction()
+#1 /var/www/staytogether.ru/framework/web/CController.php(265): PetController->runActionWithFilters()
+#2 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): PetController->run()
+#3 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /var/www/staytogether.ru/index.php(24): CWebApplication->run()
+REQUEST_URI=/api/pet/search
+2014/12/08 09:01:02 [error] [php] Array to string conversion (/var/www/staytogether.ru/protected/controllers/PetController.php:47)
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CController.php(286): PetController->runAction()
+#1 /var/www/staytogether.ru/framework/web/CController.php(265): PetController->runActionWithFilters()
+#2 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): PetController->run()
+#3 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /var/www/staytogether.ru/index.php(24): CWebApplication->run()
+REQUEST_URI=/api/pet/search
+2014/12/08 09:03:25 [error] [php] Array to string conversion (/var/www/staytogether.ru/protected/controllers/PetController.php:47)
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CController.php(286): PetController->runAction()
+#1 /var/www/staytogether.ru/framework/web/CController.php(265): PetController->runActionWithFilters()
+#2 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): PetController->run()
+#3 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /var/www/staytogether.ru/index.php(24): CWebApplication->run()
+REQUEST_URI=/api/pet/search
+2014/12/09 12:05:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2014/12/09 12:10:28 [warning] [application] Failed to set unsafe attribute "breeds" of "CatFind".
+2014/12/09 12:11:33 [warning] [application] Failed to set unsafe attribute "breeds" of "DogLost".
+2014/12/09 12:17:50 [error] [exception.CException] exception 'CException' with message 'Поля 'Тип питомца' и 'Статус питомца' обязательны для заполнения' in /var/www/staytogether.ru/protected/models/Pet.php:220
+Stack trace:
+#0 /var/www/staytogether.ru/protected/controllers/PetController.php(41): Pet->create(Array)
+#1 /var/www/staytogether.ru/framework/web/actions/CInlineAction.php(49): PetController->actionSearch()
+#2 /var/www/staytogether.ru/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#3 /var/www/staytogether.ru/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#4 /var/www/staytogether.ru/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): CController->run('search')
+#6 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('pet/search')
+#7 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#8 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#9 {main}
+REQUEST_URI=/api/pet/search
+HTTP_REFERER=http://staytogether.ru/
+---
+2014/12/09 12:18:01 [error] [exception.CException] exception 'CException' with message 'Поля 'Тип питомца' и 'Статус питомца' обязательны для заполнения' in /var/www/staytogether.ru/protected/models/Pet.php:220
+Stack trace:
+#0 /var/www/staytogether.ru/protected/controllers/PetController.php(41): Pet->create(Array)
+#1 /var/www/staytogether.ru/framework/web/actions/CInlineAction.php(49): PetController->actionSearch()
+#2 /var/www/staytogether.ru/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#3 /var/www/staytogether.ru/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#4 /var/www/staytogether.ru/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): CController->run('search')
+#6 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('pet/search')
+#7 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#8 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#9 {main}
+REQUEST_URI=/api/pet/search
+HTTP_REFERER=http://staytogether.ru/
+---
+2014/12/10 00:50:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2014/12/10 00:57:37 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42601]: Syntax error: 7 ERROR:  syntax error at or near "("
+LINE 2: ...olor, min(eyes.value) as eyes, t.colors  array_agg(breed.val...
+                                                             ^. The SQL statement executed was: SELECT array_to_json(array_agg(row_to_json(x)))
+FROM (SELECT t.id, t.sigma, t.sex, t.special, t.advanced, t.date, t.date_create, t.date_update, t.author,  min(fur.value) as fur, min(type_color.value) as type_color, min(eyes.value) as eyes, t.colors  array_agg(breed.value) as breeds, pf_get_images(t.id) as images, min(figured.value) as figured, t.name, t.age, ST_X(CAST(location as geometry)) as lat, ST_Y(CAST(location as geometry)) as lng FROM "data_dog_lost" "t" join lookup_pet_fur fur on (t.fur = fur.id) join lookup_pet_eyes eyes on (t.eyes = eyes.id) join lookup_dog_type_color type_color on (t.type_color = type_color.id) join map_dog_breed map on (t.id = map.id_dog) join lookup_dog_breed breed on (map.id_breed = breed.id) join lookup_dog_type_figured figured on (t.figured = figured.id)  WHERE (((sex = :sex) AND (date BETWEEN :dateEnd AND :dateStart)) AND (age <@ '[0.1, 1.2]'::numrange)) AND (ST_DWithin(location, ST_GeomFromText('POINT(61.404903447113 55.15576539421)',4326), :radius)) GROUP BY t.id) as x. Bound with :sex='мужской', :dateEnd='2013-12-10', :dateStart='2014-12-10', :radius=1793.
+2014/12/10 01:19:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2014/12/10 01:20:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2014/12/10 05:10:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2014/12/10 11:11:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2014/12/10 11:12:11 [error] [php] Array to string conversion (/var/www/staytogether.ru/protected/widgets/RestJSONOutput.php:72)
+Stack trace:
+#0 /var/www/staytogether.ru/protected/views/system/output.php(11): PetController->widget()
+#1 /var/www/staytogether.ru/framework/web/CBaseController.php(126): require()
+#2 /var/www/staytogether.ru/framework/web/CBaseController.php(95): PetController->renderInternal()
+#3 /var/www/staytogether.ru/framework/web/CController.php(869): PetController->renderFile()
+#4 /var/www/staytogether.ru/protected/components/RController.php(27): PetController->renderPartial()
+#5 /var/www/staytogether.ru/protected/controllers/PetController.php(128): PetController->renderJson()
+#6 unknown(0): PetController->actionView()
+#7 /var/www/staytogether.ru/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs()
+#8 /var/www/staytogether.ru/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#9 /var/www/staytogether.ru/framework/web/CController.php(308): CInlineAction->runWithParams()
+#10 /var/www/staytogether.ru/framework/web/CController.php(286): PetController->runAction()
+#11 /var/www/staytogether.ru/framework/web/CController.php(265): PetController->runActionWithFilters()
+#12 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): PetController->run()
+#13 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#14 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /var/www/staytogether.ru/index.php(24): CWebApplication->run()
+REQUEST_URI=/api/pet?id=6000079&status=find&type=cat
+2014/12/10 11:16:30 [error] [php] Array to string conversion (/var/www/staytogether.ru/protected/widgets/RestJSONOutput.php:72)
+Stack trace:
+#0 /var/www/staytogether.ru/protected/views/system/output.php(11): PetController->widget()
+#1 /var/www/staytogether.ru/framework/web/CBaseController.php(126): require()
+#2 /var/www/staytogether.ru/framework/web/CBaseController.php(95): PetController->renderInternal()
+#3 /var/www/staytogether.ru/framework/web/CController.php(869): PetController->renderFile()
+#4 /var/www/staytogether.ru/protected/components/RController.php(27): PetController->renderPartial()
+#5 /var/www/staytogether.ru/protected/controllers/PetController.php(128): PetController->renderJson()
+#6 unknown(0): PetController->actionView()
+#7 /var/www/staytogether.ru/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs()
+#8 /var/www/staytogether.ru/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#9 /var/www/staytogether.ru/framework/web/CController.php(308): CInlineAction->runWithParams()
+#10 /var/www/staytogether.ru/framework/web/CController.php(286): PetController->runAction()
+#11 /var/www/staytogether.ru/framework/web/CController.php(265): PetController->runActionWithFilters()
+#12 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): PetController->run()
+#13 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#14 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /var/www/staytogether.ru/index.php(24): CWebApplication->run()
+REQUEST_URI=/api/pet?id=6000079&status=find&type=cat
+2014/12/11 02:36:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2014/12/26 12:48:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2014/12/26 13:48:29 [error] [php] Undefined index: path (/var/www/staytogether.ru/protected/components/UploadedImage.php:82)
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /var/www/staytogether.ru/framework/web/CController.php(286): FileController->runAction()
+#2 /var/www/staytogether.ru/framework/web/CController.php(265): FileController->runActionWithFilters()
+#3 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): FileController->run()
+#4 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#6 /var/www/staytogether.ru/index.php(24): CWebApplication->run()
+REQUEST_URI=/api/file
+2014/12/26 13:50:29 [error] [php] Undefined index: path (/var/www/staytogether.ru/protected/controllers/FileController.php:84)
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CController.php(286): FileController->runAction()
+#1 /var/www/staytogether.ru/framework/web/CController.php(265): FileController->runActionWithFilters()
+#2 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): FileController->run()
+#3 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /var/www/staytogether.ru/index.php(24): CWebApplication->run()
+REQUEST_URI=/api/file
+2014/12/26 13:50:29 [error] [php] Undefined index: path (/var/www/staytogether.ru/protected/controllers/FileController.php:84)
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CController.php(286): FileController->runAction()
+#1 /var/www/staytogether.ru/framework/web/CController.php(265): FileController->runActionWithFilters()
+#2 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): FileController->run()
+#3 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /var/www/staytogether.ru/index.php(24): CWebApplication->run()
+REQUEST_URI=/api/file
+2014/12/26 13:50:35 [error] [php] Undefined index: path (/var/www/staytogether.ru/protected/controllers/FileController.php:84)
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CController.php(286): FileController->runAction()
+#1 /var/www/staytogether.ru/framework/web/CController.php(265): FileController->runActionWithFilters()
+#2 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): FileController->run()
+#3 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /var/www/staytogether.ru/index.php(24): CWebApplication->run()
+REQUEST_URI=/api/file
+2014/12/26 22:17:57 [warning] [application] Failed to set unsafe attribute "breeds" of "CatLost".
+2014/12/26 22:28:02 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /var/www/staytogether.ru/framework/web/CController.php:336
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /var/www/staytogether.ru/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#2 /var/www/staytogether.ru/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): CController->run('view')
+#4 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('pet/view')
+#5 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#6 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#7 {main}
+REQUEST_URI=/api/pet?
+HTTP_REFERER=http://staytogether.ru/
+---
+2014/12/26 22:29:48 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /var/www/staytogether.ru/framework/web/CController.php:336
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /var/www/staytogether.ru/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#2 /var/www/staytogether.ru/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): CController->run('view')
+#4 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('pet/view')
+#5 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#6 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#7 {main}
+REQUEST_URI=/api/pet?
+HTTP_REFERER=http://staytogether.ru/
+---
+2014/12/26 22:32:39 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /var/www/staytogether.ru/framework/web/CController.php:336
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /var/www/staytogether.ru/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#2 /var/www/staytogether.ru/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): CController->run('view')
+#4 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('pet/view')
+#5 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#6 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#7 {main}
+REQUEST_URI=/api/pet?
+HTTP_REFERER=http://staytogether.ru/
+---
+2014/12/27 18:48:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2014/12/28 17:48:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2014/12/29 21:10:49 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /var/www/staytogether.ru/framework/web/CController.php:336
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /var/www/staytogether.ru/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#2 /var/www/staytogether.ru/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): CController->run('view')
+#4 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('pet/view')
+#5 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#6 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#7 {main}
+REQUEST_URI=/api/pet?id=6000081&status=lost&type=dog
+HTTP_REFERER=http://staytogether.ru/
+---
+2014/12/30 14:48:22 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /var/www/staytogether.ru/framework/web/CController.php:336
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /var/www/staytogether.ru/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#2 /var/www/staytogether.ru/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): CController->run('view')
+#4 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('pet/view')
+#5 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#6 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#7 {main}
+REQUEST_URI=/api/pet?id=6000081
+HTTP_REFERER=http://staytogether.ru/
+---
+2014/12/30 15:02:21 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /var/www/staytogether.ru/framework/web/CController.php:336
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /var/www/staytogether.ru/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#2 /var/www/staytogether.ru/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): CController->run('view')
+#4 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('pet/view')
+#5 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#6 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#7 {main}
+REQUEST_URI=/api/pet?id=83
+HTTP_REFERER=http://staytogether.ru/
+---
+2014/12/30 15:02:32 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /var/www/staytogether.ru/framework/web/CController.php:336
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /var/www/staytogether.ru/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#2 /var/www/staytogether.ru/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): CController->run('view')
+#4 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('pet/view')
+#5 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#6 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#7 {main}
+REQUEST_URI=/api/pet?id=83
+---
+2014/12/31 14:03:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2015/01/02 18:05:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2015/01/03 19:02:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/index".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('site/index')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/site/index
+HTTP_REFERER=http://staytogether.ru/
+---
+2015/01/03 19:04:44 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /var/www/staytogether.ru/framework/web/CController.php:336
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /var/www/staytogether.ru/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#2 /var/www/staytogether.ru/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): CController->run('view')
+#4 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('pet/view')
+#5 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#6 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#7 {main}
+REQUEST_URI=/api/pet?id=
+HTTP_REFERER=http://staytogether.ru/
+---
+2015/01/06 21:21:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2015/01/06 21:21:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2015/01/06 23:16:25 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /var/www/staytogether.ru/framework/web/CController.php:336
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /var/www/staytogether.ru/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#2 /var/www/staytogether.ru/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): CController->run('view')
+#4 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('pet/view')
+#5 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#6 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#7 {main}
+REQUEST_URI=/api/pet?id=6000081
+HTTP_REFERER=http://staytogether.ru/
+---
+2015/01/07 12:49:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2015/01/07 21:25:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2015/01/08 15:04:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2015/01/08 15:45:06 [error] [php] Undefined index: location (/var/www/staytogether.ru/protected/components/PetBehaviors/DogLostBehavior.php:113)
+Stack trace:
+#0 unknown(0): DogLostBehavior->findPetByLocation()
+#1 /var/www/staytogether.ru/framework/base/CComponent.php(261): call_user_func_array()
+#2 /var/www/staytogether.ru/framework/db/ar/CActiveRecord.php(227): DogLost->__call()
+#3 /var/www/staytogether.ru/protected/controllers/PetController.php(44): DogLost->__call()
+#4 /var/www/staytogether.ru/protected/controllers/PetController.php(44): DogLost->findPetByLocation()
+#5 /var/www/staytogether.ru/framework/web/actions/CInlineAction.php(49): PetController->actionSearch()
+#6 /var/www/staytogether.ru/framework/web/CController.php(308): CInlineAction->runWithParams()
+#7 /var/www/staytogether.ru/framework/web/CController.php(286): PetController->runAction()
+#8 /var/www/staytogether.ru/framework/web/CController.php(265): PetController->runActionWithFilters()
+#9 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): PetController->run()
+#10 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#11 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /var/www/staytogether.ru/index.php(24): CWebApplication->run()
+REQUEST_URI=/api/pet/search
+2015/01/08 17:36:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "api/pet/search".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('api/pet/search')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/api/pet/search
+---
+2015/01/08 18:43:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "api/pet/search".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('api/pet/search')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/api/pet/search
+---
+2015/01/08 21:00:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2015/01/08 21:01:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "api/pet/search".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('api/pet/search')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/api/pet/search?ageMax=1.6&ageMin=0.1&date=08-01-2015&lat=61.40741399475097&lng=55.157018623558564&pet=2&radius=1119&sex=%D0%BC%D1%83%D0%B6%D1%81%D0%BA%D0%BE%D0%B9&status=2
+HTTP_REFERER=http://staytogether.ru/
+---
+2015/01/08 21:07:31 [error] [php] Missing argument 1 for CHttpRequest::getParam(), called in /var/www/staytogether.ru/protected/controllers/PetController.php on line 41 and defined (/var/www/staytogether.ru/framework/web/CHttpRequest.php:169)
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /var/www/staytogether.ru/framework/web/CController.php(286): PetController->runAction()
+#2 /var/www/staytogether.ru/framework/web/CController.php(265): PetController->runActionWithFilters()
+#3 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): PetController->run()
+#4 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#6 /var/www/staytogether.ru/index.php(24): CWebApplication->run()
+REQUEST_URI=/api/pet/search?ageMax=1.7&ageMin=0.1&date=08-01-2015&lat=61.403953248053526&lng=55.15367939929139&pet=2&radius=1119&sex=%D0%BC%D1%83%D0%B6%D1%81%D0%BA%D0%BE%D0%B9&status=2
+2015/01/09 16:11:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2015/01/10 19:08:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2015/01/11 19:11:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2015/01/12 09:53:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2015/01/12 19:03:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ng-search/app/js/services/pf-pagination.js".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('ng-search/app/j...')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/ng-search/app/js/services/pf-pagination.js
+HTTP_REFERER=http://staytogether.ru/
+---
+2015/01/12 19:03:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ng-search/app/js/directives/pf-list.js".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('ng-search/app/j...')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/ng-search/app/js/directives/pf-list.js
+HTTP_REFERER=http://staytogether.ru/
+---
+2015/01/12 19:03:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ng-search/app/js/services/pf-pet-storage.js".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('ng-search/app/j...')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/ng-search/app/js/services/pf-pet-storage.js
+HTTP_REFERER=http://staytogether.ru/
+---
+2015/01/12 19:03:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ng-search/app/js/filters/start-form.js".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('ng-search/app/j...')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/ng-search/app/js/filters/start-form.js
+HTTP_REFERER=http://staytogether.ru/
+---
+2015/01/12 19:03:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ng-search/app/js/directives/pf-list-gallery.js".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('ng-search/app/j...')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/ng-search/app/js/directives/pf-list-gallery.js
+HTTP_REFERER=http://staytogether.ru/
+---
+2015/01/12 19:03:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ng-search/app/js/services/pf-pagination.js".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('ng-search/app/j...')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/ng-search/app/js/services/pf-pagination.js
+HTTP_REFERER=http://staytogether.ru/
+---
+2015/01/12 19:03:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ng-search/app/js/filters/start-form.js".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('ng-search/app/j...')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/ng-search/app/js/filters/start-form.js
+HTTP_REFERER=http://staytogether.ru/
+---
+2015/01/12 19:03:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ng-search/app/js/services/pf-pet-storage.js".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('ng-search/app/j...')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/ng-search/app/js/services/pf-pet-storage.js
+HTTP_REFERER=http://staytogether.ru/
+---
+2015/01/12 19:03:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ng-search/app/js/directives/pf-list.js".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('ng-search/app/j...')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/ng-search/app/js/directives/pf-list.js
+HTTP_REFERER=http://staytogether.ru/
+---
+2015/01/12 19:03:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ng-search/app/js/directives/pf-list-gallery.js".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('ng-search/app/j...')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/ng-search/app/js/directives/pf-list-gallery.js
+HTTP_REFERER=http://staytogether.ru/
+---
+2015/01/12 19:09:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ng-search/app/js/services/pf-pagination.js".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('ng-search/app/j...')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/ng-search/app/js/services/pf-pagination.js
+HTTP_REFERER=http://staytogether.ru/
+---
+2015/01/12 19:09:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ng-search/app/js/filters/start-form.js".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('ng-search/app/j...')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/ng-search/app/js/filters/start-form.js
+HTTP_REFERER=http://staytogether.ru/
+---
+2015/01/12 19:09:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ng-search/app/js/directives/pf-list.js".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('ng-search/app/j...')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/ng-search/app/js/directives/pf-list.js
+HTTP_REFERER=http://staytogether.ru/
+---
+2015/01/12 19:09:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ng-search/app/js/services/pf-pet-storage.js".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('ng-search/app/j...')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/ng-search/app/js/services/pf-pet-storage.js
+HTTP_REFERER=http://staytogether.ru/
+---
+2015/01/12 19:09:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ng-search/app/js/directives/pf-list-gallery.js".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('ng-search/app/j...')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/ng-search/app/js/directives/pf-list-gallery.js
+HTTP_REFERER=http://staytogether.ru/
+---
+2015/01/12 19:10:42 [error] [php] Undefined index: data (/var/www/staytogether.ru/protected/controllers/PetController.php:74)
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CController.php(286): PetController->runAction()
+#1 /var/www/staytogether.ru/framework/web/CController.php(265): PetController->runActionWithFilters()
+#2 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): PetController->run()
+#3 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /var/www/staytogether.ru/index.php(24): CWebApplication->run()
+REQUEST_URI=/api/pet
+2015/01/12 19:13:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ng-search/app/js/services/pf-pet-storage.js".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('ng-search/app/j...')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/ng-search/app/js/services/pf-pet-storage.js
+HTTP_REFERER=http://staytogether.ru/
+---
+2015/01/12 19:13:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ng-search/app/js/services/pf-pagination.js".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('ng-search/app/j...')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/ng-search/app/js/services/pf-pagination.js
+HTTP_REFERER=http://staytogether.ru/
+---
+2015/01/12 19:13:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ng-search/app/js/directives/pf-list.js".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('ng-search/app/j...')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/ng-search/app/js/directives/pf-list.js
+HTTP_REFERER=http://staytogether.ru/
+---
+2015/01/12 19:13:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ng-search/app/js/directives/pf-list-gallery.js".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('ng-search/app/j...')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/ng-search/app/js/directives/pf-list-gallery.js
+HTTP_REFERER=http://staytogether.ru/
+---
+2015/01/12 19:13:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ng-search/app/js/filters/start-form.js".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('ng-search/app/j...')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/ng-search/app/js/filters/start-form.js
+HTTP_REFERER=http://staytogether.ru/
+---
+2015/01/12 19:13:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2015/01/12 19:13:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ng-search/app/js/services/pf-pet-storage.js".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('ng-search/app/j...')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/ng-search/app/js/services/pf-pet-storage.js
+HTTP_REFERER=http://staytogether.ru/
+---
+2015/01/12 19:13:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ng-search/app/js/services/pf-pagination.js".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('ng-search/app/j...')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/ng-search/app/js/services/pf-pagination.js
+HTTP_REFERER=http://staytogether.ru/
+---
+2015/01/12 19:13:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ng-search/app/js/directives/pf-list.js".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('ng-search/app/j...')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/ng-search/app/js/directives/pf-list.js
+HTTP_REFERER=http://staytogether.ru/
+---
+2015/01/12 19:13:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ng-search/app/js/directives/pf-list-gallery.js".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('ng-search/app/j...')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/ng-search/app/js/directives/pf-list-gallery.js
+HTTP_REFERER=http://staytogether.ru/
+---
+2015/01/12 19:13:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ng-search/app/js/filters/start-form.js".' in /var/www/staytogether.ru/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController('ng-search/app/j...')
+#1 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/staytogether.ru/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/ng-search/app/js/filters/start-form.js
+HTTP_REFERER=http://staytogether.ru/
+---
+2015/01/12 19:15:46 [error] [php] Undefined index: data (/var/www/staytogether.ru/protected/controllers/PetController.php:74)
+Stack trace:
+#0 /var/www/staytogether.ru/framework/web/CController.php(286): PetController->runAction()
+#1 /var/www/staytogether.ru/framework/web/CController.php(265): PetController->runActionWithFilters()
+#2 /var/www/staytogether.ru/framework/web/CWebApplication.php(282): PetController->run()
+#3 /var/www/staytogether.ru/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /var/www/staytogether.ru/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /var/www/staytogether.ru/index.php(24): CWebApplication->run()
+REQUEST_URI=/api/pet
+2015/01/12 19:17:33 [warning] [application] Failed to set unsafe attribute "pet" of "DogLost".
+2015/01/12 19:17:33 [warning] [application] Failed to set unsafe attribute "breeds" of "DogLost".

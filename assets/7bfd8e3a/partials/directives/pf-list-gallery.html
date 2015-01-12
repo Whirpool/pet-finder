@@ -1,0 +1,8 @@
+<div>
+    <div class="slide" ng-repeat="image in images" ng-show="$index == indexImage">
+        <img ng-src="{{image.source_small}}" alt=""/>
+    </div>
+    <div ng-if="images.length === 0">
+        <img src="images/default.png" alt=""/>
+    </div>
+</div>

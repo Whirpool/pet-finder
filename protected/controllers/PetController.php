@@ -38,10 +38,10 @@ class PetController extends RController
     public function actionSearch()
     {
         try {
-            $request = CJSON::decode(Yii::app()->request->rawBody);
-            $pet = (new Pet)->create($request['init']);
-            if ($pet->isZoomValid($request['data']['location']['radius'])) {
-                $result = $pet->findPetByLocation($request['data']);
+            $request = $this->getPetRequest();
+            $pet = (new Pet)->create($request['pet'], $request['status']);
+            if ($pet->isZoomValid($request['radius'])) {
+                $result = $pet->findPetByLocation($request);
                 if (is_null($result)) {
                     $this->renderJson(['type' => 'empty']);
                 } else {
@@ -70,10 +70,10 @@ class PetController extends RController
     {
         $request = CJSON::decode(Yii::app()->request->rawBody);
         try {
-            $pet = (new Pet)->create($request['init']);
-            $pet->setPetAttributes($request['data']);
+            $pet = (new Pet)->create($request['pet'], $request['status']);
+            $pet->setPetAttributes($request);
             if ($pet->validate()) {
-                $pet->breeds = $request['data']['breeds'];
+                $pet->breeds = $request['breeds'];
                 $transaction = $pet->dbConnection->beginTransaction();
                 try {
                     $pet->save(false);
@@ -113,13 +113,13 @@ class PetController extends RController
      *
      * @param $id
      * @param $status
-     * @param $type
+     * @param $pet
      */
-    public function actionView($type, $status, $id)
+    public function actionView($pet, $status, $id)
     {
         try {
-            $pet = (new Pet)->create(['type' => $type, 'status' => $status], true);
-            $result = $pet->findPetById($id);
+            $petBase = (new Pet)->create($pet, $status);
+            $result = $petBase->findPetById($id);
             if (is_null($result)) {
                 $this->renderJson(['type' => 'empty']);
             } else {
@@ -133,6 +133,4 @@ class PetController extends RController
             ]);
         }
     }
-
-
 }

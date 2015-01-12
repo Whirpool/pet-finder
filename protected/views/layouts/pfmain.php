@@ -42,19 +42,10 @@
 	<?php endif?>
 
 	<?php echo $content; ?>
-
-	<div class="clear"></div>
-
-	<div id="footer">
-		Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
-		All Rights Reserved.<br/>
-		<?php echo Yii::powered(); ?>
-	</div><!-- footer -->
-
-<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/ng-search/app/lib/angular-file-upload-shim.min.js', CClientScript::POS_END); ?>
-<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/ng-search/app/lib/angular/angular.min.js', CClientScript::POS_END); ?>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular.min.js"></script>
 <?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/ng-search/app/lib/angular/angular-ui-router.js', CClientScript::POS_END); ?>
 <?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/ng-search/app/lib/angular/angular-resource.min.js', CClientScript::POS_END); ?>
+<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/ng-search/app/lib/angular/ct-ui-router-extras.min.js', CClientScript::POS_END); ?>
 <?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/ng-search/app/lib/angular/angular-animate.min.js', CClientScript::POS_END); ?>
 <?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/ng-search/app/lib/angular/angular-local_ru-ru.js', CClientScript::POS_END); ?>
 <?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/ng-search/app/lib/ui-bootstrap/ui-bootstrap.min.js', CClientScript::POS_END); ?>
@@ -68,16 +59,13 @@
 <?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/ng-search/app/js/controllers/detail.js', CClientScript::POS_END); ?>
 <?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/ng-search/app/js/controllers/new.js', CClientScript::POS_END); ?>
 <?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/ng-search/app/js/controllers/search.js', CClientScript::POS_END); ?>
-<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/ng-search/app/js/services/pf-data.js', CClientScript::POS_END); ?>
+<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/ng-search/app/js/controllers/list.js', CClientScript::POS_END); ?>
+<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/ng-search/app/js/services/pf-pet.js', CClientScript::POS_END); ?>
 <?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/ng-search/app/js/services/pf-map.js', CClientScript::POS_END); ?>
-<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/ng-search/app/js/services/pf-pagination.js', CClientScript::POS_END); ?>
 <?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/ng-search/app/js/services/pf-relation.js', CClientScript::POS_END); ?>
 <?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/ng-search/app/js/services/pf-image.js', CClientScript::POS_END); ?>
-<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/ng-search/app/js/directives/pf-list.js', CClientScript::POS_END); ?>
 <?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/ng-search/app/js/directives/pf-comment.js', CClientScript::POS_END); ?>
 <?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/ng-search/app/js/directives/pf-answers.js', CClientScript::POS_END); ?>
-<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/ng-search/app/js/directives/pf-list-gallery.js', CClientScript::POS_END); ?>
-<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/ng-search/app/js/filters/list.js', CClientScript::POS_END); ?>
-<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/ng-search/app/js/filters/start-form.js', CClientScript::POS_END); ?>
+<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/ng-search/app/js/filters/category.js', CClientScript::POS_END); ?>
 </body>
 </html>

@@ -1,0 +1,13 @@
+<div>
+    <div ng-repeat="answer in answers" style="margin-left: 10px">
+        {{answer.content}} {{answer.author}}
+    </div>
+    <button class="btn btn-info" ng-click="writeAnswer = !writeAnswer">Ответить</button>
+    <div ng-if="writeAnswer">
+        <div ng-repeat="error in form.errors">{{error}}</div>
+        <textarea class="form-control" ng-model="form.content"></textarea>
+        <br/>
+        <button class="btn btn-info" ng-click="sendAnswer(id, form.content)" >Отправить ответ</button>
+        <hr/>
+    </div>
+</div>

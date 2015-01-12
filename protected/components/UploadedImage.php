@@ -44,7 +44,7 @@ class UploadedImage extends CUploadedFile
             $this->_gmagick = new Gmagick($tempName);
         } catch (GmagickException $e) {
             $message = "Файл $name поврежден или имеет не соответствующий тип. Загружайте только изображения.";
-            throw new CException($message);
+            throw new CException($e->getMessage());
         }
     }
 
@@ -79,7 +79,7 @@ class UploadedImage extends CUploadedFile
      * @throws CHttpException
      */
     public function createThumbnail($withCompress = true, $width = 320, $height = 320, $blur = 20, $border = 20) {
-        $resultFile = Yii::app()->params['images']['path']['tmp'] . $this->getNameSmallSize();
+        $resultFile = Yii::app()->params['images']['tmp'] . $this->getNameSmallSize();
         $image = $this->_gmagick->getimage();
         $background = $image->getImage();
         $background->scaleImage($width, $height);

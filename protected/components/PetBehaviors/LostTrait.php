@@ -14,8 +14,8 @@ trait LostTrait
      */
     protected function setStatusConditions($data)
     {
-        $min = (float)$data['age']['min'];
-        $max = (float)$data['age']['max'];
+        $min = (float)$data['ageMin'];
+        $max = (float)$data['ageMax'];
         $this->criteria->addCondition('date BETWEEN :dateEnd AND :dateStart');
         $this->criteria->addCondition("age <@ '[$min, $max]'::numrange");
 

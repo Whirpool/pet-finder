@@ -11,11 +11,11 @@
             scope: {
                 comments: '='
             },
-            controller: function ($scope, pfData, $stateParams) {
+            controller: function ($scope, pfPet, $stateParams) {
                 var type = 'comment';
                 $scope.form = {};
                 $scope.sendComment = function (data) {
-                    pfData.sendMessage($stateParams.id, data, type).then(function (data) {
+                    pfPet.sendMessage($stateParams.id, data, type).then(function (data) {
                         $scope.comments.push(data);
                         $scope.form.content = '';
                         $scope.form.errors = [];

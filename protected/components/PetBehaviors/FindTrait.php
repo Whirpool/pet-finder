@@ -54,8 +54,8 @@ trait FindTrait
     protected function setStatusAttributes($attributes)
     {
         if (isset($attributes['age'])) {
-            $min = (float)$attributes['age']['min'];
-            $max = (float)$attributes['age']['max'];
+            $min = (float)$attributes['ageMin'];
+            $max = (float)$attributes['ageMax'];
             $this->owner->age = new CDbExpression("'[$min, $max]'::numrange");
         }
     }

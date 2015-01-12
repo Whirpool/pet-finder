@@ -3,30 +3,29 @@
 
     angular.module('petFinder').controller('DetailCtrl', DetailCtrl);
 
-    DetailCtrl.$inject = ['$scope', '$stateParams', 'pfData', 'pfMap', 'pfHeader'];
+    DetailCtrl.$inject = ['$stateParams', 'pfPet', 'pfLabelConst'];
 
-    function DetailCtrl($scope, $stateParams, pfData, pfMap, pfHeader) {
-        pfData.getDetail($stateParams.type, $stateParams.status, $stateParams.id).then(function (data) {
-            $scope.detail = {
-                pet: data.pet[0],
-                category: data.category,
-                header: pfHeader,
-                map: {
-                    center: [data.pet[0].lat, data.pet[0].lng],
-                    geoObject: pfMap.createGeoObject(data.pet[0])
-                }
+    function DetailCtrl($stateParams, pfPet, pfLabelConst) {
+        var vm = this;
+        pfPet.findById($stateParams.pet, $stateParams.status, $stateParams.id).then(function (data) {
+            vm.pet = data.pet;
+            vm.category = data.category;
+            vm.label = pfLabelConst;
+            vm.map = {
+                center: [data.pet.lat, data.pet.lng],
+                point: data.point
             };
-            if (!!$scope.detail.pet.images && $scope.detail.pet.images.length > 0) {
-                $scope.mainImage = $scope.detail.pet.images[0].source_original;
+            if (!!vm.pet.images) {
+                vm.mainImage = vm.pet.images[0].source_original;
             } else {
-                $scope.mainImage = 'images/default.png';
+                vm.mainImage = 'images/default.png';
             }
         }, function (error) {
-            $scope.detailError = error;
+            vm.detailError = error;
         });
 
-        $scope.changeMainImage = function (src) {
-            $scope.mainImage = src;
+        vm.changeMainImage = function (src) {
+            vm.mainImage = src;
         };
     }
 })();

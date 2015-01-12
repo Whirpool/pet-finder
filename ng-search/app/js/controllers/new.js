@@ -3,99 +3,99 @@
 
     angular.module('petFinder').controller('NewCtrl', NewCtrl);
 
-    NewCtrl.$inject = ['$scope', '$filter', '$location', 'pfData', 'pfMap', 'pfImage'];
+    NewCtrl.$inject = ['$scope', '$filter', '$location', 'pfPet', 'pfImage', 'pfRelation', 'pfLabelConst'];
 
-    function NewCtrl($scope, $filter, $location, pfData, pfMap, pfImage) {
-        $scope.tab.map.active = true;
-        $scope.request = {
-            init: {},
-            data: {}
-        };
-        $scope.form = {
-                errors: {
-                    show: false
-                },
-                pet: {
-                    date: {
-                        picker: new Date(),
-                        max: new Date()
-                    }
-                },
-                type: {
-                    breeds: []
-                },
-                status: {},
-                init: {},
+    function NewCtrl($scope, $filter, $location, pfPet, pfImage, pfRelation, pfLabelConst) {
+        var vm = this,
+            request = {};
+
+        vm.label = pfLabelConst;
+        vm.relations = pfRelation.get();
+        vm.form = {
+            errors: {
+                show: false
+            },
+            common: {},
+            pet: {
+                breeds: []
+            },
+            status: {},
+            category: {},
             images: {
                 data: [],
                 error: '',
                 maxFiles: 5
+            },
+            date: {
+                picker: new Date(),
+                max: new Date()
             }
 
         };
 
-        $scope.onFileSelect = function($files) {
+        vm.addImage = addImage;
+        vm.deleteImage = deleteImage;
+        vm.openDatePicker = openDatePicker;
+        vm.submitForm = submitForm;
+        vm.setBreed = setBreed;
+        vm.clearFormPet = clearFormPet;
+        vm.clearFormStatus = clearFormStatus;
+
+        $scope.$on('mapClicked', function (event, coords) {
+            vm.form.common.location = coords;
+        });
+
+        function addImage($files) {
             angular.forEach($files, function (file) {
-                pfImage.add(file).then(function(image) {
-                    $scope.form.images.data.push(image);
+                pfImage.add(file).then(function (image) {
+                    vm.form.images.data.push(image);
                 }, function (message) {
-                    $scope.form.images.error = message;
+                    vm.form.images.error = message;
                 });
             });
-        };
+        }
 
-        $scope.deleteImage = function(image, index) {
-            pfImage.remove(image).then(function() {
-                $scope.form.images.data.splice(index, 1);
+        function deleteImage(image, index) {
+            pfImage.remove(image).then(function () {
+                vm.form.images.data.splice(index, 1);
             })
-        };
+        }
 
-        $scope.map.mapClick = function(event) {
-            var coords;
-            if($location.path() === '/new') {
-                coords = pfMap.setCoords(event);
-                $scope.form.pet.location = coords;
-            }
-        };
-
-        $scope.open = function($event) {
+        function openDatePicker($event) {
             $event.preventDefault();
             $event.stopPropagation();
-            $scope.opened = true;
-        };
+            vm.opened = true;
+        }
 
-        $scope.submitForm = function() {
-            $scope.request.init = $scope.form.init;
-            angular.extend($scope.request.data,
-                $scope.form.pet,
-                $scope.form.status,
-                $scope.form.type);
-            $scope.request.data.date = $filter('date')($scope.form.pet.date.picker, ['yyyy-MM-dd']);
-            pfData.newPet($scope.request).then(function() {
-                $location.path( "/list" );
+        function submitForm() {
+            angular.extend(request,
+                vm.form.category,
+                vm.form.common,
+                vm.form.status,
+                vm.form.pet);
+            request.date = $filter('date')(vm.form.date.picker, ['yyyy-MM-dd']);
+            pfPet.newPet(request).then(function () {
+                $location.path("/list");
             }, function (errors) {
-                $scope.form.errors.show = true;
-                $scope.form.errors.message = errors.data.message;
+                vm.form.errors.show = true;
+                vm.form.errors.message = errors.data.message;
             });
-        };
+        }
 
-        $scope.$watch('model.breeds', function (newVal, oldVal) {
-            if(newVal !== oldVal) {
-                $scope.form.type.breeds.push(newVal);
-            }
-        });
+        function setBreed(breed) {
+            vm.form.pet.breeds.push(breed);
+        }
 
-        $scope.$watch('form.init.type', function (newVal, oldVal) {
-            if(newVal !== oldVal) {
-                $scope.form.type = {
-                    breeds: []
-                };
-            }
-        });
-        $scope.$watch('form.init.status', function (newVal, oldVal) {
-            if(newVal !== oldVal) {
-                $scope.form.status = {};
-            }
-        });
+        function clearFormPet() {
+            vm.form.pet = {
+                breeds: []
+            };
+        }
+
+        function clearFormStatus() {
+            vm.form.status = {};
+        }
+
+
     }
 })();

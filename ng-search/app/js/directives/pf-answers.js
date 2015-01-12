@@ -12,12 +12,12 @@
                 answers: '=',
                 id: '@'
             },
-            controller: function ($scope, pfData) {
+            controller: function ($scope, pfPet) {
                 var type = 'answer';
                 $scope.writeAnswer = false;
                 $scope.form = {};
                 $scope.sendAnswer = function (id, answer) {
-                    pfData.sendMessage(id, answer, type).then(function (data) {
+                    pfPet.sendMessage(id, answer, type).then(function (data) {
                         $scope.answers.push(data);
                         $scope.writeAnswer = false;
                         $scope.form.errors = [];

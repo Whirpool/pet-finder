@@ -45,7 +45,7 @@ return array(
                 array('pet/index', 'pattern' => ''),
                 array('pet/relation', 'pattern' => 'api/relation', 'verb' => 'GET'),
                 array('pet/view', 'pattern' => 'api/pet', 'verb' => 'GET'),
-                array('pet/search', 'pattern' => 'api/pet/search', 'verb' => 'POST'),
+                array('pet/search', 'pattern' => 'api/pet/search', 'verb' => 'GET'),
                 array('pet/new', 'pattern' => 'api/pet', 'verb' => 'POST'),
                 array('file/load', 'pattern' => 'api/file', 'verb' => 'POST'),
                 array('file/delete', 'pattern' => 'api/file', 'verb' => 'DELETE'),

@@ -1,0 +1,6 @@
+<ng-pluralize count="listVm.pets.length" when="listVm.petLocale"></ng-pluralize>
+<div ng-repeat="pet in listVm.pets">
+    #{{pet.id}} ||
+    <a class="btn-info btn-sm" ui-sref="detail.modal({id: pet.id, pet: listVm.url.pet, status: listVm.url.status})">Подробнее</a>
+    <hr/>
+</div>

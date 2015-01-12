@@ -109,13 +109,13 @@ final class CatLostBehavior extends AbstractBasePetBehavior implements SearchByL
 
     public function setLocationConditions($data)
     {
-        $lat = (float)$data['location']['lat'];
-        $lng = (float)$data['location']['lng'];
+        $lat = (float)$data['lat'];
+        $lng = (float)$data['lng'];
         $this->criteria->addCondition("ST_DWithin(location, ST_GeomFromText('POINT({$lat} {$lng})',4326), :radius)");
     }
 
     public function setLocationParams($params)
     {
-        $this->command->bindParam(':radius', $params['location']['radius'], PDO::PARAM_INT);
+        $this->command->bindParam(':radius', $params['radius'], PDO::PARAM_INT);
     }
 }

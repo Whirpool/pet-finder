@@ -1,0 +1,71 @@
+<div ng-if="detailError">
+    <h2>{{detailError}}</h2>
+</div>
+<div ng-if="!detailError">
+    <div class="modal-header">
+        <h2>{{detail.pet.date_create}} by {{detail.pet.user.username}}</h2>
+    </div>
+    <div class="modal-body row">
+        <div class="col-sm-6">
+            <div class="main-detail-view">
+                <img ng-src="{{mainImage}}" alt=""/>
+            </div>
+            <div ng-repeat="image in detail.pet.images" ng-if="detail.pet.images.length>1" class="view-detail">
+                <img ng-src="{{image.source_original}}" alt="" ng-click="changeMainImage(image.source_original)"/>
+            </div>
+            <div>
+                <ya-map class="map map-detail" ya-zoom="16" ya-behaviors="default"
+                        ya-after-init="map.afterInit($target)"
+                        ya-center="{{detail.map.center }}">
+                    <ya-cluster
+                            ya-options="{groupByCoordinates:false,clusterDisableClickZoom: true,gridSize:80}">
+                        <ya-geo-object ya-source="detail.map.geoObject"></ya-geo-object>
+                    </ya-cluster>
+                </ya-map>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <h4 class="list-group-item-heading">{{detail.header.pet}}</h4>
+                    <p class="list-group-item-text">{{detail.pet.pet_id}}</p>
+                </li>
+                <li class="list-group-item">
+                    <h4 class="list-group-item-heading">{{detail.header.breed}}</h4>
+                    <p class="list-group-item-text">{{detail.pet.breed}}</p>
+                </li>
+                <li class="list-group-item">
+                    <h4 class="list-group-item-heading">{{detail.header.name}}</h4>
+                    <p class="list-group-item-text">{{detail.pet.name}}</p>
+                </li>
+                <li class="list-group-item">
+                    <h4 class="list-group-item-heading">{{detail.header.date}}</h4>
+                    <p class="list-group-item-text">{{detail.pet.date}}</p>
+                </li>
+                <li class="list-group-item">
+                    <h4 class="list-group-item-heading">{{detail.header.age}}</h4>
+                    <p class="list-group-item-text">{{detail.pet.age_id}}</p>
+                </li>
+                <li class="list-group-item">
+                    <h4 class="list-group-item-heading">{{detail.header.sex}}</h4>
+                    <p class="list-group-item-text">{{detail.pet.sex}}</p>
+                </li>
+                <li class="list-group-item">
+                    <h4 class="list-group-item-heading">{{detail.header.special}}</h4>
+                    <p class="list-group-item-text">{{detail.pet.special}}</p>
+                </li>
+                <li class="list-group-item">
+                    <h4 class="list-group-item-heading">{{detail.header.advanced}}</h4>
+                    <p class="list-group-item-text">{{detail.pet.advanced}}</p>
+                </li>
+                <li class="list-group-item">
+                    <h4 class="list-group-item-heading">{{detail.header.contact}}</h4>
+                    <p class="list-group-item-text">{{detail.pet.user.email}}</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <pf-comment comments="detail.pet.comments"></pf-comment>
+</div>
+
+

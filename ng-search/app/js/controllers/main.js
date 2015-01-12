@@ -3,51 +3,29 @@
 
     angular.module('petFinder').controller('MainCtrl', MainCtrl);
 
-    MainCtrl.$inject = ['$scope', 'pfRelation', 'pfPagination', 'pfMap', 'pfHeader'];
+    MainCtrl.$inject = ['$scope', '$location', 'pfMap'];
 
-    function MainCtrl($scope, pfRelation, pfPagination, pfMap, pfHeader) {
-        $scope.pagination = {};
-        $scope.tab = {
-            list: {
-                disable: true,
-                active: false
-            },
-            map: {
-                disable: false,
-                active: true
-            }
-        };
+    function MainCtrl($scope, $location, pfMap) {
+        var vm = this;
 
-        $scope.map = {
-            geoObjects: {}
-        };
+        vm.geoObjects = {};
 
-        $scope.model = {
-            formSearch: {
-                search_type: 1
-            },
-            formNew: {},
-            pets: {}
-        };
+        vm.initMap = initMap;
+        vm.mapClick = mapClick;
 
-        $scope.petLocale = {
-            one: 'Найден один питомец',
-            few: 'Найдено {} питомца',
-            many: 'Найдено {} питомцев',
-            other: 'Найдено {}'
-        };
+        $scope.$on('listCtrlLoaded', function () {
+            vm.geoObjects = pfMap.getGeoObjects();
+            vm.center = pfMap.getCenter();
+        });
 
-        $scope.model.header    = pfHeader;
-        $scope.model.relations = pfRelation.get();
-
-        $scope.map.afterInit = function ($map) {
+        function initMap($map) {
             pfMap.init($map);
-        };
+        }
 
-        $scope.$watch('pagination.currentPage', function () {
-            pfPagination.setPage();
-            $scope.pagination = pfPagination.getPagination();
-        }, true);
+        function mapClick(event) {
+            if ($location.path() === '/new') {
+                $scope.$broadcast('mapClicked', pfMap.getCoords(event));
+            }
+        }
     }
 })();
-

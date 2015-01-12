@@ -186,15 +186,15 @@ class Pet extends CActiveRecord
 
     }
 
-    public function create($init)
+    public function create($pet, $status)
     {
-        if (isset($init['type']) && isset($init['status'])) {
+        if (isset($pet) && isset($status)) {
             $model = '';
-            switch ($init['type']) {
-                case(self::STR_TYPE_CAT):
+            switch ($pet) {
+                case(self::INT_TYPE_CAT):
                     $model .= self::MODEL_CAT;
                     break;
-                case(self::STR_TYPE_DOG):
+                case(self::INT_TYPE_DOG):
                     $model .= self::MODEL_DOG;
                     break;
                 default:
@@ -202,11 +202,11 @@ class Pet extends CActiveRecord
                     break;
             }
 
-            switch ($init['status']) {
-                case(self::STR_STATUS_FIND):
+            switch ($status) {
+                case(self::INT_STATUS_FIND):
                     $model .= self::MODEL_FIND;
                     break;
-                case(self::STR_STATUS_LOST):
+                case(self::INT_STATUS_LOST):
                     $model .= self::MODEL_LOST;
                     break;
                 default:
@@ -218,5 +218,23 @@ class Pet extends CActiveRecord
         }
 
         return new $model;
+    }
+
+    private function convertInitParams($init)
+    {
+        $type = strtolower(preg_replace('/\s+/', '', $init['pet']));
+        $status = strtolower(preg_replace('/\s+/', '', $init['status']));
+
+        if ($type === self::STR_TYPE_CAT) {
+            $init['pet'] = self::INT_TYPE_CAT;
+        } elseif ($type === self::STR_TYPE_DOG) {
+            $init['pet'] = self::INT_TYPE_DOG;
+        }
+        if ($status === self::STR_STATUS_FIND) {
+            $init['status'] = self::INT_STATUS_FIND;
+        } elseif ($status === self::STR_STATUS_LOST) {
+            $init['status'] = self::INT_STATUS_LOST;
+        }
+        return $init;
     }
 }

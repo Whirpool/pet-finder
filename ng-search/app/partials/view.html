@@ -1,25 +1,25 @@
-<div ng-if="detailError">
-    <h2>{{detailError}}</h2>
+<div ng-if="detailVm.detailError">
+    <h2>{{detailVm.detailError}}</h2>
 </div>
-<div ng-if="!detailError">
+<div ng-if="!detailVm.detailError">
     <div class="modal-header">
-        <h2>{{detail.pet.date_create}} by {{detail.pet.user.username}}</h2>
+        <h2>{{detailVm.pet.date_create}} by {{detailVm.pet.user.username}}</h2>
     </div>
     <div class="modal-body row">
         <div class="col-sm-6">
             <div class="main-detail-view">
-                <img ng-src="{{mainImage}}" alt=""/>
+                <img ng-src="{{detailVm.mainImage}}" alt=""/>
             </div>
-            <div ng-repeat="image in detail.pet.images" ng-if="detail.pet.images.length>1" class="view-detail">
-                <img ng-src="{{image.source_original}}" alt="" ng-click="changeMainImage(image.source_original)"/>
+            <div ng-repeat="image in detailVm.pet.images" ng-if="detailVm.pet.images.length>1" class="view-detail">
+                <img ng-src="{{image.source_original}}" alt="" ng-click="detailVm.changeMainImage(image.source_original)"/>
             </div>
             <div>
                 <ya-map class="map map-detail" ya-zoom="16" ya-behaviors="default"
-                        ya-after-init="map.afterInit($target)"
-                        ya-center="{{detail.map.center }}">
+                        ya-after-init="detailVm.initMap($target)"
+                        ya-center="{{detailVm.map.center }}">
                     <ya-cluster
                             ya-options="{groupByCoordinates:false,clusterDisableClickZoom: true,gridSize:80}">
-                        <ya-geo-object ya-source="detail.map.geoObject"></ya-geo-object>
+                        <ya-geo-object ya-source="detailVm.map.point"></ya-geo-object>
                     </ya-cluster>
                 </ya-map>
             </div>
@@ -27,54 +27,54 @@
         <div class="col-sm-6">
             <ul class="list-group">
                 <li class="list-group-item">
-                    <h4 class="list-group-item-heading">{{detail.header.pet}}</h4>
-                    <p class="list-group-item-text" ng-repeat="color in detail.pet.colors">{{color}}</p>
+                    <h4 class="list-group-item-heading">{{detailVm.label.pet}}</h4>
+                    <p class="list-group-item-text" ng-repeat="color in detailVm.pet.colors">{{color}}</p>
                 </li>
                 <li class="list-group-item">
-                    <h4 class="list-group-item-heading">{{detail.header.breed}}</h4>
-                    <p class="list-group-item-text" ng-repeat="breed in detail.pet.breeds">{{breed}}</p>
+                    <h4 class="list-group-item-heading">{{detailVm.label.breed}}</h4>
+                    <p class="list-group-item-text" ng-repeat="breed in detailVm.pet.breeds">{{breed}}</p>
                 </li>
-                <li class="list-group-item" ng-if="detail.category.status === 'lost'">
-                    <h4 class="list-group-item-heading">{{detail.header.name}}</h4>
-                    <p class="list-group-item-text">{{detail.pet.name}}</p>
-                </li>
-                <li class="list-group-item">
-                    <h4 class="list-group-item-heading">{{detail.header.date}}</h4>
-                    <p class="list-group-item-text">{{detail.pet.date}}</p>
+                <li class="list-group-item" ng-if="detailVm.category.status === 2">
+                    <h4 class="list-group-item-heading">{{detailVm.label.name}}</h4>
+                    <p class="list-group-item-text">{{detailVm.pet.name}}</p>
                 </li>
                 <li class="list-group-item">
-                    <h4 class="list-group-item-heading">{{detail.header.age}}</h4>
-                    <p class="list-group-item-text" ng-if="detail.category.status === 'lost'">{{detail.pet.age}}</p>
-                    <p class="list-group-item-text" ng-if="detail.category.status === 'find'">{{detail.pet.age_min}}</p>
-                    <p class="list-group-item-text" ng-if="detail.category.status === 'find'">{{detail.pet.age_max}}</p>
+                    <h4 class="list-group-item-heading">{{detailVm.label.date}}</h4>
+                    <p class="list-group-item-text">{{detailVm.pet.date}}</p>
                 </li>
                 <li class="list-group-item">
-                    <h4 class="list-group-item-heading">{{detail.header.sex}}</h4>
-                    <p class="list-group-item-text">{{detail.pet.sex}}</p>
+                    <h4 class="list-group-item-heading">{{detailVm.header.age}}</h4>
+                    <p class="list-group-item-text" ng-if="detailVm.category.status === 2">{{detailVm.pet.age}}</p>
+                    <p class="list-group-item-text" ng-if="detailVm.category.status === 1">{{detailVm.pet.age_min}}</p>
+                    <p class="list-group-item-text" ng-if="detailVm.category.status === 1">{{detailVm.pet.age_max}}</p>
+                </li>
+                <li class="list-group-item">
+                    <h4 class="list-group-item-heading">{{detailVm.label.sex}}</h4>
+                    <p class="list-group-item-text">{{detailVm.pet.sex}}</p>
                 </li>
                 <li class="list-group-item">
                     <h4 class="list-group-item-heading">Глаза</h4>
-                    <p class="list-group-item-text">{{detail.pet.eyes}}</p>
+                    <p class="list-group-item-text">{{detailVm.pet.eyes}}</p>
                 </li>
                 <li class="list-group-item">
                     <h4 class="list-group-item-heading">Тип шерсти</h4>
-                    <p class="list-group-item-text">{{detail.pet.fur}}</p>
+                    <p class="list-group-item-text">{{detailVm.pet.fur}}</p>
                 </li>
-                <li class="list-group-item" ng-if="detail.category.type === 'dog'">
+                <li class="list-group-item" ng-if="detailVm.category.type === 2">
                     <h4 class="list-group-item-heading">Тип фигуры</h4>
-                    <p class="list-group-item-text">{{detail.pet.figured}}</p>
+                    <p class="list-group-item-text">{{detailVm.pet.figured}}</p>
                 </li>
                 <li class="list-group-item">
                     <h4 class="list-group-item-heading">Тип окраса</h4>
-                    <p class="list-group-item-text">{{detail.pet.type_color}}</p>
+                    <p class="list-group-item-text">{{detailVm.pet.type_color}}</p>
                 </li>
                 <li class="list-group-item">
-                    <h4 class="list-group-item-heading">{{detail.header.special}}</h4>
-                    <p class="list-group-item-text">{{detail.pet.special}}</p>
+                    <h4 class="list-group-item-heading">{{detailVm.label.special}}</h4>
+                    <p class="list-group-item-text">{{detailVm.pet.special}}</p>
                 </li>
                 <li class="list-group-item">
-                    <h4 class="list-group-item-heading">{{detail.header.advanced}}</h4>
-                    <p class="list-group-item-text">{{detail.pet.advanced}}</p>
+                    <h4 class="list-group-item-heading">{{detailVm.label.advanced}}</h4>
+                    <p class="list-group-item-text">{{detailVm.pet.advanced}}</p>
                 </li>
             </ul>
         </div>

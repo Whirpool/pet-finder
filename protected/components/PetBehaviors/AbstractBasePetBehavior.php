@@ -187,7 +187,7 @@ abstract class AbstractBasePetBehavior extends CActiveRecordBehavior
 //        if(isset($data['colors'])) {
 //            $this->owner->colors = $this->toPgArray($data['colors']);
 //        }
-        if (isset($data['location'])) {
+        if (isset($data['location']['lat']) && isset($data['location']['lng'])) {
             $this->owner->location = new CDbExpression("ST_SetSRID(ST_MakePoint(:lat, :lng), 4326)",
                 [':lat' => $data['location']['lat'], ':lng' => $data['location']['lng']]);
         }
